@@ -1,6 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import ContactForm from "../components/ContactForm";
+import PageHero from "../components/PageHero";
+import CTA from "../components/CTA";
 import { contactInfo } from "../data";
 import {
   FaPhone,
@@ -24,15 +26,12 @@ const Contact = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="bg-primary text-white section-padding">
-          <div className="container-custom text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Contact Us</h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              Ready to discuss your safety needs? Get in touch with our experts
-              today.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          title="Contact Us"
+          subtitle={contactInfo.tagline}
+          badge="GET IN TOUCH"
+          features={["24/7 Support", "Expert Consultation", "Quick Response"]}
+        />
 
         {/* Contact Information */}
         <section className="section-padding">
@@ -222,31 +221,15 @@ const Contact = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="section-padding bg-accent text-white">
-          <div className="container-custom text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Don't wait to enhance your safety standards. Contact us today for
-              a consultation and customized quote for your safety needs.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:+222123456789"
-                className="btn-secondary text-lg px-8 py-4"
-              >
-                Call Now
-              </a>
-              <a
-                href="mailto:info@safetyexpertise.mr"
-                className="btn-primary text-lg px-8 py-4"
-              >
-                Send Email
-              </a>
-            </div>
-          </div>
-        </section>
+        <CTA
+          title="Ready to Get Started?"
+          subtitle="Don't wait to enhance your safety standards. Contact us today for a consultation and customized quote for your safety needs."
+          primaryButton={{ text: "Call Now", href: "tel:+222-3694-9611" }}
+          secondaryButton={{
+            text: "Send Email",
+            href: "mailto:operations@safetyexpertise.mr",
+          }}
+        />
       </main>
     </>
   );

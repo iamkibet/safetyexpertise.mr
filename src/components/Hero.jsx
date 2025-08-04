@@ -10,27 +10,47 @@ const Hero = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black overflow-hidden relative">
+    <div className="min-h-screen bg-gradient-to-l from-black via-black to-gray-800 overflow-hidden relative">
       {/* Background elements */}
       <div className="absolute inset-0">
-        {/* Fire particles */}
+        {/* Background image - barely visible */}
+        <div className="absolute inset-0 opacity-20">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url("/images/safety4.png")`,
+            }}
+          />
+        </div>
+
+        {/* Geometric pattern overlay */}
+        <div className="absolute inset-0 opacity-10">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            }}
+          />
+        </div>
+
+        {/* Gradient overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent" />
+
+        {/* Accent color highlights */}
         <div className="absolute top-0 left-0 w-full h-full">
-          {Array.from({ length: 25 }).map((_, i) => (
+          {Array.from({ length: 15 }).map((_, i) => (
             <div
               key={i}
-              className="absolute w-1 h-1 bg-orange-500 rounded-full animate-pulse"
+              className="absolute w-2 h-2 bg-[#ff3131] rounded-full animate-pulse"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
-                animationDuration: `${Math.random() * 2 + 1}s`,
-                opacity: Math.random() * 0.7 + 0.3,
+                animationDuration: `${Math.random() * 3 + 2}s`,
+                opacity: Math.random() * 0.4 + 0.2,
               }}
             />
           ))}
         </div>
-
-        {/* Grid overlay */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTYwIDBIMFY2MEg2MFYweiIvPjwvZz48L2c+PC9zdmc+')] opacity-20" />
       </div>
 
       {/* Content */}
@@ -40,33 +60,34 @@ const Hero = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="text-center lg:text-left">
-                <div className="inline-flex items-center bg-red-600/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-red-500/30">
-                  <span className="h-2 w-2 bg-red-500 rounded-full mr-2 animate-ping"></span>
-                  <span className="text-red-200 text-sm font-bold">
+                <div className="inline-flex items-center bg-white bg-opacity-10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-[#ff3131]/30 shadow-lg">
+                  <span className="h-2 w-2 bg-[#ff3131] rounded-full mr-2"></span>
+                  <span className="text-[#ff3131] text-sm font-bold drop-shadow-sm">
                     24/7 EMERGENCY RESPONSE
                   </span>
                 </div>
 
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight drop-shadow-lg">
                   <span className="block">FIRE SAFETY</span>
-                  <span className="block bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
+                  <span className="block bg-gradient-to-r from-[#ff3131] to-[#ff6b6b] bg-clip-text text-transparent drop-shadow-sm">
                     SOLUTIONS
                   </span>
                 </h1>
 
-                <p className="text-lg text-gray-300 max-w-xl mx-auto lg:mx-0 mb-10">
+                <p className="text-lg text-white max-w-xl mx-auto lg:mx-0 mb-10 font-medium drop-shadow-md leading-relaxed">
                   Professional fire suppression systems installation,
-                  maintenance, and emergency response services.
+                  maintenance, and emergency response services across
+                  Mauritania.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <Link
                     to="/contact"
-                    className="bg-gradient-to-r from-red-500 to-orange-500 text-white px-8 py-4 rounded-lg font-bold text-lg transition transform hover:scale-105 hover:shadow-lg hover:shadow-red-500/30"
+                    className="bg-gradient-to-r from-[#ff3131] to-[#ff6b6b] text-white px-8 py-4 rounded-lg font-bold text-lg transition transform hover:scale-105 hover:shadow-lg hover:shadow-[#ff3131]/30 shadow-lg"
                   >
                     Contact Us
                   </Link>
-                  <button className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-lg font-bold text-lg transition hover:bg-white/20">
+                  <button className="bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-lg font-bold text-lg transition hover:bg-white/30 shadow-lg">
                     Our Services
                   </button>
                 </div>
@@ -75,16 +96,16 @@ const Hero = () => {
               <div className="relative">
                 <div className="relative aspect-square max-w-lg mx-auto">
                   {/* Main fire suppression image */}
-                  <div className="absolute inset-0 rounded-2xl overflow-hidden border-2 border-white/10 shadow-2xl shadow-red-500/10">
+                  <div className="absolute inset-0 rounded-2xl overflow-hidden border-2 border-white/30 shadow-2xl shadow-[#ff3131]/20">
                     <img
-                      src="/images/safety.png"
+                      src="/images/safety1.png"
                       alt="Fire Suppression System"
                       className="w-full h-full object-cover rounded-2xl"
                     />
                   </div>
 
                   {/* Stats overlay */}
-                  <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-red-600 to-orange-500 text-white p-4 rounded-xl shadow-xl">
+                  <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-[#ff3131] to-[#ff6b6b] text-white p-4 rounded-xl shadow-xl">
                     <div className="text-2xl font-bold">99.8%</div>
                     <div className="text-sm">Success Rate</div>
                   </div>
@@ -94,7 +115,7 @@ const Hero = () => {
                     <div className="mr-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-red-500"
+                        className="h-6 w-6 text-[#ff3131]"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -125,9 +146,11 @@ const Hero = () => {
           onClick={handleScrollDown}
           className="flex flex-col items-center cursor-pointer transition-transform hover:scale-110"
         >
-          <div className="text-gray-400 text-sm mb-2">Scroll to explore</div>
+          <div className="text-white text-sm mb-2 font-medium drop-shadow-sm">
+            Scroll to explore
+          </div>
           <svg
-            className="w-6 h-6 text-white"
+            className="w-6 h-6 text-white drop-shadow-sm"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

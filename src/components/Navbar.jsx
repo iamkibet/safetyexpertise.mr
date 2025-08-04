@@ -54,9 +54,9 @@ const Navbar = () => {
 
   const handleContactMethod = (method) => {
     if (method === "call") {
-      window.location.href = "tel:+22212345678";
+      window.location.href = "tel:+222-3694-9611";
     } else if (method === "email") {
-      window.location.href = "mailto:emergency@safetyexpertise.mr";
+      window.location.href = "mailto:operations@safetyexpertise.mr";
     }
     setShowEmergencyPopup(false);
   };
@@ -73,11 +73,19 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img
-              src="/images/logo.png"
-              alt="Safety Expertise Logo"
-              className="h-10 w-auto"
-            />
+            <div
+              className={`relative ${
+                isScrolling || !isHomePage
+                  ? ""
+                  : "bg-white backdrop-blur-lg rounded-lg p-2"
+              }`}
+            >
+              <img
+                src="/images/logo.png"
+                alt="Safety Expertise Logo"
+                className="h-10 w-auto drop-shadow-sm"
+              />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -92,8 +100,8 @@ const Navbar = () => {
                       ? "text-primary border-b-2 border-primary"
                       : "text-gray-600 hover:text-primary"
                     : isActive(item.path)
-                    ? "text-white border-b-2 border-white"
-                    : "text-gray-300 hover:text-white"
+                    ? "text-white border-b-2 border-white drop-shadow-sm"
+                    : "text-gray-200 hover:text-white drop-shadow-sm"
                 }`}
               >
                 {item.label}
@@ -103,10 +111,10 @@ const Navbar = () => {
             {/* Emergency Line Button */}
             <div className="relative" ref={emergencyRef}>
               <button
-                className={`px-4 py-2 rounded-lg font-medium transition transform hover:-translate-y-0.5 ${
+                className={`px-4 py-2 rounded-lg font-medium transition transform hover:-translate-y-0.5 shadow-lg ${
                   isScrolling || !isHomePage
                     ? "bg-primary hover:bg-blue-700 text-white"
-                    : "bg-red-600 hover:bg-red-700 text-white"
+                    : "bg-[#ff3131] hover:bg-[#ff3131]/90 text-white"
                 }`}
                 onClick={handleEmergencyClick}
               >

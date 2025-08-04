@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 import ServiceCard from "../components/ServiceCard";
+import PageHero from "../components/PageHero";
+import CTA from "../components/CTA";
 import { services } from "../data";
-import { FaCog, FaTools, FaShieldAlt } from "react-icons/fa";
+import {
+  FaShieldAlt,
+  FaTools,
+  FaCog,
+  FaCheckCircle,
+  FaArrowRight,
+} from "react-icons/fa";
 
 const Services = () => {
-  const serviceIcons = [FaCog, FaTools, FaShieldAlt];
+  const serviceIcons = [FaShieldAlt, FaTools, FaCog];
 
   return (
     <>
@@ -13,24 +22,19 @@ const Services = () => {
         <title>Our Services - Safety Expertise</title>
         <meta
           name="description"
-          content="Comprehensive safety services including fixed installation, mobile equipment, industrial maintenance, and more. Expert safety solutions across Mauritania."
+          content="Comprehensive safety solutions including installation, maintenance, and compliance services. Professional safety equipment and system solutions across Mauritania."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Helmet>
 
       <main>
         {/* Hero Section */}
-        <section className="bg-primary text-white section-padding">
-          <div className="container-custom text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Our Services
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              Comprehensive safety solutions designed to protect your people,
-              assets, and operations.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          title="Our Services"
+          subtitle="Comprehensive safety solutions designed to protect your people, assets, and operations."
+          badge="PROFESSIONAL SAFETY SOLUTIONS"
+          features={["Installation", "Maintenance", "Compliance"]}
+        />
 
         {/* Services Overview */}
         <section className="section-padding">
@@ -122,69 +126,69 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Process Section */}
+        {/* Service Process */}
         <section className="section-padding">
           <div className="container-custom">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Our Process
+                Our Service Process
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                A systematic approach to delivering exceptional safety
-                solutions.
+                A systematic approach to delivering exceptional safety solutions
+                tailored to your needs.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
-                  1
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">1</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
                   Assessment
                 </h3>
-                <p className="text-gray-600">
-                  Comprehensive evaluation of your current safety systems and
-                  requirements.
+                <p className="text-gray-600 text-sm">
+                  Comprehensive evaluation of your safety requirements and
+                  existing systems.
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
-                  2
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">2</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
                   Planning
                 </h3>
-                <p className="text-gray-600">
-                  Customized safety solution design tailored to your specific
-                  needs.
+                <p className="text-gray-600 text-sm">
+                  Detailed planning and design of safety solutions tailored to
+                  your specific needs.
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
-                  3
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">3</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
                   Implementation
                 </h3>
-                <p className="text-gray-600">
-                  Professional installation and setup of safety equipment and
-                  systems.
+                <p className="text-gray-600 text-sm">
+                  Professional installation and setup of all safety equipment
+                  and systems.
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
-                  4
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">4</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
                   Maintenance
                 </h3>
-                <p className="text-gray-600">
-                  Ongoing support, monitoring, and maintenance to ensure
-                  continued safety.
+                <p className="text-gray-600 text-sm">
+                  Ongoing maintenance and support to ensure continued safety
+                  compliance.
                 </p>
               </div>
             </div>
@@ -192,25 +196,12 @@ const Services = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="section-padding bg-accent text-white">
-          <div className="container-custom text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Contact our team today to discuss your safety requirements and get
-              a customized quote.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="btn-secondary text-lg px-8 py-4">
-                Request a Quote
-              </a>
-              <a href="/projects" className="btn-primary text-lg px-8 py-4">
-                View Our Work
-              </a>
-            </div>
-          </div>
-        </section>
+        <CTA
+          title="Ready to Get Started?"
+          subtitle="Contact our team today to discuss your safety requirements and get a customized quote for your project."
+          primaryButton={{ text: "Contact Our Team", href: "/contact" }}
+          secondaryButton={{ text: "View Our Projects", href: "/projects" }}
+        />
       </main>
     </>
   );

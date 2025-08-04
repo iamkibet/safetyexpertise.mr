@@ -10,7 +10,7 @@ export const services = [
       "Regular inspection and testing services",
       "Emergency response equipment setup and training",
     ],
-    imageUrl: "/images/fixed-installation.jpg",
+    imageUrl: "/images/12.png",
   },
   {
     slug: "industrial-maintenance",
@@ -23,7 +23,7 @@ export const services = [
       "Safety equipment calibration and testing",
       "Compliance monitoring and reporting",
     ],
-    imageUrl: "/images/industrial-maintenance.jpg",
+    imageUrl: "/images/13.png",
   },
   {
     slug: "other-services",
@@ -36,7 +36,7 @@ export const services = [
       "Risk assessment and consulting",
       "Emergency planning and preparedness",
     ],
-    imageUrl: "/images/other-services.jpg",
+    imageUrl: "/images/14.png",
   },
 ];
 
@@ -45,7 +45,7 @@ export const projects = [
     id: 1,
     title: "Commercial Building Safety System",
     category: "commercial",
-    imageUrl: "/images/projects/commercial-1.jpg",
+    imageUrl: "/images/15.png",
     description:
       "Complete safety system installation for a multi-story office building.",
   },
@@ -53,7 +53,7 @@ export const projects = [
     id: 2,
     title: "Industrial Plant Safety Equipment",
     category: "industrial",
-    imageUrl: "/images/projects/industrial-1.jpg",
+    imageUrl: "/images/16.png",
     description:
       "Comprehensive safety equipment installation for a manufacturing facility.",
   },
@@ -61,21 +61,21 @@ export const projects = [
     id: 3,
     title: "Residential Complex Security",
     category: "residential",
-    imageUrl: "/images/projects/residential-1.jpg",
+    imageUrl: "/images/17.png",
     description: "Security and safety systems for a residential complex.",
   },
   {
     id: 4,
     title: "Warehouse Safety Implementation",
     category: "commercial",
-    imageUrl: "/images/projects/commercial-2.jpg",
+    imageUrl: "/images/18.png",
     description: "Safety system implementation for a large warehouse facility.",
   },
   {
     id: 5,
     title: "Chemical Plant Safety",
     category: "industrial",
-    imageUrl: "/images/projects/industrial-2.jpg",
+    imageUrl: "/images/12.png",
     description:
       "Specialized safety equipment for a chemical processing plant.",
   },
@@ -83,7 +83,7 @@ export const projects = [
     id: 6,
     title: "Hotel Safety Systems",
     category: "commercial",
-    imageUrl: "/images/projects/commercial-3.jpg",
+    imageUrl: "/images/13.png",
     description: "Comprehensive safety systems for a luxury hotel.",
   },
 ];
@@ -92,25 +92,25 @@ export const team = [
   {
     name: "Ahmed Mohamed",
     role: "CEO & Safety Director",
-    photoUrl: "/images/team/ceo.jpg",
+    photoUrl: "/images/14.png",
     bio: "Over 15 years of experience in industrial safety and compliance.",
   },
   {
     name: "Fatima Hassan",
     role: "Technical Director",
-    photoUrl: "/images/team/technical-director.jpg",
+    photoUrl: "/images/15.png",
     bio: "Expert in safety system design and implementation.",
   },
   {
     name: "Omar Ali",
     role: "Operations Manager",
-    photoUrl: "/images/team/operations-manager.jpg",
+    photoUrl: "/images/16.png",
     bio: "Specializes in project management and client relations.",
   },
   {
     name: "Aisha Diallo",
     role: "Safety Engineer",
-    photoUrl: "/images/team/safety-engineer.jpg",
+    photoUrl: "/images/17.png",
     bio: "Certified safety engineer with expertise in industrial compliance.",
   },
 ];
@@ -205,9 +205,10 @@ export const clientLogos = [
 ];
 
 export const contactInfo = {
-  address: "123 Safety Street, Nouakchott, Mauritania",
-  phone: "+222 123 456 789",
-  email: "info@safetyexpertise.mr",
-  rc: "RC: 123456",
-  nif: "NIF: 789012",
+  address: "ILOT K EXT S4, Tevragh Zeine Noaukchott, Mauritania",
+  phone: "+222-3694-9611",
+  email: "operations@safetyexpertise.mr",
+  rc: "118933/3564",
+  nif: "01298520",
+  tagline: "Partner with us to protect your people, equipment, and operations.",
 };

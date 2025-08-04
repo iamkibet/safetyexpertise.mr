@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import Hero from "../components/Hero";
 import ServiceCard from "../components/ServiceCard";
 import Button from "../components/Button";
-import { services, values, clientLogos } from "../data";
+import { services, values, clientLogos, contactInfo } from "../data";
 import { FaShieldAlt, FaTools, FaUsers, FaCheckCircle } from "react-icons/fa";
 
 const Home = () => {
@@ -143,8 +143,7 @@ const Home = () => {
               Ready to Enhance Your Safety?
             </h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Get in touch with our experts today and discover how we can help
-              protect your people and assets.
+              {contactInfo.tagline}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="secondary" className="text-lg px-8 py-4">

@@ -59,8 +59,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-300 mb-4 leading-relaxed">
-              Your trusted partner in industrial safety solutions across
-              Mauritania.
+              {contactInfo.tagline}
             </p>
             <div className="space-y-2 text-sm text-gray-300">
               <div className="flex items-center space-x-2">

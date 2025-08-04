@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
+import PageHero from "../components/PageHero";
+import CTA from "../components/CTA";
 import { projects } from "../data";
-import { FaTimes, FaFilter } from "react-icons/fa";
+import { FaFilter, FaTimes } from "react-icons/fa";
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -10,8 +12,8 @@ const Projects = () => {
   const categories = [
     { id: "all", name: "All Projects" },
     { id: "commercial", name: "Commercial" },
-    { id: "residential", name: "Residential" },
     { id: "industrial", name: "Industrial" },
+    { id: "residential", name: "Residential" },
   ];
 
   const filteredProjects =
@@ -42,17 +44,12 @@ const Projects = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="bg-primary text-white section-padding">
-          <div className="container-custom text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Our Projects
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              Discover our portfolio of successful safety implementations across
-              various industries and sectors.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          title="Our Projects"
+          subtitle="Discover our portfolio of successful safety implementations across various industries and sectors."
+          badge="SUCCESSFUL IMPLEMENTATIONS"
+          features={["Commercial", "Industrial", "Residential"]}
+        />
 
         {/* Filter Section */}
         <section className="section-padding bg-light">
@@ -92,11 +89,12 @@ const Projects = () => {
                   className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300"
                   onClick={() => openModal(project)}
                 >
-                  <div className="h-64 bg-gray-200 flex items-center justify-center">
-                    <div className="text-gray-400 text-center">
-                      <p className="text-sm">Project Image</p>
-                      <p className="text-xs mt-1">{project.title}</p>
-                    </div>
+                  <div className="h-64 bg-gray-200 overflow-hidden">
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-3">
@@ -117,112 +115,66 @@ const Projects = () => {
                 </div>
               ))}
             </div>
-
-            {filteredProjects.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">
-                  No projects found for the selected category.
-                </p>
-              </div>
-            )}
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="section-padding bg-accent text-white">
-          <div className="container-custom text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Start Your Project?
-            </h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Let's discuss how we can help implement safety solutions for your
-              organization.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="btn-secondary text-lg px-8 py-4">
-                Get a Quote
-              </a>
-              <a href="/services" className="btn-primary text-lg px-8 py-4">
-                Our Services
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Modal */}
+        {/* Project Modal */}
         {selectedProject && (
-          <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-              <div className="relative">
-                <button
-                  onClick={closeModal}
-                  className="absolute top-4 right-4 z-10 w-10 h-10 bg-black bg-opacity-50 text-white rounded-full flex items-center justify-center hover:bg-opacity-75 transition-all duration-200"
-                >
-                  <FaTimes />
-                </button>
-
-                <div className="h-64 bg-gray-200 flex items-center justify-center">
-                  <div className="text-gray-400 text-center">
-                    <p className="text-sm">Project Image</p>
-                    <p className="text-xs mt-1">{selectedProject.title}</p>
-                  </div>
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+              <div className="p-6">
+                <div className="flex justify-between items-start mb-4">
+                  <h2 className="text-2xl font-bold text-gray-900">
+                    {selectedProject.title}
+                  </h2>
+                  <button
+                    onClick={closeModal}
+                    className="text-gray-500 hover:text-gray-700"
+                  >
+                    <FaTimes className="w-6 h-6" />
+                  </button>
                 </div>
-
-                <div className="p-8">
-                  <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-3xl font-bold text-gray-900">
-                      {selectedProject.title}
-                    </h2>
-                    <span className="px-4 py-2 bg-primary text-white text-sm font-semibold rounded-full capitalize">
-                      {selectedProject.category}
-                    </span>
-                  </div>
-
-                  <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                    {selectedProject.description}
-                  </p>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">
-                        Project Details
-                      </h4>
-                      <ul className="space-y-2 text-gray-600">
-                        <li>• Safety system installation</li>
-                        <li>• Equipment calibration</li>
-                        <li>• Staff training provided</li>
-                        <li>• Ongoing maintenance</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">
-                        Results
-                      </h4>
-                      <ul className="space-y-2 text-gray-600">
-                        <li>• Enhanced safety compliance</li>
-                        <li>• Reduced risk factors</li>
-                        <li>• Improved operational efficiency</li>
-                        <li>• Peace of mind for management</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <a href="/contact" className="btn-primary text-center">
-                      Get Similar Project Quote
-                    </a>
-                    <button
-                      onClick={closeModal}
-                      className="btn-secondary text-center"
-                    >
-                      Close
-                    </button>
-                  </div>
+                <div className="mb-6">
+                  <img
+                    src={selectedProject.imageUrl}
+                    alt={selectedProject.title}
+                    className="w-full h-64 object-cover rounded-lg"
+                  />
+                </div>
+                <div className="mb-4">
+                  <span className="px-3 py-1 bg-primary text-white text-sm font-semibold rounded-full capitalize">
+                    {selectedProject.category}
+                  </span>
+                </div>
+                <p className="text-gray-600 leading-relaxed mb-6">
+                  {selectedProject.description}
+                </p>
+                <div className="flex gap-4">
+                  <button
+                    onClick={closeModal}
+                    className="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors duration-200"
+                  >
+                    Close
+                  </button>
+                  <a
+                    href="/contact"
+                    className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors duration-200"
+                  >
+                    Get Similar Project
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         )}
+
+        {/* CTA Section */}
+        <CTA
+          title="Ready to Start Your Project?"
+          subtitle="Let's discuss how we can help you implement the right safety solutions for your facility."
+          primaryButton={{ text: "Contact Our Team", href: "/contact" }}
+          secondaryButton={{ text: "Explore Services", href: "/services" }}
+        />
       </main>
     </>
   );

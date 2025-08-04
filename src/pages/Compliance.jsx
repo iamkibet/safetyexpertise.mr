@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
+import PageHero from "../components/PageHero";
+import CTA from "../components/CTA";
 import { compliance } from "../data";
-import {
-  FaChevronDown,
-  FaChevronUp,
-  FaDownload,
-  FaShieldAlt,
-} from "react-icons/fa";
+import { FaShieldAlt, FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const Compliance = () => {
   const [openAccordion, setOpenAccordion] = useState(null);
@@ -28,17 +25,12 @@ const Compliance = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="bg-primary text-white section-padding">
-          <div className="container-custom text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Compliance & Certifications
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              We maintain the highest standards of safety compliance and hold
-              all necessary certifications to serve our clients effectively.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          title="Compliance & Certifications"
+          subtitle="We maintain the highest standards of safety compliance and hold all necessary certifications to serve our clients effectively."
+          badge="CERTIFIED EXCELLENCE"
+          features={["OSHA Standards", "ISO 45001", "Local Regulations"]}
+        />
 
         {/* Compliance Overview */}
         <section className="section-padding">
@@ -120,26 +112,29 @@ const Compliance = () => {
                   {openAccordion === index && (
                     <div className="px-6 pb-6">
                       <div className="border-t border-gray-200 pt-4">
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <h4 className="font-semibold text-gray-900 mb-2">
-                              Certification Details
-                            </h4>
-                            <ul className="space-y-2 text-gray-600">
-                              <li>• Valid certification period</li>
-                              <li>• Regular audits and assessments</li>
-                              <li>• Continuous improvement processes</li>
-                              <li>• Staff training and development</li>
-                            </ul>
+                        <div className="bg-blue-50 rounded-lg p-4">
+                          <h4 className="font-semibold text-gray-900 mb-2">
+                            Certification Details
+                          </h4>
+                          <p className="text-gray-600 text-sm mb-3">
+                            This certification ensures that our safety practices
+                            meet or exceed the established standards for
+                            workplace safety and health management.
+                          </p>
+                          <div className="flex items-center space-x-4">
+                            <div className="flex items-center space-x-2">
+                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                              <span className="text-sm text-gray-600">
+                                Valid until: 2025
+                              </span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                              <span className="text-sm text-gray-600">
+                                Annual renewal
+                              </span>
+                            </div>
                           </div>
-                          <a
-                            href={item.pdfUrl}
-                            className="inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-200"
-                            download
-                          >
-                            <FaDownload className="mr-2" />
-                            Download Certificate
-                          </a>
                         </div>
                       </div>
                     </div>
@@ -150,125 +145,56 @@ const Compliance = () => {
           </div>
         </section>
 
-        {/* Additional Certifications */}
+        {/* Quality Assurance */}
         <section className="section-padding">
           <div className="container-custom">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Additional Certifications
+                Quality Assurance Process
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Beyond our core compliance standards, we maintain additional
-                certifications that demonstrate our commitment to excellence.
+                Our comprehensive quality assurance process ensures that every
+                project meets the highest standards of safety and compliance.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <FaShieldAlt className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  Quality Management
-                </h3>
-                <p className="text-gray-600">
-                  ISO 9001 certified quality management system ensuring
-                  consistent service delivery.
-                </p>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <FaShieldAlt className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  Environmental Standards
-                </h3>
-                <p className="text-gray-600">
-                  ISO 14001 environmental management system for sustainable
-                  operations.
-                </p>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <FaShieldAlt className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  Training Certifications
-                </h3>
-                <p className="text-gray-600">
-                  Certified training programs for safety equipment operation and
-                  maintenance.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Compliance Process */}
-        <section className="section-padding bg-light">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Our Compliance Process
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                A systematic approach to maintaining and exceeding compliance
-                standards.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
-                  1
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">1</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  Assessment
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                  Initial Assessment
                 </h3>
-                <p className="text-gray-600">
-                  Regular evaluation of compliance requirements and current
-                  standards.
+                <p className="text-gray-600 text-sm">
+                  Comprehensive evaluation of safety requirements and existing
+                  compliance status.
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
-                  2
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">2</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
                   Implementation
                 </h3>
-                <p className="text-gray-600">
-                  Systematic implementation of required safety measures and
-                  procedures.
+                <p className="text-gray-600 text-sm">
+                  Professional installation and setup of safety systems
+                  according to compliance standards.
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
-                  3
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white font-bold text-xl">3</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  Monitoring
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                  Ongoing Monitoring
                 </h3>
-                <p className="text-gray-600">
-                  Continuous monitoring and evaluation of compliance
-                  effectiveness.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
-                  4
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  Improvement
-                </h3>
-                <p className="text-gray-600">
-                  Ongoing improvement and updates to exceed compliance
-                  standards.
+                <p className="text-gray-600 text-sm">
+                  Regular inspections and maintenance to ensure continued
+                  compliance and safety.
                 </p>
               </div>
             </div>
@@ -276,25 +202,12 @@ const Compliance = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="section-padding bg-accent text-white">
-          <div className="container-custom text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Need Compliance Support?
-            </h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Let our certified experts help you achieve and maintain the
-              highest safety compliance standards.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="btn-secondary text-lg px-8 py-4">
-                Contact Our Team
-              </a>
-              <a href="/services" className="btn-primary text-lg px-8 py-4">
-                Our Services
-              </a>
-            </div>
-          </div>
-        </section>
+        <CTA
+          title="Ready to Ensure Compliance?"
+          subtitle="Let's discuss how our certified expertise can help your organization meet and exceed safety compliance requirements."
+          primaryButton={{ text: "Contact Our Team", href: "/contact" }}
+          secondaryButton={{ text: "Explore Services", href: "/services" }}
+        />
       </main>
     </>
   );
