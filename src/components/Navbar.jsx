@@ -19,16 +19,15 @@ const Navbar = () => {
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
-      <nav className="container-custom section-padding">
+      <nav className="container-custom px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">SE</span>
-            </div>
-            <span className="text-xl font-bold text-primary">
-              Safety Expertise
-            </span>
+          <Link to="/" className="flex items-center">
+            <img
+              src="/images/logo.png"
+              alt="Safety Expertise Logo"
+              className="h-14 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}

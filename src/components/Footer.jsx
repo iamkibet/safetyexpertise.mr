@@ -49,11 +49,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">SE</span>
+            <div className="flex items-center mb-4">
+              <div className="bg-white p-2 rounded-lg">
+                <img
+                  src="/images/logo.png"
+                  alt="Safety Expertise Logo"
+                  className="h-12 w-auto"
+                />
               </div>
-              <span className="text-xl font-bold">Safety Expertise</span>
             </div>
             <p className="text-gray-300 mb-4 leading-relaxed">
               Your trusted partner in industrial safety solutions across

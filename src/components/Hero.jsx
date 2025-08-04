@@ -5,7 +5,7 @@ import Button from "./Button";
 const Hero = ({
   title = "Reliable. Preventive. Professional.",
   subtitle = "Your trusted partner in industrial safety solutions. We provide comprehensive safety equipment installation, maintenance, and compliance services across Mauritania.",
-  backgroundImage = "/images/hero-bg.jpg",
+  backgroundImage = "/images/safety.png",
   ctaText = "Request a Quote",
   ctaLink = "/contact",
 }) => {
