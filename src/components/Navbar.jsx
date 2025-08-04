@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaPhone, FaEnvelope } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [showEmergencyPopup, setShowEmergencyPopup] = useState(false);
   const location = useLocation();
+  const emergencyRef = useRef(null);
 
   const navItems = [
     { path: "/", label: "Home" },
@@ -12,21 +15,68 @@ const Navbar = () => {
     { path: "/services", label: "Services" },
     { path: "/projects", label: "Projects" },
     { path: "/compliance", label: "Compliance" },
-    { path: "/contact", label: "Contact" },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolling(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        emergencyRef.current &&
+        !emergencyRef.current.contains(event.target)
+      ) {
+        setShowEmergencyPopup(false);
+      }
+    };
+
+    if (showEmergencyPopup) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showEmergencyPopup]);
+
   const isActive = (path) => location.pathname === path;
+  const isHomePage = location.pathname === "/";
+
+  const handleEmergencyClick = () => {
+    setShowEmergencyPopup(!showEmergencyPopup);
+  };
+
+  const handleContactMethod = (method) => {
+    if (method === "call") {
+      window.location.href = "tel:+22212345678";
+    } else if (method === "email") {
+      window.location.href = "mailto:emergency@safetyexpertise.mr";
+    }
+    setShowEmergencyPopup(false);
+  };
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
-      <nav className="container-custom px-4 py-4 sm:px-6 lg:px-8">
+    <header
+      className={`fixed w-full z-50 transition-all duration-500 ${
+        isScrolling || !isHomePage
+          ? "bg-white shadow-md py-3"
+          : "bg-transparent py-6"
+      }`}
+    >
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
               src="/images/logo.png"
               alt="Safety Expertise Logo"
-              className="h-14 w-auto"
+              className="h-10 w-auto"
             />
           </Link>
 
@@ -37,17 +87,52 @@ const Navbar = () => {
                 key={item.path}
                 to={item.path}
                 className={`font-medium transition-colors duration-200 ${
-                  isActive(item.path)
-                    ? "text-primary border-b-2 border-primary"
-                    : "text-gray-600 hover:text-primary"
+                  isScrolling || !isHomePage
+                    ? isActive(item.path)
+                      ? "text-primary border-b-2 border-primary"
+                      : "text-gray-600 hover:text-primary"
+                    : isActive(item.path)
+                    ? "text-white border-b-2 border-white"
+                    : "text-gray-300 hover:text-white"
                 }`}
               >
                 {item.label}
               </Link>
             ))}
-            <Link to="/contact" className="btn-primary">
-              Get Quote
-            </Link>
+
+            {/* Emergency Line Button */}
+            <div className="relative" ref={emergencyRef}>
+              <button
+                className={`px-4 py-2 rounded-lg font-medium transition transform hover:-translate-y-0.5 ${
+                  isScrolling || !isHomePage
+                    ? "bg-primary hover:bg-blue-700 text-white"
+                    : "bg-red-600 hover:bg-red-700 text-white"
+                }`}
+                onClick={handleEmergencyClick}
+              >
+                Emergency Line
+              </button>
+
+              {/* Emergency Popup */}
+              {showEmergencyPopup && (
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50">
+                  <button
+                    onClick={() => handleContactMethod("call")}
+                    className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center"
+                  >
+                    <FaPhone className="mr-2 text-red-500" />
+                    Call Now
+                  </button>
+                  <button
+                    onClick={() => handleContactMethod("email")}
+                    className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center"
+                  >
+                    <FaEnvelope className="mr-2 text-red-500" />
+                    Send Email
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -57,9 +142,17 @@ const Navbar = () => {
             aria-label="Toggle menu"
           >
             {isOpen ? (
-              <FaTimes className="w-6 h-6 text-gray-600" />
+              <FaTimes
+                className={`w-6 h-6 ${
+                  isScrolling || !isHomePage ? "text-gray-600" : "text-white"
+                }`}
+              />
             ) : (
-              <FaBars className="w-6 h-6 text-gray-600" />
+              <FaBars
+                className={`w-6 h-6 ${
+                  isScrolling || !isHomePage ? "text-gray-600" : "text-white"
+                }`}
+              />
             )}
           </button>
         </div>
@@ -82,13 +175,32 @@ const Navbar = () => {
                   {item.label}
                 </Link>
               ))}
-              <Link
-                to="/contact"
-                className="btn-primary w-full text-center"
-                onClick={() => setIsOpen(false)}
-              >
-                Get Quote
-              </Link>
+              <div className="pt-4 border-t border-gray-200">
+                <button
+                  className="bg-primary hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium w-full text-center"
+                  onClick={handleEmergencyClick}
+                >
+                  Emergency Line
+                </button>
+                {showEmergencyPopup && (
+                  <div className="mt-2 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                    <button
+                      onClick={() => handleContactMethod("call")}
+                      className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center"
+                    >
+                      <FaPhone className="mr-2 text-red-500" />
+                      Call Now
+                    </button>
+                    <button
+                      onClick={() => handleContactMethod("email")}
+                      className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center"
+                    >
+                      <FaEnvelope className="mr-2 text-red-500" />
+                      Send Email
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         )}

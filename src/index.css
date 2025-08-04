@@ -32,4 +32,12 @@
   .container-custom {
     @apply max-w-7xl mx-auto;
   }
+
+  .bg-primary-dark {
+    @apply bg-blue-700;
+  }
+
+  .hover\:bg-primary-dark:hover {
+    @apply bg-blue-700;
+  }
 }
