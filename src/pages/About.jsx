@@ -37,12 +37,12 @@ const About = () => {
         {/* Hero Section */}
         <PageHero
           title="About Safety Expertise"
-          subtitle="Your trusted partner in industrial safety solutions, committed to protecting people and assets across Mauritania."
+          subtitle="Your trusted partner in fire protection and industrial maintenance, specializing in AFEX - ICAT mobile mining equipment."
           badge="ESTABLISHED 2010"
           features={[
             "15+ Years Experience",
-            "500+ Projects Completed",
-            "24/7 Support",
+            "100+ Projects Completed",
+            "24/7 Emergency Support",
           ]}
         />
 
@@ -56,18 +56,19 @@ const About = () => {
                 </h2>
                 <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                   At Safety Expertise, we are dedicated to providing
-                  comprehensive safety solutions that protect people, property,
-                  and the environment. Our mission is to be the leading safety
-                  service provider in Mauritania, delivering reliable,
-                  preventive, and professional solutions that exceed industry
-                  standards.
+                  comprehensive fire protection and industrial maintenance
+                  solutions that protect people, property, and equipment. Our
+                  mission is to be the leading fire protection and mobile
+                  equipment maintenance provider in Mauritania, delivering
+                  reliable, preventive, and professional solutions that exceed
+                  industry standards.
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  We believe that safety is not just a compliance requirement,
-                  but a fundamental aspect of responsible business operations.
-                  Through our expertise, innovation, and commitment to
-                  excellence, we help organizations create safer working
-                  environments and build a culture of safety awareness.
+                  We specialize in AFEX - ICAT mobile mining equipment
+                  maintenance and industrial fire protection systems. Through
+                  our expertise, innovation, and commitment to excellence, we
+                  help organizations create safer working environments and
+                  ensure optimal equipment performance.
                 </p>
               </div>
               <div className="bg-gray-100 rounded-lg p-8">
@@ -76,12 +77,12 @@ const About = () => {
                     <FaShieldAlt className="w-12 h-12 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    Safety First, Always
+                    Fire Protection & Mobile Equipment Specialists
                   </h3>
                   <p className="text-gray-600">
                     Every decision we make, every service we provide, and every
                     interaction we have is guided by our unwavering commitment
-                    to safety excellence.
+                    to fire safety excellence and mobile equipment reliability.
                   </p>
                 </div>
               </div>

@@ -21,67 +21,103 @@ import {
   FaBug,
   FaHammer,
   FaTrash,
+  FaIndustry,
+  FaTruck,
+  FaExclamationTriangle,
+  FaCogs,
+  FaHardHat,
 } from "react-icons/fa";
 
 const Services = () => {
   const serviceIcons = [FaShieldAlt, FaTools, FaCog];
 
-  const buildingMaintenanceServices = [
+  const fireProtectionServices = [
     {
-      icon: FaThermometerHalf,
-      title: "Air Conditioning Systems",
+      icon: FaFire,
+      title: "Fire Detection & Alarm Systems",
       description:
-        "Regular servicing, filter replacements, coil cleaning, and efficiency optimization for reliable performance.",
-      image: "/images/13.png",
+        "Professional installation and maintenance of advanced fire detection and alarm systems for industrial facilities.",
+      image: "/images/safety1.png",
     },
     {
-      icon: FaWater,
-      title: "Solar Water Heaters & Plumbing",
+      icon: FaExclamationTriangle,
+      title: "Automatic Fire Suppression",
       description:
-        "Full maintenance of solar panels, hot water tanks, valves, pressure systems, and pipe servicing.",
+        "State-of-the-art automatic fire suppression systems including sprinklers, foam systems, and gas suppression.",
       image: "/images/15.png",
     },
     {
-      icon: FaWater,
-      title: "Water Systems & Reservoirs",
+      icon: FaShieldAlt,
+      title: "Fire Extinguisher Services",
       description:
-        "Comprehensive maintenance of water supply, drainage systems, tank cleaning, and structural inspections.",
+        "Supply, installation, and regular maintenance of fire extinguishers and emergency response equipment.",
       image: "/images/16.png",
     },
     {
       icon: FaBolt,
-      title: "Electrical Systems",
+      title: "Emergency Lighting & Exit Signs",
       description:
-        "System inspections, safety checks, performance testing, lighting upkeep, and emergency system maintenance.",
+        "Installation and maintenance of emergency lighting systems and exit signage for safety compliance.",
       image: "/images/17.png",
     },
     {
-      icon: FaGenerator,
-      title: "Generator Services",
+      icon: FaHardHat,
+      title: "Fire Safety Training",
       description:
-        "Routine engine checks, fuel monitoring, filter changes, battery testing, and load testing.",
+        "Comprehensive fire safety training and certification programs for industrial personnel.",
       image: "/images/18.png",
     },
     {
-      icon: FaWrench,
-      title: "Sewage & Odor Management",
+      icon: FaCheckCircle,
+      title: "Inspection & Compliance Testing",
       description:
-        "Sewage network cleaning, ventilation checks, deodorization, and bio-treatment services.",
+        "Regular inspection, testing, and compliance verification for all fire protection systems.",
       image: "/images/12.png",
     },
+  ];
+
+  const industrialMaintenanceServices = [
     {
-      icon: FaHammer,
-      title: "Carpentry & Aluminum Works",
+      icon: FaIndustry,
+      title: "AFEX Mobile Mining Equipment",
       description:
-        "Repair and installation of doors, cabinets, furniture, aluminum structures, and office partitions.",
+        "Specialized maintenance and repair services for AFEX mobile mining equipment, ensuring optimal performance and safety.",
+      image: "/images/background2.jpg",
+    },
+    {
+      icon: FaTruck,
+      title: "ICAT Mining Equipment Maintenance",
+      description:
+        "Comprehensive maintenance programs for ICAT mobile mining equipment fleet with 24/7 emergency support.",
+      image: "/images/13.png",
+    },
+    {
+      icon: FaCogs,
+      title: "Preventive Maintenance Programs",
+      description:
+        "Scheduled preventive maintenance for industrial machinery and mobile equipment to prevent breakdowns.",
       image: "/images/14.png",
     },
     {
-      icon: FaBug,
-      title: "Pest Control & Garbage Disposal",
+      icon: FaWrench,
+      title: "Corrective Repairs & Emergency Service",
       description:
-        "Routine inspection, targeted treatment plans, eco-friendly solutions, and waste management.",
-      image: "/images/13.png",
+        "Rapid response corrective repairs and emergency maintenance services for critical equipment failures.",
+      image: "/images/15.png",
+    },
+    {
+      icon: FaTools,
+      title: "Equipment Optimization",
+      description:
+        "Performance enhancement and optimization services for industrial equipment and mobile mining machinery.",
+      image: "/images/16.png",
+    },
+    {
+      icon: FaShieldAlt,
+      title: "Safety Compliance",
+      description:
+        "Safety compliance monitoring and certification for mobile mining equipment and industrial machinery.",
+      image: "/images/17.png",
     },
   ];
 
@@ -91,7 +127,7 @@ const Services = () => {
         <title>Our Services - Safety Expertise</title>
         <meta
           name="description"
-          content="Comprehensive safety solutions including fire protection, building maintenance, electrical systems, HVAC, plumbing, and compliance services across Mauritania."
+          content="Professional fire protection services and industrial maintenance including AFEX - ICAT mobile mining equipment maintenance across Mauritania."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Helmet>
@@ -100,81 +136,65 @@ const Services = () => {
         {/* Hero Section */}
         <PageHero
           title="Our Services"
-          subtitle="Comprehensive safety and building maintenance solutions designed to protect your people, assets, and operations."
-          badge="PROFESSIONAL SAFETY SOLUTIONS"
-          features={["Fire Protection", "Building Maintenance", "Compliance"]}
+          subtitle="Professional Fire Protection & Industrial Maintenance Services"
+          description="Comprehensive fire safety solutions and specialized industrial maintenance services, including AFEX - ICAT mobile mining equipment maintenance."
         />
 
-        {/* Fire Protection Services */}
-        <section className="section-padding">
-          <div className="container-custom">
+        {/* Main Services Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <span className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">
-                FIRE PROTECTION
-              </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Advanced Fire Protection Solutions
+                Our Core Services
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                We provide comprehensive fire protection for high-risk
-                industries, ensuring reliable safety for equipment, facilities,
-                and personnel.
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                We specialize in two main service areas: comprehensive fire
+                protection solutions and professional industrial maintenance,
+                with particular expertise in AFEX - ICAT mobile mining
+                equipment.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, index) => {
-                const IconComponent = serviceIcons[index] || FaShieldAlt;
-                return (
-                  <div key={service.slug} className="group">
-                    <ServiceCard
-                      title={service.title}
-                      description={service.description}
-                      imageUrl={service.imageUrl}
-                      slug={service.slug}
-                      className="group-hover:transform group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                );
-              })}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+              {services.map((service, index) => (
+                <ServiceCard key={service.slug} service={service} />
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Building Maintenance Services */}
-        <section className="section-padding bg-light">
-          <div className="container-custom">
+        {/* Fire Protection Services Detail */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <span className="inline-block bg-accent/10 text-accent px-4 py-1 rounded-full text-sm font-medium mb-4">
-                BUILDING MAINTENANCE
-              </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Complete Building Maintenance Solutions
+                Fire Protection Services
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Professional maintenance services for commercial, residential,
-                and industrial facilities across Mauritania.
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Comprehensive fire safety solutions designed to protect your
+                facility, equipment, and personnel with the highest standards of
+                safety and compliance.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {buildingMaintenanceServices.map((service, index) => (
+              {fireProtectionServices.map((service, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100"
+                  className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
                 >
-                  <div className="h-48 bg-gray-200 overflow-hidden">
+                  <div className="h-48 bg-gray-200 relative overflow-hidden">
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover"
                     />
+                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-2">
+                      <service.icon className="w-6 h-6 text-primary" />
+                    </div>
                   </div>
                   <div className="p-6">
-                    <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mb-4">
-                      <service.icon className="w-6 h-6 text-accent" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
                       {service.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
@@ -187,126 +207,114 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Service Features */}
-        <section className="section-padding">
-          <div className="container-custom">
+        {/* Industrial Maintenance Services Detail */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Why Choose Our Services?
+                Industrial Maintenance & Mobile Equipment
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                We combine technical expertise with local knowledge to deliver
-                exceptional safety and maintenance solutions.
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Specialized maintenance services for industrial equipment and
+                mobile mining machinery, with particular expertise in AFEX -
+                ICAT mobile mining equipment.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                  <FaShieldAlt className="w-8 h-8 text-white" />
+              {industrialMaintenanceServices.map((service, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+                >
+                  <div className="h-48 bg-gray-200 relative overflow-hidden">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-2">
+                      <service.icon className="w-6 h-6 text-primary" />
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Certified Expertise
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Our team holds industry certifications and follows
-                  international safety standards to ensure the highest quality
-                  service delivery.
-                </p>
-              </div>
-
-              <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                  <FaTools className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Comprehensive Solutions
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  From fire protection to building maintenance, we provide
-                  complete solutions that cover all aspects of your needs.
-                </p>
-              </div>
-
-              <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                  <FaCog className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Local Knowledge
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Deep understanding of Mauritanian regulations and local
-                  business requirements ensures compliance and effectiveness.
-                </p>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Service Process */}
-        <section className="section-padding bg-light">
-          <div className="container-custom">
+        {/* Why Choose Us Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Our Service Process
+                Why Choose Safety Expertise?
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                A systematic approach to delivering exceptional safety and
-                maintenance solutions tailored to your needs.
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                We combine decades of experience with cutting-edge technology to
+                deliver exceptional fire protection and industrial maintenance
+                services.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold text-xl">1</span>
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <FaShieldAlt className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  Assessment
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Certified Expertise
                 </h3>
-                <p className="text-gray-600 text-sm">
-                  Comprehensive evaluation of your safety requirements and
-                  existing systems.
+                <p className="text-gray-600">
+                  Certified professionals with specialized training in fire
+                  protection and mobile equipment maintenance.
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold text-xl">2</span>
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <FaTools className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  Planning
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  AFEX - ICAT Specialists
                 </h3>
-                <p className="text-gray-600 text-sm">
-                  Detailed planning and design of safety solutions tailored to
-                  your specific needs.
+                <p className="text-gray-600">
+                  Specialized expertise in AFEX - ICAT mobile mining equipment
+                  maintenance and repair.
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold text-xl">3</span>
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <FaCog className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  Implementation
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  24/7 Emergency Support
                 </h3>
-                <p className="text-gray-600 text-sm">
-                  Professional installation and setup of all safety equipment
-                  and systems.
+                <p className="text-gray-600">
+                  Round-the-clock emergency maintenance and fire protection
+                  support for critical operations.
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold text-xl">4</span>
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <FaCheckCircle className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  Maintenance
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Compliance Guaranteed
                 </h3>
-                <p className="text-gray-600 text-sm">
-                  Ongoing maintenance and support to ensure continued safety
-                  compliance.
+                <p className="text-gray-600">
+                  Full compliance with international fire protection standards
+                  and mobile equipment safety regulations.
                 </p>
               </div>
             </div>
@@ -315,10 +323,11 @@ const Services = () => {
 
         {/* CTA Section */}
         <CTA
-          title="Ready to Get Started?"
-          subtitle="Contact our team today to discuss your safety and maintenance requirements and get a customized quote for your project."
-          primaryButton={{ text: "Contact Our Team", href: "/contact" }}
-          secondaryButton={{ text: "View Our Projects", href: "/projects" }}
+          title="Ready to Protect Your Operations?"
+          subtitle="Get professional fire protection and industrial maintenance services"
+          description="Contact us today for a comprehensive assessment of your fire protection needs and mobile equipment maintenance requirements."
+          buttonText="Get Free Consultation"
+          buttonLink="/contact"
         />
       </main>
     </>

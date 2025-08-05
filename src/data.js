@@ -1,90 +1,84 @@
 export const services = [
   {
-    slug: "fixed-installation",
-    title: "Fixed Installation & Mobile Equipment",
+    slug: "fire-protection",
+    title: "Fire Protection Services",
     description:
-      "Comprehensive safety equipment installation and mobile equipment services for industrial and commercial facilities.",
+      "Comprehensive fire safety solutions for industrial and commercial facilities. From detection systems to suppression equipment, we protect what matters most.",
     descriptionPoints: [
-      "Professional installation of safety equipment and systems",
-      "Mobile equipment safety compliance and maintenance",
-      "Regular inspection and testing services",
-      "Emergency response equipment setup and training",
+      "Fire detection and alarm system installation",
+      "Automatic fire suppression systems",
+      "Fire extinguisher supply and maintenance",
+      "Emergency lighting and exit signage",
+      "Fire safety training and certification",
+      "Regular inspection and compliance testing",
     ],
-    imageUrl: "/images/12.png",
+    imageUrl: "/images/safety1.png",
   },
   {
     slug: "industrial-maintenance",
-    title: "Industrial Installation & Maintenance",
+    title: "Industrial Maintenance & Mobile Equipment",
     description:
-      "Specialized industrial safety systems installation and ongoing maintenance services.",
+      "Professional maintenance services for industrial equipment and mobile mining machinery. Specialized in AFEX - ICAT mobile mining equipment maintenance and repair.",
     descriptionPoints: [
-      "Industrial safety system design and installation",
-      "Preventive maintenance programs",
-      "Safety equipment calibration and testing",
-      "Compliance monitoring and reporting",
+      "AFEX - ICAT mobile mining equipment maintenance",
+      "Preventive maintenance programs for industrial machinery",
+      "Corrective repairs and emergency service",
+      "Equipment optimization and performance enhancement",
+      "Safety compliance for mobile mining equipment",
+      "24/7 emergency maintenance support",
     ],
-    imageUrl: "/images/13.png",
-  },
-  {
-    slug: "other-services",
-    title: "Other Services",
-    description:
-      "Additional safety expertise services tailored to your specific needs.",
-    descriptionPoints: [
-      "Custom safety solutions",
-      "Safety training and certification",
-      "Risk assessment and consulting",
-      "Emergency planning and preparedness",
-    ],
-    imageUrl: "/images/14.png",
+    imageUrl: "/images/background2.jpg",
   },
 ];
 
 export const projects = [
   {
     id: 1,
-    title: "Commercial Building Safety System",
-    category: "commercial",
+    title: "AFEX Mobile Mining Equipment Maintenance",
+    category: "industrial",
     imageUrl: "/images/15.png",
     description:
-      "Complete safety system installation for a multi-story office building.",
+      "Comprehensive maintenance program for AFEX mobile mining equipment, ensuring optimal performance and safety compliance.",
   },
   {
     id: 2,
-    title: "Industrial Plant Safety Equipment",
+    title: "ICAT Mining Equipment Safety Systems",
     category: "industrial",
     imageUrl: "/images/16.png",
     description:
-      "Comprehensive safety equipment installation for a manufacturing facility.",
+      "Fire protection and safety system installation for ICAT mobile mining equipment fleet.",
   },
   {
     id: 3,
-    title: "Residential Complex Security",
-    category: "residential",
+    title: "Industrial Plant Fire Protection",
+    category: "industrial",
     imageUrl: "/images/17.png",
-    description: "Security and safety systems for a residential complex.",
+    description:
+      "Complete fire protection system for large industrial manufacturing facility.",
   },
   {
     id: 4,
-    title: "Warehouse Safety Implementation",
-    category: "commercial",
+    title: "Mining Equipment Preventive Maintenance",
+    category: "industrial",
     imageUrl: "/images/18.png",
-    description: "Safety system implementation for a large warehouse facility.",
+    description:
+      "Scheduled maintenance and safety compliance for mobile mining equipment fleet.",
   },
   {
     id: 5,
-    title: "Chemical Plant Safety",
+    title: "Fire Suppression System Installation",
     category: "industrial",
     imageUrl: "/images/12.png",
     description:
-      "Specialized safety equipment for a chemical processing plant.",
+      "Advanced fire suppression systems for industrial facilities and mining operations.",
   },
   {
     id: 6,
-    title: "Hotel Safety Systems",
-    category: "commercial",
+    title: "Mobile Equipment Safety Training",
+    category: "industrial",
     imageUrl: "/images/13.png",
-    description: "Comprehensive safety systems for a luxury hotel.",
+    description:
+      "Safety training and certification for mobile mining equipment operators.",
   },
 ];
 
@@ -93,25 +87,25 @@ export const team = [
     name: "Ahmed Mohamed",
     role: "CEO & Safety Director",
     photoUrl: "/images/14.png",
-    bio: "Over 15 years of experience in industrial safety and compliance.",
+    bio: "Over 15 years of experience in industrial safety, fire protection, and mobile equipment maintenance.",
   },
   {
     name: "Fatima Hassan",
     role: "Technical Director",
     photoUrl: "/images/15.png",
-    bio: "Expert in safety system design and implementation.",
+    bio: "Expert in fire protection systems and industrial maintenance, specializing in mobile mining equipment.",
   },
   {
     name: "Omar Ali",
     role: "Operations Manager",
     photoUrl: "/images/16.png",
-    bio: "Specializes in project management and client relations.",
+    bio: "Specializes in mobile equipment maintenance and project management for mining operations.",
   },
   {
     name: "Aisha Diallo",
     role: "Safety Engineer",
     photoUrl: "/images/17.png",
-    bio: "Certified safety engineer with expertise in industrial compliance.",
+    bio: "Certified safety engineer with expertise in fire protection and mobile equipment compliance.",
   },
 ];
 
@@ -120,25 +114,25 @@ export const companyHistory = [
     year: "2010",
     title: "Company Founded",
     description:
-      "Safety Expertise was established in Nouakchott with a mission to provide professional safety services.",
+      "Safety Expertise was established in Nouakchott with a mission to provide professional fire protection and industrial maintenance services.",
   },
   {
     year: "2015",
     title: "First Major Contract",
     description:
-      "Secured our first major industrial safety contract, establishing our reputation for quality.",
+      "Secured our first major industrial fire protection contract, establishing our reputation for quality safety services.",
   },
   {
     year: "2018",
-    title: "Expansion",
+    title: "Mobile Equipment Specialization",
     description:
-      "Expanded services to include mobile equipment safety and training programs.",
+      "Expanded services to include AFEX - ICAT mobile mining equipment maintenance and safety compliance.",
   },
   {
     year: "2023",
     title: "Industry Leader",
     description:
-      "Recognized as a leading safety service provider in Mauritania with over 100 successful projects.",
+      "Recognized as a leading fire protection and mobile equipment maintenance provider in Mauritania with over 100 successful projects.",
   },
 ];
 
@@ -146,52 +140,53 @@ export const values = [
   {
     title: "Reliability",
     description:
-      "We deliver consistent, dependable safety solutions that our clients can trust.",
+      "We deliver consistent, dependable fire protection and maintenance solutions that our clients can trust.",
     icon: "shield-check",
   },
   {
     title: "Prevention",
     description:
-      "Our proactive approach prevents accidents before they happen.",
+      "Our proactive approach prevents accidents and equipment failures before they happen.",
     icon: "eye",
   },
   {
     title: "Professionalism",
     description:
-      "We maintain the highest standards of professional conduct and expertise.",
+      "We maintain the highest standards of professional conduct and expertise in fire protection and mobile equipment maintenance.",
     icon: "award",
   },
   {
     title: "Innovation",
     description:
-      "We continuously improve our methods and embrace new safety technologies.",
+      "We continuously improve our methods and embrace new fire protection and maintenance technologies.",
     icon: "lightbulb",
   },
 ];
 
 export const compliance = [
   {
-    title: "OSHA Standards Compliance",
+    title: "Fire Protection Standards",
     description:
-      "Full compliance with Occupational Safety and Health Administration standards.",
-    pdfUrl: "/documents/osha-compliance.pdf",
+      "Full compliance with international fire protection and safety standards.",
+    pdfUrl: "/documents/fire-protection-compliance.pdf",
   },
   {
-    title: "ISO 45001 Certification",
-    description: "Certified Occupational Health and Safety Management System.",
-    pdfUrl: "/documents/iso-45001-cert.pdf",
+    title: "Mobile Equipment Safety",
+    description:
+      "Certified mobile mining equipment maintenance and safety compliance.",
+    pdfUrl: "/documents/mobile-equipment-cert.pdf",
   },
   {
-    title: "Local Safety Regulations",
+    title: "Industrial Maintenance Standards",
     description:
-      "Compliance with all Mauritanian safety and industrial regulations.",
-    pdfUrl: "/documents/local-regulations.pdf",
+      "Compliance with all Mauritanian industrial maintenance and safety regulations.",
+    pdfUrl: "/documents/industrial-maintenance-regulations.pdf",
   },
   {
-    title: "Environmental Standards",
+    title: "AFEX - ICAT Certification",
     description:
-      "Meeting environmental safety standards and sustainability requirements.",
-    pdfUrl: "/documents/environmental-standards.pdf",
+      "Certified maintenance provider for AFEX - ICAT mobile mining equipment.",
+    pdfUrl: "/documents/afex-icat-certification.pdf",
   },
 ];
 
@@ -210,5 +205,6 @@ export const contactInfo = {
   email: "operations@safetyexpertise.mr",
   rc: "118933/3564",
   nif: "01298520",
-  tagline: "Partner with us to protect your people, equipment, and operations.",
+  tagline:
+    "Partner with us to protect your people, equipment, and operations with professional fire protection and mobile equipment maintenance services.",
 };

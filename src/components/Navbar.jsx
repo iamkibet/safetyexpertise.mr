@@ -113,7 +113,7 @@ const Navbar = () => {
               <button
                 className={`px-4 py-2 rounded-lg font-medium transition transform hover:-translate-y-0.5 shadow-lg ${
                   isScrolling || !isHomePage
-                    ? "bg-primary hover:bg-blue-700 text-white"
+                    ? "bg-[#ff3131] hover:bg-[#ff3131]/90 text-white"
                     : "bg-[#ff3131] hover:bg-[#ff3131]/90 text-white"
                 }`}
                 onClick={handleEmergencyClick}

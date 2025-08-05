@@ -19,7 +19,7 @@ const Contact = () => {
         <title>Contact Us - Safety Expertise</title>
         <meta
           name="description"
-          content="Get in touch with Safety Expertise for all your safety equipment and compliance needs. Located in Nouakchott, Mauritania."
+          content="Get in touch with Safety Expertise for fire protection services and AFEX - ICAT mobile mining equipment maintenance. Located in Nouakchott, Mauritania."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Helmet>
@@ -49,9 +49,10 @@ const Contact = () => {
                     Get in Touch
                   </h2>
                   <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                    We're here to help you with all your safety equipment and
-                    compliance needs. Contact us today to discuss your
-                    requirements and get a customized quote.
+                    We're here to help you with fire protection services and
+                    AFEX - ICAT mobile mining equipment maintenance. Contact us
+                    today to discuss your requirements and get a customized
+                    quote.
                   </p>
                 </div>
 

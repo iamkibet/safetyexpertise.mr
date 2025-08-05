@@ -26,27 +26,27 @@ const Home = () => {
   const whyUsFeatures = [
     {
       icon: FaShieldAlt,
-      title: "Certified Expertise",
+      title: "Fire Protection Specialists",
       description:
-        "Our team holds NFPA and OSHA certifications with over 15 years of field experience.",
+        "Certified fire protection experts with NFPA and OSHA certifications, specializing in industrial fire safety systems.",
     },
     {
       icon: FaUsers,
-      title: "Client-Centric Approach",
+      title: "AFEX - ICAT Specialists",
       description:
-        "We tailor solutions to your specific needs with dedicated account managers.",
+        "Specialized expertise in AFEX - ICAT mobile mining equipment maintenance and repair services.",
     },
     {
       icon: FaGlobe,
-      title: "Local & Global Standards",
+      title: "24/7 Emergency Support",
       description:
-        "Combining Mauritanian regulations with international best practices.",
+        "Round-the-clock emergency maintenance and fire protection support for critical operations.",
     },
     {
       icon: FaChartLine,
-      title: "Proven Results",
+      title: "Proven Track Record",
       description:
-        "97% client satisfaction rate and 45% reduction in safety incidents for our clients.",
+        "Over 100 successful projects with 97% client satisfaction rate in fire protection and mobile equipment maintenance.",
     },
   ];
 
@@ -75,29 +75,29 @@ const Home = () => {
 
   const complianceCertifications = [
     {
-      name: "NFPA Certification",
-      description: "National Fire Protection Association Standards",
+      name: "Fire Protection Standards",
+      description: "NFPA and International Fire Protection Standards",
       image: "/images/compliance/nfpa.png",
       icon: FaShieldAlt,
       status: "Active",
     },
     {
-      name: "OSHA Compliance",
-      description: "Occupational Safety and Health Administration",
+      name: "Mobile Equipment Safety",
+      description: "AFEX - ICAT Mobile Mining Equipment Certification",
       image: "/images/compliance/osha.webp",
       icon: FaCertificate,
       status: "Certified",
     },
     {
-      name: "ISO 45001",
-      description: "Occupational Health and Safety Management",
+      name: "Industrial Maintenance",
+      description: "ISO 45001 Occupational Health and Safety Management",
       image: "/images/compliance/iso.png",
       icon: FaAward,
       status: "Certified",
     },
     {
       name: "Local Regulations",
-      description: "Mauritanian Safety Standards Compliance",
+      description: "Mauritanian Industrial Safety Standards Compliance",
       image: "/images/compliance/fpaaustralia.png",
       icon: FaCheckCircle,
       status: "Compliant",
@@ -202,7 +202,6 @@ const Home = () => {
                       {feature.description}
                     </p>
                   </div>
-                  
                 </div>
               ))}
             </div>
