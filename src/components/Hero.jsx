@@ -346,7 +346,7 @@ const Hero = () => {
               }}
             >
               {/* Creative overlay system */}
-              <div className="absolute inset-0 bg-black/60" />
+              <div className="absolute inset-0 bg-black/20" />
 
               {/* Geometric overlay pattern */}
               <div className="absolute inset-0 opacity-20">
@@ -364,14 +364,14 @@ const Hero = () => {
                 />
               </div>
 
-              {/* Gradient overlay for text area */}
-              <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+              {/* Gradient overlay for text area - ultra smooth */}
+              <div className="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-              {/* Side accent overlay */}
-              <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-black/20 to-transparent" />
+              {/* Side accent overlay - reduced */}
+              <div className="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-black/10 to-transparent" />
 
-              {/* Text area highlight */}
-              <div className="absolute bottom-0 left-0 w-2/3 h-1/2 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
+              {/* Text area highlight - ultra smooth */}
+              <div className="absolute bottom-0 left-0 w-4/5 h-1/2 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
             </div>
           </div>
         ))}

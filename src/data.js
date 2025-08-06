@@ -12,7 +12,7 @@ export const services = [
       "Fire safety training and certification",
       "Regular inspection and compliance testing",
     ],
-    imageUrl: "/images/safety1.png",
+    imageUrl: "/images/safety2.png",
   },
   {
     slug: "industrial-maintenance",

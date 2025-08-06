@@ -1,9 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
-import Button from "../components/Button";
 import ServiceCard from "../components/ServiceCard";
-import CTA from "../components/CTA";
 import { services } from "../data";
 import {
   FaShieldAlt,
@@ -20,6 +19,20 @@ import {
   FaCheckCircle,
   FaAward,
   FaCertificate,
+  FaStar,
+  FaArrowRight,
+  FaIndustry,
+  FaTools,
+  FaFireExtinguisher,
+  FaHardHat,
+  FaCog,
+  FaRocket,
+  FaEye,
+  FaHeart,
+  FaPlay,
+  FaDownload,
+  FaSync,
+  FaRibbon,
 } from "react-icons/fa";
 
 const Home = () => {
@@ -73,51 +86,6 @@ const Home = () => {
     },
   ];
 
-  const complianceCertifications = [
-    {
-      name: "Fire Protection Standards",
-      description: "NFPA and International Fire Protection Standards",
-      image: "/images/compliance/nfpa.png",
-      icon: FaShieldAlt,
-      status: "Active",
-    },
-    {
-      name: "Mobile Equipment Safety",
-      description: "AFEX - ICAT Mobile Mining Equipment Certification",
-      image: "/images/compliance/osha.webp",
-      icon: FaCertificate,
-      status: "Certified",
-    },
-    {
-      name: "Industrial Maintenance",
-      description: "ISO 45001 Occupational Health and Safety Management",
-      image: "/images/compliance/iso.png",
-      icon: FaAward,
-      status: "Certified",
-    },
-    {
-      name: "Local Regulations",
-      description: "Mauritanian Industrial Safety Standards Compliance",
-      image: "/images/compliance/fpaaustralia.png",
-      icon: FaCheckCircle,
-      status: "Compliant",
-    },
-    {
-      name: "Quality Management",
-      description: "ISO 9001 Quality Management System",
-      image: "/images/compliance/certified.webp",
-      icon: FaMedal,
-      status: "Certified",
-    },
-    {
-      name: "Environmental Standards",
-      description: "ISO 14001 Environmental Management",
-      image: "/images/compliance/certified.webp",
-      icon: FaClipboardCheck,
-      status: "Certified",
-    },
-  ];
-
   return (
     <>
       <Helmet>
@@ -136,52 +104,114 @@ const Home = () => {
         <Hero />
 
         {/* Services Overview */}
-        <section className="section-padding">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <span className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">
-                OUR SERVICES
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Comprehensive{" "}
-                <span className="text-primary">Safety Solutions</span>
+        {/* Services Section - Modern Corporate Design */}
+        <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+          <div className="container mx-auto px-4 max-w-7xl">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center justify-center mb-5">
+                <span className="h-0.5 w-12 bg-primary mr-3"></span>
+                <span className="text-sm font-semibold tracking-wider text-primary uppercase">
+                  Our Expertise
+                </span>
+                <span className="h-0.5 w-12 bg-primary ml-3"></span>
+              </div>
+
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Advanced <span className="text-primary">Fire Protection</span>{" "}
+                Solutions
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                From fire protection to building maintenance, we deliver
-                complete safety solutions tailored to your needs.
+
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Comprehensive safety systems engineered for modern facilities
+                with precision installation and maintenance protocols.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.slice(0, 6).map((service) => (
-                <div key={service.slug} className="group">
-                  <ServiceCard
-                    title={service.title}
-                    description={service.description}
-                    imageUrl={service.imageUrl}
-                    slug={service.slug}
-                    className="group-hover:transform group-hover:scale-105 transition-transform duration-300"
-                  />
+                <div
+                  key={service.slug}
+                  className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col h-full"
+                >
+                  <div className="relative aspect-video overflow-hidden">
+                    <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent"></div>
+                    <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
+                      {service.title}
+                    </h3>
+                  </div>
+
+                  <div className="p-6 flex-grow">
+                    <p className="text-gray-600 mb-5 line-clamp-3">
+                      {service.description}
+                    </p>
+                    <div className="mt-auto">
+                      <a
+                        href={`/services/${service.slug}`}
+                        className="inline-flex items-center font-medium text-primary hover:text-primary-dark transition-colors group"
+                      >
+                        Learn more
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5 ml-2 transition-transform group-hover:translate-x-1"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               ))}
+            </div>
+
+            <div className="text-center mt-16">
+              <a
+                href="/services"
+                className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition-colors shadow-sm hover:shadow-md"
+              >
+                View All Solutions
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 ml-2"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </a>
             </div>
           </div>
         </section>
 
         {/* Why Us Section */}
-        <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">
-                OUR ADVANTAGE
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Why <span className="text-primary">Safety Expertise</span>{" "}
-                Stands Out
+        <section className="py-24 bg-gradient-to-b from-[#f8f8f8] to-white">
+          <div className="container mx-auto px-4 max-w-7xl">
+            <div className="text-center mb-20">
+              <div className="inline-flex items-center justify-center mb-5">
+                <span className="h-0.5 w-12 bg-primary mr-3"></span>
+                <span className="text-sm font-semibold tracking-wider text-primary uppercase">
+                  Our Competitive Edge
+                </span>
+                <span className="h-0.5 w-12 bg-primary ml-3"></span>
+              </div>
+
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Why <span className="text-primary">SafetyExpertise</span> Excels
               </h2>
-              <p className="text-xl text-gray-600">
-                We combine local expertise with international standards to
-                deliver exceptional safety solutions.
+
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Industry-leading expertise combined with cutting-edge technology
+                for uncompromised fire safety solutions.
               </p>
             </div>
 
@@ -189,228 +219,288 @@ const Home = () => {
               {whyUsFeatures.map((feature, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100"
+                  className="bg-white rounded-xl p-7 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 group relative overflow-hidden"
                 >
-                  <div className="p-6">
-                    <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-5">
-                      <feature.icon className="w-6 h-6 text-primary" />
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-[#18558c] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+                  <div className="w-14 h-14 rounded-lg bg-primary/5 flex items-center justify-center mb-6">
+                    <feature.icon className="w-6 h-6 text-primary" />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                    {feature.title}
+                  </h3>
+
+                  <p className="text-gray-600 leading-relaxed mb-5">
+                    {feature.description}
+                  </p>
+
+                  <div className="mt-auto">
+                    <div className="inline-flex items-center text-primary font-medium text-sm">
+                      <span>Learn more</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 ml-2"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {feature.description}
-                    </p>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Stats section */}
-            <div className="mt-16 bg-gradient-to-r from-primary to-blue-700 rounded-2xl p-8 text-white">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {[
-                  { value: "15+", label: "Years Experience" },
-                  { value: "500+", label: "Projects Completed" },
-                  { value: "98%", label: "Client Satisfaction" },
-                  { value: "24/7", label: "Support Available" },
-                ].map((stat, index) => (
-                  <div key={index} className="text-center">
-                    <div className="text-4xl font-bold mb-2">{stat.value}</div>
-                    <div className="text-blue-100">{stat.label}</div>
+            {/* Modern Stats Section */}
+            <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { value: "15+", label: "Years Experience", accent: true },
+                { value: "500+", label: "Projects Completed", accent: false },
+                { value: "98%", label: "Client Satisfaction", accent: true },
+                { value: "24/7", label: "Support Available", accent: false },
+              ].map((stat, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm text-center"
+                >
+                  <div
+                    className={`text-4xl font-bold mb-2 ${
+                      stat.accent ? "text-accent" : "text-primary"
+                    }`}
+                  >
+                    {stat.value}
                   </div>
-                ))}
-              </div>
+                  <div className="text-gray-600">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Section */}
+            <div className="mt-20 text-center">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-white bg-primary hover:bg-[#134271] transition-colors shadow-md hover:shadow-lg"
+              >
+                Get Your Safety Assessment
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 ml-3"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </a>
             </div>
           </div>
         </section>
 
         {/* Values Section */}
-        <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
-          {/* Background Pattern with Red Accents */}
-          <div className="absolute inset-0 opacity-10">
+        <section className="py-28 bg-gray-950 text-white relative overflow-hidden">
+          {/* Abstract Gradient Background */}
+          <div className="absolute inset-0">
             <div
-              className="absolute inset-0"
+              className="absolute top-0 left-0 w-full h-full opacity-30"
               style={{
-                backgroundImage: `url("/images/14.png")`,
+                background: `radial-gradient(circle at 20% 30%, ${"#ff3131"}33, transparent 25%), 
+                   radial-gradient(circle at 80% 70%, ${"#18558c"}33, transparent 25%)`,
               }}
-            />
+            ></div>
+
+            {/* Geometric Grid Pattern */}
+            <div
+              className="absolute inset-0 opacity-10"
+              style={{
+                backgroundImage: `linear-gradient(to right, #fff 1px, transparent 1px),
+                        linear-gradient(to bottom, #fff 1px, transparent 1px)`,
+                backgroundSize: "40px 40px",
+              }}
+            ></div>
           </div>
 
-          {/* Floating Red Accent Elements */}
-          <div className="absolute top-20 left-10 w-20 h-20 bg-accent/20 rounded-full blur-xl"></div>
-          <div className="absolute bottom-20 right-10 w-32 h-32 bg-accent/10 rounded-full blur-xl"></div>
-          <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-accent/15 rounded-full blur-lg"></div>
+          <div className="container mx-auto px-4 max-w-7xl relative z-10">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-10 mb-20">
+              <div className="md:w-2/5">
+                <span className="inline-block bg-gradient-to-r from-accent to-[#ff6b6b] text-white px-5 py-2 rounded-full text-sm font-medium mb-6">
+                  OUR PHILOSOPHY
+                </span>
+                <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                  Built on Integrity, <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                    Driven by Safety
+                  </span>
+                </h2>
+                <p className="text-lg text-gray-300 mb-8 max-w-lg">
+                  Our core values define every solution we deliver and every
+                  relationship we build in protecting what matters most.
+                </p>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <span className="inline-block bg-gradient-to-r from-accent to-red-600 text-white px-4 py-1 rounded-full text-sm font-medium mb-4">
-                OUR FOUNDATION
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Core Values That Guide Us
-              </h2>
-              <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-                The principles that shape our work and client relationships.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {values.map((value, index) => (
-                <div
-                  key={index}
-                  className="group bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-6 transition-all duration-300 hover:bg-white/20 hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/20 hover:-translate-y-2"
-                >
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary via-accent to-red-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                      {index === 0 && (
-                        <FaHandshake className="w-6 h-6 text-white" />
-                      )}
-                      {index === 1 && (
-                        <FaMedal className="w-6 h-6 text-white" />
-                      )}
-                      {index === 2 && (
-                        <FaLightbulb className="w-6 h-6 text-white" />
-                      )}
-                      {index === 3 && (
-                        <FaClipboardCheck className="w-6 h-6 text-white" />
-                      )}
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-accent transition-colors duration-300">
-                      {value.title}
-                    </h3>
-                    <p className="text-blue-100 leading-relaxed group-hover:text-white transition-colors duration-300">
-                      {value.description}
-                    </p>
-
-                    {/* Red Accent Line */}
-                    <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="flex items-center">
+                  <div className="flex -space-x-3 mr-4">
+                    <div className="w-10 h-10 rounded-full bg-primary border-2 border-gray-900"></div>
+                    <div className="w-10 h-10 rounded-full bg-accent border-2 border-gray-900"></div>
+                    <div className="w-10 h-10 rounded-full bg-blue-700 border-2 border-gray-900"></div>
+                  </div>
+                  <div className="text-gray-300">
+                    <span className="block font-semibold">
+                      Industry Certified Team
+                    </span>
+                    <span className="text-sm">
+                      NFPA & ISO compliant professionals
+                    </span>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
 
-            {/* Testimonial with Red Accents */}
-            <div className="mt-16 max-w-4xl mx-auto bg-gradient-to-r from-white/5 via-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 relative overflow-hidden">
-              {/* Red Accent Background */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-2xl"></div>
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-accent/15 rounded-full blur-xl"></div>
-
-              <div className="flex items-start relative z-10">
-                <div className="relative">
-                  <FaQuoteRight className="text-accent text-4xl mr-4 mt-1 flex-shrink-0" />
-                  <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full opacity-60"></div>
-                </div>
-                <div>
-                  <p className="text-xl italic mb-4">
-                    "Safety Expertise transformed our facility's safety
-                    protocols with their comprehensive approach. Their team's
-                    professionalism and attention to detail exceeded our
-                    expectations."
-                  </p>
-                  <div className="flex items-center">
-                    <div className="relative">
-                      <img
-                        src="/images/14.png"
-                        alt="Client"
-                        className="w-12 h-12 rounded-xl object-cover border-2 border-accent/30"
-                      />
-                      <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-accent rounded-full border-2 border-white"></div>
-                    </div>
-                    <div className="ml-4">
-                      <div className="font-bold">Mohamed El Bechir Meske</div>
-                      <div className="text-blue-200">
-                        Managing Director, Safety Expertise.
-                      </div>
-                    </div>
+              <div className="md:w-3/5 relative">
+                {/* Abstract 3D Shape */}
+                <div className="relative w-full aspect-square max-w-xl mx-auto">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-4/5 h-4/5 rounded-2xl border-2 border-primary/30 rotate-45"></div>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-3/5 h-3/5 rounded-2xl bg-gradient-to-br from-primary to-primary/10 rotate-12"></div>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-2/5 h-2/5 rounded-xl bg-accent/80 rotate-[-25deg]"></div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Compliance Certifications */}
-        <section className="py-20 bg-gradient-to-b from-white to-gray-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-medium mb-4">
-                CERTIFICATIONS & COMPLIANCE
-              </span>
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                Our Commitment to Excellence
-              </h3>
-              <p className="text-gray-600 max-w-xl mx-auto">
-                We maintain the highest standards of safety and quality through
-                comprehensive certifications and compliance.
-              </p>
-            </div>
+            {/* Values Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+              {/* Decorative Lines */}
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-transparent via-primary to-transparent opacity-20"></div>
+              <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent opacity-20"></div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {complianceCertifications.map((cert, index) => (
+              {values.map((value, index) => (
                 <div
                   key={index}
-                  className="group bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-gray-100"
+                  className={`p-8 rounded-3xl backdrop-blur-sm bg-gradient-to-br ${
+                    index % 4 === 0
+                      ? "from-gray-900/50 to-gray-800/50 border border-gray-800"
+                      : ""
+                  } ${
+                    index % 4 === 1
+                      ? "from-primary/10 to-primary/5 border border-primary/20"
+                      : ""
+                  } ${
+                    index % 4 === 2
+                      ? "from-accent/10 to-accent/5 border border-accent/20"
+                      : ""
+                  } ${
+                    index % 4 === 3
+                      ? "from-gray-900/50 to-gray-800/50 border border-gray-800"
+                      : ""
+                  } transition-all duration-500 hover:shadow-xl hover:scale-[1.02]`}
                 >
-                  <div className="relative h-48 bg-gradient-to-br from-primary/10 to-accent/10 overflow-hidden">
-                    <img
-                      src={cert.image}
-                      alt={cert.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                    <div className="absolute top-4 right-4">
-                      <span
-                        className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                          cert.status === "Active"
-                            ? "bg-green-100 text-green-800"
-                            : cert.status === "Certified"
-                            ? "bg-blue-100 text-blue-800"
-                            : "bg-orange-100 text-orange-800"
+                  <div className="flex items-start gap-6">
+                    <div
+                      className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center ${
+                        index % 4 === 1
+                          ? "bg-primary/20"
+                          : index % 4 === 2
+                          ? "bg-accent/20"
+                          : "bg-gray-800"
+                      }`}
+                    >
+                      <div
+                        className={`text-2xl ${
+                          index % 4 === 1
+                            ? "text-primary"
+                            : index % 4 === 2
+                            ? "text-accent"
+                            : "text-white"
                         }`}
                       >
-                        {cert.status}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-6">
-                    <div className="flex items-center mb-4">
-                      <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
-                        <cert.icon className="w-5 h-5 text-primary" />
+                        {index === 0 && <FaHandshake />}
+                        {index === 1 && <FaMedal />}
+                        {index === 2 && <FaLightbulb />}
+                        {index === 3 && <FaClipboardCheck />}
                       </div>
-                      <h4 className="text-lg font-bold text-gray-900">
-                        {cert.name}
-                      </h4>
                     </div>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {cert.description}
-                    </p>
 
-                    <div className="mt-4 flex items-center text-sm text-gray-500">
-                      <FaCheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      <span>Verified & Current</span>
+                    <div>
+                      <div className="flex items-center mb-3">
+                        <h3 className="text-xl font-bold mr-3">
+                          {value.title}
+                        </h3>
+                        <div
+                          className={`w-8 h-0.5 ${
+                            index % 4 === 1
+                              ? "bg-primary"
+                              : index % 4 === 2
+                              ? "bg-accent"
+                              : "bg-gray-400"
+                          }`}
+                        ></div>
+                      </div>
+                      <p className="text-gray-300">{value.description}</p>
+
+                      {/* Value Number */}
+                      <div
+                        className={`text-8xl font-black opacity-5 absolute bottom-2 right-4 ${
+                          index % 4 === 1
+                            ? "text-primary"
+                            : index % 4 === 2
+                            ? "text-accent"
+                            : "text-white"
+                        }`}
+                      >
+                        {index + 1}
+                      </div>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
+          </div>
+        </section>
 
-            {/* Compliance Stats */}
-            <div className="mt-16 bg-gradient-to-r from-primary to-blue-700 rounded-2xl p-8 text-white">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="text-center">
-                  <div className="text-4xl font-bold mb-2">100%</div>
-                  <div className="text-blue-100">Compliance Rate</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold mb-2">6+</div>
-                  <div className="text-blue-100">Active Certifications</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold mb-2">24/7</div>
-                  <div className="text-blue-100">Audit Ready</div>
-                </div>
+        {/* Compliance Overview */}
+        <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="relative">
+                <img
+                  src="/images/compliance/nfpa.png"
+                  alt="Safety Certifications"
+                  className="w-full h-64 object-cover rounded-2xl shadow-lg"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+              </div>
+
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                  Certified Safety{" "}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800">
+                    Excellence
+                  </span>
+                </h2>
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                  We maintain full compliance with international safety
+                  standards including NFPA, OSHA, and ISO certifications. Our
+                  certified team ensures your operations meet the highest safety
+                  requirements.
+                </p>
+
+                <Link
+                  to="/compliance"
+                  className="group inline-flex items-center bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  View All Certifications
+                  <FaArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
               </div>
             </div>
           </div>

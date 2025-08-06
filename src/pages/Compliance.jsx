@@ -3,7 +3,15 @@ import { Helmet } from "react-helmet";
 import PageHero from "../components/PageHero";
 import CTA from "../components/CTA";
 import { compliance } from "../data";
-import { FaShieldAlt, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { 
+  FaShieldAlt, 
+  FaChevronDown, 
+  FaChevronUp, 
+  FaCertificate, 
+  FaCheckCircle,
+  FaAward,
+  FaMedal
+} from "react-icons/fa";
 
 const Compliance = () => {
   const [openAccordion, setOpenAccordion] = useState(null);
@@ -11,6 +19,51 @@ const Compliance = () => {
   const toggleAccordion = (index) => {
     setOpenAccordion(openAccordion === index ? null : index);
   };
+
+  const certifications = [
+    {
+      name: "NFPA Certification",
+      description: "National Fire Protection Association Standards",
+      image: "/images/compliance/nfpa.png",
+      status: "Active",
+      category: "Fire Safety"
+    },
+    {
+      name: "OSHA Compliance",
+      description: "Occupational Safety and Health Administration",
+      image: "/images/compliance/osha.webp",
+      status: "Certified",
+      category: "Workplace Safety"
+    },
+    {
+      name: "ISO 45001",
+      description: "Occupational Health and Safety Management",
+      image: "/images/compliance/iso.png",
+      status: "Certified",
+      category: "Quality Management"
+    },
+    {
+      name: "Local Standards",
+      description: "Mauritanian Industrial Safety Regulations",
+      image: "/images/compliance/fpaaustralia.png",
+      status: "Compliant",
+      category: "Regulatory"
+    },
+    {
+      name: "Quality Management",
+      description: "ISO 9001 Quality Management System",
+      image: "/images/compliance/certified.webp",
+      status: "Certified",
+      category: "Quality Management"
+    },
+    {
+      name: "Environmental Standards",
+      description: "ISO 14001 Environmental Management",
+      image: "/images/compliance/certified.webp",
+      status: "Certified",
+      category: "Environmental"
+    }
+  ];
 
   return (
     <>
@@ -65,6 +118,88 @@ const Compliance = () => {
                     the highest standards of safety and quality in all our
                     operations.
                   </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Certifications Section */}
+        <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-4xl mx-auto mb-16">
+              <span className="inline-block bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-full text-sm font-semibold mb-6">
+                CERTIFICATIONS & COMPLIANCE
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Meeting the Highest{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800">
+                  Safety Standards
+                </span>
+              </h2>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                Our comprehensive certifications and compliance with international standards 
+                ensure your operations meet the highest safety requirements.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {certifications.map((cert, index) => (
+                <div
+                  key={index}
+                  className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 overflow-hidden"
+                >
+                  <div className="relative h-48 bg-gradient-to-br from-blue-50 to-blue-100 overflow-hidden">
+                    <img
+                      src={cert.image}
+                      alt={cert.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    <div className="absolute top-4 right-4">
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
+                        {cert.status}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                        <FaCertificate className="w-5 h-5 text-blue-600" />
+                      </div>
+                      <h4 className="text-lg font-bold text-gray-900">
+                        {cert.name}
+                      </h4>
+                    </div>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      {cert.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded">
+                        {cert.category}
+                      </span>
+                      <FaCheckCircle className="w-4 h-4 text-green-500" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Compliance Stats */}
+            <div className="mt-16 bg-gradient-to-r from-blue-600 to-blue-700 rounded-3xl p-8 md:p-12 text-white">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="text-center">
+                  <div className="text-4xl md:text-5xl font-bold mb-2">100%</div>
+                  <div className="text-blue-100 font-medium">Compliance Rate</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl md:text-5xl font-bold mb-2">6+</div>
+                  <div className="text-blue-100 font-medium">Active Certifications</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl md:text-5xl font-bold mb-2">24/7</div>
+                  <div className="text-blue-100 font-medium">Audit Ready</div>
                 </div>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaBars, FaTimes, FaPhone, FaEnvelope } from "react-icons/fa";
+import { FaBars, FaTimes, FaPhone } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,6 +45,19 @@ const Navbar = () => {
     };
   }, [showEmergencyPopup]);
 
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   const isActive = (path) => location.pathname === path;
   const isHomePage = location.pathname === "/";
 
@@ -55,165 +68,146 @@ const Navbar = () => {
   const handleContactMethod = (method) => {
     if (method === "call") {
       window.location.href = "tel:+222-3694-9611";
-    } else if (method === "email") {
-      window.location.href = "mailto:operations@safetyexpertise.mr";
     }
     setShowEmergencyPopup(false);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <header
-      className={`fixed w-full z-50 transition-all duration-500 ${
-        isScrolling || !isHomePage
-          ? "bg-white shadow-md py-3"
-          : "bg-transparent py-6"
-      }`}
-    >
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <div
-              className={`relative ${
-                isScrolling || !isHomePage
-                  ? ""
-                  : "bg-white backdrop-blur-lg rounded-lg p-2"
-              }`}
-            >
-              <img
-                src="/images/logo.png"
-                alt="Safety Expertise Logo"
-                className="h-10 w-auto drop-shadow-sm"
-              />
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`font-medium transition-colors duration-200 ${
+    <>
+      <header
+        className={`fixed w-full z-50 transition-all duration-500 ${
+          isScrolling || !isHomePage
+            ? "bg-white shadow-md py-3"
+            : "bg-transparent py-6"
+        }`}
+      >
+        <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <Link to="/" className="flex items-center">
+              <div
+                className={`relative ${
                   isScrolling || !isHomePage
-                    ? isActive(item.path)
-                      ? "text-primary border-b-2 border-primary"
-                      : "text-gray-600 hover:text-primary"
-                    : isActive(item.path)
-                    ? "text-white border-b-2 border-white drop-shadow-sm"
-                    : "text-gray-200 hover:text-white drop-shadow-sm"
+                    ? ""
+                    : " rounded-lg p-2"
                 }`}
               >
-                {item.label}
-              </Link>
-            ))}
+                <img
+                  src="/images/logo.png"
+                  alt="Safety Expertise Logo"
+                  className="h-10 w-auto drop-shadow-sm"
+                />
+              </div>
+            </Link>
 
-            {/* Emergency Line Button */}
-            <div className="relative" ref={emergencyRef}>
+            {/* Right side buttons */}
+            <div className="flex items-center space-x-4">
+              {/* Call Icon */}
+              <div className="relative" ref={emergencyRef}>
+                <button
+                  className={`p-2 rounded-full transition-all duration-200 hover:scale-110 ${
+                    isScrolling || !isHomePage
+                      ? "text-gray-600 hover:text-primary"
+                      : "text-white hover:text-primary"
+                  }`}
+                  onClick={handleEmergencyClick}
+                  aria-label="Emergency call"
+                >
+                  <FaPhone className="w-5 h-5" />
+                </button>
+
+                {/* Emergency Popup */}
+                {showEmergencyPopup && (
+                  <div className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50">
+                    <button
+                      onClick={() => handleContactMethod("call")}
+                      className="w-full px-3 py-2 text-left hover:bg-gray-50 flex items-center text-sm"
+                    >
+                      <FaPhone className="mr-2 text-red-500" />
+                      Call Now
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Menu button */}
               <button
-                className={`px-4 py-2 rounded-lg font-medium transition transform hover:-translate-y-0.5 shadow-lg ${
-                  isScrolling || !isHomePage
-                    ? "bg-[#ff3131] hover:bg-[#ff3131]/90 text-white"
-                    : "bg-[#ff3131] hover:bg-[#ff3131]/90 text-white"
-                }`}
-                onClick={handleEmergencyClick}
+                className="p-2 z-50"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle menu"
               >
-                Emergency Line
+                {isOpen ? (
+                  <FaTimes
+                    className={`w-6 h-6 ${
+                      isScrolling || !isHomePage
+                        ? "text-gray-600"
+                        : "text-white"
+                    }`}
+                  />
+                ) : (
+                  <FaBars
+                    className={`w-6 h-6 ${
+                      isScrolling || !isHomePage
+                        ? "text-gray-600"
+                        : "text-white"
+                    }`}
+                  />
+                )}
               </button>
-
-              {/* Emergency Popup */}
-              {showEmergencyPopup && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50">
-                  <button
-                    onClick={() => handleContactMethod("call")}
-                    className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center"
-                  >
-                    <FaPhone className="mr-2 text-red-500" />
-                    Call Now
-                  </button>
-                  <button
-                    onClick={() => handleContactMethod("email")}
-                    className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center"
-                  >
-                    <FaEnvelope className="mr-2 text-red-500" />
-                    Send Email
-                  </button>
-                </div>
-              )}
             </div>
           </div>
+        </nav>
+      </header>
 
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? (
-              <FaTimes
-                className={`w-6 h-6 ${
-                  isScrolling || !isHomePage ? "text-gray-600" : "text-white"
-                }`}
-              />
-            ) : (
-              <FaBars
-                className={`w-6 h-6 ${
-                  isScrolling || !isHomePage ? "text-gray-600" : "text-white"
-                }`}
-              />
-            )}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-4 pt-4">
+      {/* Full Screen Menu */}
+      {isOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-90 z-40 flex items-center justify-center">
+          <div className="text-center">
+            <div className="flex flex-col space-y-8">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`font-medium transition-colors duration-200 ${
+                  className={`text-3xl md:text-4xl font-bold transition-all duration-300 hover:scale-110 ${
                     isActive(item.path)
                       ? "text-primary"
-                      : "text-gray-600 hover:text-primary"
+                      : "text-white hover:text-primary"
                   }`}
-                  onClick={() => setIsOpen(false)}
+                  onClick={closeMenu}
                 >
                   {item.label}
                 </Link>
               ))}
-              <div className="pt-4 border-t border-gray-200">
+
+              {/* Emergency Line in Full Screen Menu */}
+              <div className="pt-8 border-t border-gray-600">
                 <button
-                  className="bg-primary hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium w-full text-center"
+                  className="bg-[#ff3131] hover:bg-[#ff3131]/90 text-white px-8 py-4 rounded-lg font-bold text-xl transition-all duration-300 hover:scale-105"
                   onClick={handleEmergencyClick}
                 >
                   Emergency Line
                 </button>
                 {showEmergencyPopup && (
-                  <div className="mt-2 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                  <div className="mt-4 bg-white rounded-lg shadow-lg border border-gray-200 py-2 max-w-xs mx-auto">
                     <button
                       onClick={() => handleContactMethod("call")}
-                      className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center"
+                      className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center justify-center"
                     >
                       <FaPhone className="mr-2 text-red-500" />
                       Call Now
-                    </button>
-                    <button
-                      onClick={() => handleContactMethod("email")}
-                      className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center"
-                    >
-                      <FaEnvelope className="mr-2 text-red-500" />
-                      Send Email
                     </button>
                   </div>
                 )}
               </div>
             </div>
           </div>
-        )}
-      </nav>
-    </header>
+        </div>
+      )}
+    </>
   );
 };
 
