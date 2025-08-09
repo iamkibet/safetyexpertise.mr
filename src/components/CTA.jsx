@@ -1,54 +1,158 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { FaPhone, FaArrowRight } from "react-icons/fa";
 
 const CTA = ({
-  title,
-  subtitle,
-  primaryButton = { text: "Contact Our Team", href: "/contact" },
-  secondaryButton = { text: "Explore Services", href: "/services" },
-  variant = "accent", // accent, primary, or custom
+  title = "Please get in touch with our team of fire experts",
+  subtitle = "We're just one click away to help make your fire safety incredible. Click the link below to share more details about your project. We'd love to talk.",
+  primaryButton = { text: "Free Expert Advice", href: "/contact" },
+  secondaryLink = { text: "About Us", href: "/about" },
+  imageUrl = "/images/cta.png",
   className = "",
 }) => {
-  const getVariantStyles = () => {
-    switch (variant) {
-      case "primary":
-        return "bg-primary text-white";
-      case "custom":
-        return "bg-gradient-to-r from-gray-900 to-gray-800 text-white";
-      default:
-        return "bg-accent text-white";
-    }
-  };
-
-  const getButtonStyles = (isPrimary = true) => {
-    const baseStyles =
-      "text-lg px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105";
-
-    if (isPrimary) {
-      return `${baseStyles} bg-white text-accent hover:bg-gray-100 shadow-lg hover:shadow-xl`;
-    } else {
-      return `${baseStyles} bg-transparent border-2 border-white text-white hover:bg-white hover:text-accent`;
-    }
-  };
-
   return (
-    <section className={`section-padding ${getVariantStyles()} ${className}`}>
-      <div className="container-custom text-center">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-            {title}
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto leading-relaxed opacity-90">
-            {subtitle}
-          </p>
+    <section className={`py-24 relative overflow-hidden ${className}`}>
+      {/* Background with transparent image overlay */}
+      <div className="absolute inset-0 bg-white">
+        <div 
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `url('/images/background1.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        />
+      </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href={primaryButton.href} className={getButtonStyles(true)}>
-              {primaryButton.text}
-            </a>
-            <a href={secondaryButton.href} className={getButtonStyles(false)}>
-              {secondaryButton.text}
-            </a>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Text Content */}
+          <motion.div 
+            className="space-y-8"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Subtitle */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <span className="text-sm font-semibold text-primary uppercase tracking-wider">
+                Get Expert Advice
+              </span>
+            </motion.div>
+
+            {/* Main Heading */}
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              {title}
+            </motion.h2>
+
+            {/* Body Text */}
+            <motion.p 
+              className="text-lg text-gray-700 leading-relaxed max-w-lg"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              {subtitle}
+            </motion.p>
+
+            {/* CTA Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <a
+                href={primaryButton.href}
+                className="inline-flex items-center bg-accent text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-red-700 hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                <FaPhone className="w-5 h-5 mr-3" />
+                {primaryButton.text}
+              </a>
+            </motion.div>
+
+            {/* Secondary Link */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="pt-4"
+            >
+              <p className="text-gray-600">
+                You can also learn more about us from our{" "}
+                <a 
+                  href={secondaryLink.href}
+                  className="text-primary hover:text-accent font-medium transition-colors duration-300"
+                >
+                  {secondaryLink.text}
+                </a>{" "}
+                Page
+              </p>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Column - Image */}
+          <motion.div 
+            className="relative flex justify-center lg:justify-end"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <div className="relative">
+              {/* Main Image */}
+              <motion.div
+                className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden shadow-2xl"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img
+                  src={imageUrl}
+                  alt="Fire safety expert"
+                  className="w-full h-full object-cover"
+                />
+                
+                {/* Subtle overlay for depth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+              </motion.div>
+
+              {/* Floating elements for visual interest */}
+              <motion.div
+                className="absolute -top-4 -right-4 w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg"
+                initial={{ scale: 0, rotate: -180 }}
+                whileInView={{ scale: 1, rotate: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
+                <FaArrowRight className="w-6 h-6 text-white" />
+              </motion.div>
+
+              <motion.div
+                className="absolute -bottom-4 -left-4 w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-lg"
+                initial={{ scale: 0, rotate: 180 }}
+                whileInView={{ scale: 1, rotate: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1.0 }}
+              >
+                <FaPhone className="w-5 h-5 text-white" />
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

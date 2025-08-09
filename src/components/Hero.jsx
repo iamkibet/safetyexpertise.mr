@@ -108,76 +108,161 @@ const NavigationButton = ({ direction, onClick, disabled = false, isMobile = fal
 );
 
 /* === Progress Dots === */
-const ProgressIndicator = ({ slides, currentSlide, onSlideClick }) => (
-  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-    {slides.map((_, idx) => (
-      <motion.button
-        key={idx}
-        onClick={() => onSlideClick(idx)}
-        whileHover={{ scale: 1.2 }}
-        whileTap={{ scale: 0.9 }}
-        className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-colors ${
-          idx === currentSlide ? 'bg-white shadow-lg' : 'bg-white/40'
-        }`}
-        aria-label={`Go to slide ${idx + 1}`}
-      />
-    ))}
-  </div>
-);
+// Removed ProgressIndicator component
 
 /* === Feature Cards === */
-const FeatureCards = () => (
-  <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm hidden lg:block">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-lg"
-        >
-          <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
-            <FaShieldAlt className="w-6 h-6 text-red-600" />
-          </div>
-          <div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Passion for fire safety</h3>
-            <p className="text-gray-600 text-sm">Dedicated to protecting lives and property with certified fire safety solutions.</p>
-          </div>
-        </motion.div>
+const FeatureCards = () => {
+  const [hoveredCard, setHoveredCard] = React.useState(null);
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-lg"
-        >
-          <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-            <FaGift className="w-6 h-6 text-blue-600" />
-          </div>
-          <div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Reliable Fire Protection</h3>
-            <p className="text-gray-600 text-sm">Comprehensive fire protection systems designed for maximum reliability and safety.</p>
-          </div>
-        </motion.div>
+  return (
+    <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm hidden lg:block">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* First Card - Red fill animation on hover */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.3 }}
+            className="relative flex items-start space-x-4 p-6 bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer"
+            whileHover={{ scale: 1.02 }}
+            onHoverStart={() => setHoveredCard(0)}
+            onHoverEnd={() => setHoveredCard(null)}
+          >
+            {/* Red fill animation background */}
+            <motion.div
+              className="absolute inset-0 bg-red-600 origin-bottom"
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: hoveredCard === 0 ? 1 : 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            />
+            
+            {/* Content */}
+            <div className="relative z-10 flex items-start space-x-4">
+              <motion.div 
+                className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                  hoveredCard === 0 ? 'bg-white/20' : 'bg-red-100'
+                }`}
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+              >
+                <FaShieldAlt className={`w-6 h-6 transition-colors duration-300 ${
+                  hoveredCard === 0 ? 'text-white' : 'text-red-600'
+                }`} />
+              </motion.div>
+              <div>
+                <motion.h3 
+                  className={`text-lg font-bold mb-2 transition-colors duration-300 ${
+                    hoveredCard === 0 ? 'text-white' : 'text-gray-900'
+                  }`}
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Passion for fire safety
+                </motion.h3>
+                <motion.p 
+                  className={`text-sm transition-colors duration-300 ${
+                    hoveredCard === 0 ? 'text-white/90' : 'text-gray-600'
+                  }`}
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.2, delay: 0.1 }}
+                >
+                  Dedicated to protecting lives and property with certified fire safety solutions.
+                </motion.p>
+              </div>
+            </div>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-lg"
-        >
-          <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-            <FaCog className="w-6 h-6 text-green-600" />
-          </div>
-          <div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Engineering the quality</h3>
-            <p className="text-gray-600 text-sm">Expert engineering and maintenance services for industrial equipment and systems.</p>
-          </div>
-        </motion.div>
+          {/* Middle Card - Always red */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.3 }}
+            className="flex items-start space-x-4 p-6 bg-red-600 rounded-xl shadow-lg cursor-pointer"
+            whileHover={{ scale: 1.02, y: -5 }}
+          >
+            <motion.div 
+              className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0"
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
+            >
+              <FaGift className="w-6 h-6 text-white" />
+            </motion.div>
+            <div>
+              <motion.h3 
+                className="text-lg font-bold text-white mb-2"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.2 }}
+              >
+                Reliable Fire Protection
+              </motion.h3>
+              <motion.p 
+                className="text-white/90 text-sm"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.2, delay: 0.1 }}
+              >
+                Comprehensive fire protection systems designed for maximum reliability and safety.
+              </motion.p>
+            </div>
+          </motion.div>
+
+          {/* Third Card - Red fill animation on hover */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.3 }}
+            className="relative flex items-start space-x-4 p-6 bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer"
+            whileHover={{ scale: 1.02 }}
+            onHoverStart={() => setHoveredCard(2)}
+            onHoverEnd={() => setHoveredCard(null)}
+          >
+            {/* Red fill animation background */}
+            <motion.div
+              className="absolute inset-0 bg-red-600 origin-bottom"
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: hoveredCard === 2 ? 1 : 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            />
+            
+            {/* Content */}
+            <div className="relative z-10 flex items-start space-x-4">
+              <motion.div 
+                className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                  hoveredCard === 2 ? 'bg-white/20' : 'bg-green-100'
+                }`}
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+              >
+                <FaCog className={`w-6 h-6 transition-colors duration-300 ${
+                  hoveredCard === 2 ? 'text-white' : 'text-green-600'
+                }`} />
+              </motion.div>
+              <div>
+                <motion.h3 
+                  className={`text-lg font-bold mb-2 transition-colors duration-300 ${
+                    hoveredCard === 2 ? 'text-white' : 'text-gray-900'
+                  }`}
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Engineering the quality
+                </motion.h3>
+                <motion.p 
+                  className={`text-sm transition-colors duration-300 ${
+                    hoveredCard === 2 ? 'text-white/90' : 'text-gray-600'
+                  }`}
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.2, delay: 0.1 }}
+                >
+                  Expert engineering and maintenance services for industrial equipment and systems.
+                </motion.p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 /* === Main Hero Component === */
 const Hero = () => {
@@ -362,11 +447,7 @@ const Hero = () => {
       </div>
 
       {/* Progress Indicator */}
-      <ProgressIndicator
-        slides={SLIDE_DATA}
-        currentSlide={currentSlide}
-        onSlideClick={goToSlide}
-      />
+      {/* Removed ProgressIndicator */}
 
       {/* Feature Cards - Only visible on large screens */}
       <FeatureCards />

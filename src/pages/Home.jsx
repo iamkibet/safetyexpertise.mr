@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import Hero from "../components/Hero";
 import ServiceCard from "../components/ServiceCard";
 import { services } from "../data";
@@ -34,6 +35,7 @@ import {
   FaSync,
   FaRibbon,
 } from "react-icons/fa";
+import CTA from "../components/CTA";
 
 const Home = () => {
   const whyUsFeatures = [
@@ -105,90 +107,242 @@ const Home = () => {
 
         {/* Services Overview */}
         {/* Services Section - Modern Corporate Design */}
-        <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <section className="py-24 bg-white">
           <div className="container mx-auto px-4 max-w-7xl">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center justify-center mb-5">
-                <span className="h-0.5 w-12 bg-primary mr-3"></span>
-                <span className="text-sm font-semibold tracking-wider text-primary uppercase">
-                  Our Expertise
-                </span>
-                <span className="h-0.5 w-12 bg-primary ml-3"></span>
-              </div>
-
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Advanced <span className="text-primary">Fire Protection</span>{" "}
-                Solutions
-              </h2>
-
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Comprehensive safety systems engineered for modern facilities
-                with precision installation and maintenance protocols.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.slice(0, 6).map((service) => (
-                <div
-                  key={service.slug}
-                  className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col h-full"
-                >
-                  <div className="relative aspect-video overflow-hidden">
-                    <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent"></div>
-                    <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
-                      {service.title}
-                    </h3>
-                  </div>
-
-                  <div className="p-6 flex-grow">
-                    <p className="text-gray-600 mb-5 line-clamp-3">
-                      {service.description}
-                    </p>
-                    <div className="mt-auto">
-                      <a
-                        href={`/services/${service.slug}`}
-                        className="inline-flex items-center font-medium text-primary hover:text-primary-dark transition-colors group"
-                      >
-                        Learn more
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 ml-2 transition-transform group-hover:translate-x-1"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center mt-16">
-              <a
-                href="/services"
-                className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition-colors shadow-sm hover:shadow-md"
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              {/* Left Column - Text Content */}
+              <motion.div 
+                className="space-y-8"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                View All Solutions
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 ml-2"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
+                {/* Main Heading */}
+                <motion.div 
+                  className="space-y-4"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                    clipRule="evenodd"
+                  <div className="inline-flex items-center justify-center mb-5">
+                    <motion.span 
+                      className="h-0.5 w-12 bg-primary mr-3"
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.4 }}
+                    ></motion.span>
+                    <span className="text-sm font-semibold tracking-wider text-primary uppercase">
+                      Our Expertise
+                    </span>
+                    <motion.span 
+                      className="h-0.5 w-12 bg-primary ml-3"
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.4 }}
+                    ></motion.span>
+                  </div>
+
+                  <motion.h2 
+                    className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                  >
+                    Advanced <span className="text-primary">Fire Protection</span> Solutions
+                  </motion.h2>
+
+                  <motion.p 
+                    className="text-lg text-gray-600 max-w-3xl leading-relaxed"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                  >
+                    Comprehensive fire safety solutions for industrial and commercial facilities. 
+                    From detection systems to suppression equipment, we protect what matters most 
+                    with precision installation and maintenance protocols.
+                  </motion.p>
+                </motion.div>
+
+                {/* Key Benefits */}
+                <motion.div 
+                  className="space-y-4"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                >
+                  {[
+                    { text: "Save time – we focus on the details with precision installation.", color: "primary" },
+                    { text: "Save money – we ensure you get quality with proven track record.", color: "accent" },
+                    { text: "Stay safe – we deliver outstanding standards to keep you protected.", color: "primary" }
+                  ].map((benefit, index) => (
+                    <motion.div 
+                      key={index}
+                      className="flex items-start space-x-3"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                      whileHover={{ x: 5 }}
+                    >
+                      <motion.div 
+                        className={`w-2 h-2 bg-${benefit.color} rounded-full mt-3 flex-shrink-0`}
+                        whileHover={{ scale: 1.5 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      ></motion.div>
+                      <p className="text-gray-700">
+                        <strong>{benefit.text.split('–')[0]}</strong> – {benefit.text.split('–')[1]}
+                      </p>
+                    </motion.div>
+                  ))}
+                </motion.div>
+
+                {/* Stats Section */}
+                <motion.div 
+                  className="bg-gray-50 rounded-xl p-6"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                    Our Success Metrics
+                  </h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    {[
+                      { value: "500+", label: "Projects Completed" },
+                      { value: "97%", label: "Client Satisfaction" }
+                    ].map((stat, index) => (
+                      <motion.div 
+                        key={index}
+                        className="text-center"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <motion.div 
+                          className="text-2xl font-bold text-primary"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8, delay: 1 + index * 0.1 }}
+                        >
+                          {stat.value}
+                        </motion.div>
+                        <div className="text-sm text-gray-600">{stat.label}</div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Right Column - Image with Stacked Feature Cards */}
+              <motion.div 
+                className="relative"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
+                {/* Background Image */}
+                <motion.div 
+                  className="relative rounded-xl overflow-hidden shadow-xl"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.img
+                    src="/images/about.jpg"
+                    alt="Professional fire safety team"
+                    className="w-full h-[600px] object-cover"
+                    initial={{ scale: 1.1 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
                   />
-                </svg>
-              </a>
+
+                  {/* Stacked Overlay Cards */}
+                  <div className="absolute top-6 left-6 flex flex-col gap-4 max-w-xs">
+                    {[
+                      {
+                        title: "Expert Team",
+                        description: "Our methodology depends on an expert team.",
+                        icon: FaUsers,
+                        bgColor: "bg-red-600",
+                        textColor: "text-white",
+                        iconBg: "bg-white/20",
+                        delay: 0.2
+                      },
+                      {
+                        title: "Experience",
+                        description: "Over 97 years in maintenance and supply of firefighting equipment.",
+                        icon: FaStar,
+                        bgColor: "bg-white/95",
+                        textColor: "text-gray-900",
+                        iconBg: "bg-gradient-to-r from-red-500 to-red-700",
+                        delay: 0.4
+                      },
+                      {
+                        title: "Certification",
+                        description: "Operating under European & international fire safety standards.",
+                        icon: FaCertificate,
+                        bgColor: "bg-white/95",
+                        textColor: "text-gray-900",
+                        iconBg: "bg-gradient-to-r from-red-500 to-red-700",
+                        delay: 0.6
+                      }
+                    ].map((card, index) => (
+                      <motion.div
+                        key={index}
+                        className={`${card.bgColor} ${card.textColor} p-4 rounded-lg shadow-lg backdrop-blur-sm`}
+                        initial={{ opacity: 0, x: -50, y: 20 }}
+                        whileInView={{ opacity: 1, x: 0, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ 
+                          duration: 0.6, 
+                          delay: card.delay,
+                          type: "spring",
+                          stiffness: 100
+                        }}
+                        whileHover={{ 
+                          x: 10,
+                          scale: 1.05,
+                          transition: { duration: 0.2 }
+                        }}
+                      >
+                        <div className="flex items-center space-x-3">
+                          <motion.div 
+                            className={`w-10 h-10 ${card.iconBg} rounded-lg flex items-center justify-center`}
+                            whileHover={{ rotate: 360 }}
+                            transition={{ duration: 0.6 }}
+                          >
+                            <card.icon className="w-5 h-5 text-white" />
+                          </motion.div>
+                          <div>
+                            <h4 className="font-bold text-sm">
+                              {card.title === "Experience" || card.title === "Certification" 
+                                ? <span className="text-red-600">{card.title}</span> 
+                                : card.title
+                              }
+                            </h4>
+                            <p className="text-xs opacity-90">
+                              {card.description}
+                            </p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -256,29 +410,100 @@ const Home = () => {
               ))}
             </div>
 
-            {/* Modern Stats Section */}
-            <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[
-                { value: "15+", label: "Years Experience", accent: true },
-                { value: "500+", label: "Projects Completed", accent: false },
-                { value: "98%", label: "Client Satisfaction", accent: true },
-                { value: "24/7", label: "Support Available", accent: false },
-              ].map((stat, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm text-center"
+            {/* Certificates Auto-Scroll Section */}
+            <motion.div 
+              className="mt-20"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <div className="text-center mb-12">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Industry Certifications & Compliance
+                </h3>
+                <p className="text-gray-600 max-w-2xl mx-auto">
+                  We maintain the highest standards with internationally recognized certifications and compliance.
+                </p>
+              </div>
+
+              {/* Auto-scrolling certificates container */}
+              <div className="relative overflow-hidden">
+                {/* Gradient overlays for smooth edges */}
+                <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10"></div>
+
+                {/* Scrolling certificates */}
+                <motion.div 
+                  className="flex space-x-12 items-center"
+                  animate={{ x: [0, -1000] }}
+                  transition={{ 
+                    duration: 30, 
+                    repeat: Infinity, 
+                    ease: "linear" 
+                  }}
                 >
-                  <div
-                    className={`text-4xl font-bold mb-2 ${
-                      stat.accent ? "text-accent" : "text-primary"
-                    }`}
-                  >
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-600">{stat.label}</div>
-                </div>
-              ))}
-            </div>
+                  {/* First set of certificates */}
+                  {[
+                    { name: "NFPA", image: "/images/compliance/nfpa.png" },
+                    { name: "ISO", image: "/images/compliance/iso.png" },
+                    { name: "OSHA", image: "/images/compliance/osha.webp" },
+                    { name: "FM Global", image: "/images/compliance/fm.png" },
+                    { name: "ActiVfire", image: "/images/compliance/activfire.png" },
+                    { name: "FPA Australia", image: "/images/compliance/fpaaustralia.png" },
+                    { name: "Certified", image: "/images/compliance/certified.webp" },
+                  ].map((cert, index) => (
+                    <motion.div
+                      key={`first-${index}`}
+                      className="flex-shrink-0 group"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 w-48 h-32 flex items-center justify-center">
+                        <img
+                          src={cert.image}
+                          alt={`${cert.name} Certification`}
+                          className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                        />
+                      </div>
+                    </motion.div>
+                  ))}
+
+                  {/* Duplicate set for seamless loop */}
+                  {[
+                    { name: "NFPA", image: "/images/compliance/nfpa.png" },
+                    { name: "ISO", image: "/images/compliance/iso.png" },
+                    { name: "OSHA", image: "/images/compliance/osha.webp" },
+                    { name: "FM Global", image: "/images/compliance/fm.png" },
+                    { name: "ActiVfire", image: "/images/compliance/activfire.png" },
+                    { name: "FPA Australia", image: "/images/compliance/fpaaustralia.png" },
+                    { name: "Certified", image: "/images/compliance/certified.webp" },
+                  ].map((cert, index) => (
+                    <motion.div
+                      key={`second-${index}`}
+                      className="flex-shrink-0 group"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 w-48 h-32 flex items-center justify-center">
+                        <img
+                          src={cert.image}
+                          alt={`${cert.name} Certification`}
+                          className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                        />
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+
+              {/* Pause on hover functionality */}
+              <div className="text-center mt-8">
+                <p className="text-sm text-gray-500">
+                  Hover over certificates to pause and view details
+                </p>
+              </div>
+            </motion.div>
 
             {/* CTA Section */}
             <div className="mt-20 text-center">
@@ -305,240 +530,375 @@ const Home = () => {
         </section>
 
         {/* Values Section */}
-        <section className="py-28 bg-gray-950 text-white relative overflow-hidden">
-          {/* Abstract Gradient Background */}
+        <section className="py-24 bg-white relative overflow-hidden">
+          {/* Subtle Background Pattern */}
           <div className="absolute inset-0">
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-30"
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white"></div>
+            <div 
+              className="absolute inset-0 opacity-5"
               style={{
-                background: `radial-gradient(circle at 20% 30%, ${"#ff3131"}33, transparent 25%), 
-                   radial-gradient(circle at 80% 70%, ${"#18558c"}33, transparent 25%)`,
-              }}
-            ></div>
-
-            {/* Geometric Grid Pattern */}
-            <div
-              className="absolute inset-0 opacity-10"
-              style={{
-                backgroundImage: `linear-gradient(to right, #fff 1px, transparent 1px),
-                        linear-gradient(to bottom, #fff 1px, transparent 1px)`,
-                backgroundSize: "40px 40px",
+                backgroundImage: `radial-gradient(circle at 25% 25%, ${"#18558c"}20, transparent 50%), 
+                                 radial-gradient(circle at 75% 75%, ${"#ff3131"}20, transparent 50%)`,
               }}
             ></div>
           </div>
 
-          <div className="container mx-auto px-4 max-w-7xl relative z-10">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-10 mb-20">
-              <div className="md:w-2/5">
-                <span className="inline-block bg-gradient-to-r from-accent to-[#ff6b6b] text-white px-5 py-2 rounded-full text-sm font-medium mb-6">
-                  OUR PHILOSOPHY
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            {/* Header */}
+            <motion.div 
+              className="text-center mb-20"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="inline-flex items-center justify-center mb-5">
+                <motion.span 
+                  className="h-0.5 w-12 bg-primary mr-3"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                ></motion.span>
+                <span className="text-sm font-semibold tracking-wider text-primary uppercase">
+                  Our Philosophy
                 </span>
-                <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                  Built on Integrity, <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                    Driven by Safety
-                  </span>
-                </h2>
-                <p className="text-lg text-gray-300 mb-8 max-w-lg">
-                  Our core values define every solution we deliver and every
-                  relationship we build in protecting what matters most.
-                </p>
-
-                <div className="flex items-center">
-                  <div className="flex -space-x-3 mr-4">
-                    <div className="w-10 h-10 rounded-full bg-primary border-2 border-gray-900"></div>
-                    <div className="w-10 h-10 rounded-full bg-accent border-2 border-gray-900"></div>
-                    <div className="w-10 h-10 rounded-full bg-blue-700 border-2 border-gray-900"></div>
-                  </div>
-                  <div className="text-gray-300">
-                    <span className="block font-semibold">
-                      Industry Certified Team
-                    </span>
-                    <span className="text-sm">
-                      NFPA & ISO compliant professionals
-                    </span>
-                  </div>
-                </div>
+                <motion.span 
+                  className="h-0.5 w-12 bg-primary ml-3"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                ></motion.span>
               </div>
 
-              <div className="md:w-3/5 relative">
-                {/* Abstract 3D Shape */}
-                <div className="relative w-full aspect-square max-w-xl mx-auto">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-4/5 h-4/5 rounded-2xl border-2 border-primary/30 rotate-45"></div>
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-3/5 h-3/5 rounded-2xl bg-gradient-to-br from-primary to-primary/10 rotate-12"></div>
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-2/5 h-2/5 rounded-xl bg-accent/80 rotate-[-25deg]"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              <motion.h2 
+                className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                Built on <span className="text-primary">Integrity</span>, Driven by Safety
+              </motion.h2>
+
+              <motion.p 
+                className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                Our core values define every solution we deliver and every relationship we build in protecting what matters most.
+              </motion.p>
+            </motion.div>
 
             {/* Values Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
-              {/* Decorative Lines */}
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-transparent via-primary to-transparent opacity-20"></div>
-              <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent opacity-20"></div>
-
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {values.map((value, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className={`p-8 rounded-3xl backdrop-blur-sm bg-gradient-to-br ${
-                    index % 4 === 0
-                      ? "from-gray-900/50 to-gray-800/50 border border-gray-800"
-                      : ""
-                  } ${
-                    index % 4 === 1
-                      ? "from-primary/10 to-primary/5 border border-primary/20"
-                      : ""
-                  } ${
-                    index % 4 === 2
-                      ? "from-accent/10 to-accent/5 border border-accent/20"
-                      : ""
-                  } ${
-                    index % 4 === 3
-                      ? "from-gray-900/50 to-gray-800/50 border border-gray-800"
-                      : ""
-                  } transition-all duration-500 hover:shadow-xl hover:scale-[1.02]`}
+                  className="group relative"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -10 }}
                 >
-                  <div className="flex items-start gap-6">
-                    <div
-                      className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center ${
-                        index % 4 === 1
-                          ? "bg-primary/20"
-                          : index % 4 === 2
-                          ? "bg-accent/20"
-                          : "bg-gray-800"
+                  {/* Card */}
+                  <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
+                    {/* Background Accent */}
+                    <div className={`absolute top-0 left-0 w-full h-1 ${
+                      index % 4 === 0 ? 'bg-primary' :
+                      index % 4 === 1 ? 'bg-accent' :
+                      index % 4 === 2 ? 'bg-primary' :
+                      'bg-accent'
+                    }`}></div>
+
+                    {/* Icon Container */}
+                    <motion.div 
+                      className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${
+                        index % 4 === 0 ? 'bg-primary/10' :
+                        index % 4 === 1 ? 'bg-accent/10' :
+                        index % 4 === 2 ? 'bg-primary/10' :
+                        'bg-accent/10'
                       }`}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
                     >
-                      <div
-                        className={`text-2xl ${
-                          index % 4 === 1
-                            ? "text-primary"
-                            : index % 4 === 2
-                            ? "text-accent"
-                            : "text-white"
-                        }`}
-                      >
+                      <div className={`text-3xl ${
+                        index % 4 === 0 ? 'text-primary' :
+                        index % 4 === 1 ? 'text-accent' :
+                        index % 4 === 2 ? 'text-primary' :
+                        'text-accent'
+                      }`}>
                         {index === 0 && <FaHandshake />}
                         {index === 1 && <FaMedal />}
                         {index === 2 && <FaLightbulb />}
                         {index === 3 && <FaClipboardCheck />}
                       </div>
+                    </motion.div>
+
+                    {/* Content */}
+                    <div>
+                      <motion.h3 
+                        className="text-xl font-bold text-gray-900 mb-4"
+                        whileHover={{ x: 5 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {value.title}
+                      </motion.h3>
+                      <p className="text-gray-600 leading-relaxed mb-6">
+                        {value.description}
+                      </p>
+
+                      {/* Learn More Link */}
+                      <motion.div 
+                        className={`inline-flex items-center text-sm font-medium ${
+                          index % 4 === 0 ? 'text-primary' :
+                          index % 4 === 1 ? 'text-accent' :
+                          index % 4 === 2 ? 'text-primary' :
+                          'text-accent'
+                        } group-hover:translate-x-2 transition-transform duration-300`}
+                      >
+                        <span>Learn more</span>
+                        <FaArrowRight className="ml-2 w-3 h-3" />
+                      </motion.div>
                     </div>
 
-                    <div>
-                      <div className="flex items-center mb-3">
-                        <h3 className="text-xl font-bold mr-3">
-                          {value.title}
-                        </h3>
-                        <div
-                          className={`w-8 h-0.5 ${
-                            index % 4 === 1
-                              ? "bg-primary"
-                              : index % 4 === 2
-                              ? "bg-accent"
-                              : "bg-gray-400"
-                          }`}
-                        ></div>
-                      </div>
-                      <p className="text-gray-300">{value.description}</p>
-
-                      {/* Value Number */}
-                      <div
-                        className={`text-8xl font-black opacity-5 absolute bottom-2 right-4 ${
-                          index % 4 === 1
-                            ? "text-primary"
-                            : index % 4 === 2
-                            ? "text-accent"
-                            : "text-white"
-                        }`}
-                      >
-                        {index + 1}
-                      </div>
+                    {/* Floating Number */}
+                    <div className={`absolute -bottom-2 -right-2 w-12 h-12 rounded-full flex items-center justify-center text-2xl font-bold text-white ${
+                      index % 4 === 0 ? 'bg-primary' :
+                      index % 4 === 1 ? 'bg-accent' :
+                      index % 4 === 2 ? 'bg-primary' :
+                      'bg-accent'
+                    } opacity-20`}>
+                      {index + 1}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
+
+            {/* Bottom CTA */}
+            <motion.div 
+              className="text-center mt-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <div className="inline-flex items-center bg-gray-50 rounded-2xl p-6">
+                <div className="flex -space-x-3 mr-6">
+                  <div className="w-12 h-12 rounded-full bg-primary border-4 border-white shadow-lg"></div>
+                  <div className="w-12 h-12 rounded-full bg-accent border-4 border-white shadow-lg"></div>
+                  <div className="w-12 h-12 rounded-full bg-primary border-4 border-white shadow-lg"></div>
+                </div>
+                <div className="text-left">
+                  <div className="font-bold text-gray-900">Industry Certified Team</div>
+                  <div className="text-sm text-gray-600">NFPA & ISO compliant professionals</div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* Compliance Overview */}
-        <section className="py-20 bg-gradient-to-b from-white to-gray-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="relative">
-                <img
-                  src="/images/compliance/nfpa.png"
-                  alt="Safety Certifications"
-                  className="w-full h-64 object-cover rounded-2xl shadow-lg"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+     
+        <section className="py-24 relative overflow-hidden">
+          {/* Parallax Background */}
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black"
+            style={{
+              backgroundImage: `url('/images/background2.jpg')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundAttachment: 'fixed'
+            }}
+          >
+            <div className="absolute inset-0 bg-black/80"></div>
+            {/* Subtle architectural pattern overlay */}
+            <div 
+              className="absolute inset-0 opacity-5"
+              style={{
+                backgroundImage: `linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%)`,
+                backgroundSize: '100px 100px'
+              }}
+            ></div>
+          </motion.div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            {/* Header */}
+            <motion.div 
+              className="text-center mb-20"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="inline-flex items-center justify-center mb-5">
+                <motion.span 
+                  className="h-0.5 w-12 bg-primary mr-3"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                ></motion.span>
+                <span className="text-sm font-semibold tracking-wider text-primary uppercase">
+                  Our Portfolio
+                </span>
+                <motion.span 
+                  className="h-0.5 w-12 bg-primary ml-3"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                ></motion.span>
               </div>
 
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Certified Safety{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800">
-                    Excellence
-                  </span>
-                </h2>
-                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                  We maintain full compliance with international safety
-                  standards including NFPA, OSHA, and ISO certifications. Our
-                  certified team ensures your operations meet the highest safety
-                  requirements.
-                </p>
+              <motion.h2 
+                className="text-4xl md:text-5xl font-bold text-white mb-6"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                Successful <span className="text-primary">Safety Implementations</span>
+              </motion.h2>
 
-                <Link
-                  to="/compliance"
-                  className="group inline-flex items-center bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              <motion.p 
+                className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                Discover our portfolio of successful safety implementations across various industries and sectors.
+              </motion.p>
+            </motion.div>
+
+            {/* Case Study Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                {
+                  image: "/images/safety1.png",
+                  category: "Fire Protection",
+                  title: "AFEX Mobile Mining Equipment Maintenance",
+                  accent: false
+                },
+                {
+                  image: "/images/16.png",
+                  category: "Safety Systems",
+                  title: "ICAT Mining Equipment Safety Systems",
+                  accent: false
+                },
+                {
+                  image: "/images/17.png",
+                  category: "Industrial Safety",
+                  title: "Industrial Plant Fire Protection",
+                  accent: true
+                },
+                {
+                  image: "/images/18.png",
+                  category: "Preventive Maintenance",
+                  title: "Mining Equipment Preventive Maintenance",
+                  accent: false
+                }
+              ].map((project, index) => (
+                <motion.div
+                  key={index}
+                  className="group relative overflow-hidden rounded-2xl cursor-pointer bg-white shadow-2xl"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -15, scale: 1.03 }}
                 >
-                  View All Certifications
-                  <FaArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
-              </div>
+                  {/* Card Image - Larger and more prominent */}
+                  <div className="relative h-96 overflow-hidden">
+                    <motion.img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                      whileHover={{ scale: 1.15 }}
+                      transition={{ duration: 0.8 }}
+                    />
+                    {/* Image Overlay */}
+                    <div className={`absolute inset-0 ${
+                      project.accent 
+                        ? 'bg-gradient-to-t from-accent/70 via-accent/30 to-transparent' 
+                        : 'bg-gradient-to-t from-black/50 to-transparent'
+                    }`}></div>
+                  </div>
+
+                  {/* Text Content Overlay - Compact */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-white p-4 transform translate-y-0 group-hover:translate-y-0 transition-transform duration-300">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                    >
+                      <span className={`text-xs font-bold uppercase tracking-wider mb-1 block ${
+                        project.accent ? 'text-accent' : 'text-primary'
+                      }`}>
+                        {project.category}
+                      </span>
+                      <h3 className="text-sm font-bold text-gray-900 mb-2 leading-tight line-clamp-2">
+                        {project.title}
+                      </h3>
+                      
+                      {/* Plus Icon */}
+                      <motion.div 
+                        className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                          project.accent ? 'bg-accent' : 'bg-primary'
+                        } ml-auto`}
+                        whileHover={{ rotate: 90, scale: 1.2 }}
+                        transition={{ duration: 0.4 }}
+                      >
+                        <svg 
+                          className="w-4 h-4 text-white" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                        </svg>
+                      </motion.div>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
+
+            {/* CTA Button */}
+            <motion.div 
+              className="text-center mt-20"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <Link
+                to="/projects"
+                className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-white bg-primary hover:bg-[#134271] transition-colors shadow-md hover:shadow-lg"
+              >
+                Explore All Projects
+                <FaArrowRight className="ml-3 w-5 h-5" />
+              </Link>
+            </motion.div>
           </div>
         </section>
         {/* CTA Section */}
-        <section className="py-20 relative overflow-hidden">
-          {/* Background elements */}
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-accent to-red-600 z-0"></div>
-            <div className="absolute inset-0 bg-[url('/images/15.png')] opacity-20 z-10"></div>
-          </div>
-
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Ready to Enhance Your Safety?
-              </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Contact us today for a comprehensive safety assessment of your
-                facility.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-accent font-bold px-8 py-4 rounded-lg text-lg transition-all hover:bg-gray-100 hover:scale-[1.03] shadow-lg hover:shadow-xl flex items-center justify-center">
-                  <FaPhone className="h-5 w-5 mr-2" />
-                  Request a Quote
-                </button>
-                <button className="bg-transparent border-2 border-white text-white font-bold px-8 py-4 rounded-lg text-lg transition-all hover:bg-white/10 hover:scale-[1.03] flex items-center justify-center">
-                  <FaInfo className="h-5 w-5 mr-2" />
-                  Contact Us
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
+        <CTA 
+          title="Ready to Enhance Your Safety?"
+          subtitle="Contact us today for a comprehensive safety assessment of your facility."
+          primaryButton={{ text: "Request a Quote", href: "/contact" }}
+          secondaryButton={{ text: "Contact Us", href: "/contact" }}
+        /> 
       </main>
     </>
   );
 };
 
 export default Home;
+
