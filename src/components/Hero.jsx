@@ -328,9 +328,32 @@ const Hero = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-100/50 to-blue-200/30"></div>
+      {/* Background with safetybg.png image */}
+      <div className="absolute inset-0">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/images/safetybg.png')`,
+          }}
+        />
+        
+        {/* Color Overlay for blending - reduced opacity */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/70 via-white/60 to-gray-50/50"></div>
+        
+        {/* Subtle pattern overlay for depth */}
+        <div className="absolute inset-0 opacity-5">
+          <div 
+            className="w-full h-full"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25% 25%, ${"#18558c"}20, transparent 50%), 
+                                 radial-gradient(circle at 75% 75%, ${"#ff3131"}20, transparent 50%)`,
+            }}
+          />
+        </div>
+        
+        {/* Professional blur effect for text readability - reduced intensity */}
+        <div className="absolute inset-0 backdrop-blur-[0.5px]"></div>
       </div>
 
       {/* Content */}
