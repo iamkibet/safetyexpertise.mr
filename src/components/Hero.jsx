@@ -1,522 +1,375 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-  useMemo,
-} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaArrowLeft, FaArrowRight, FaCog, FaShieldAlt, FaGift } from "react-icons/fa";
 
-// Custom hook for slide management
-const useSlideManager = (slides, autoPlayInterval = 5000) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const intervalRef = useRef(null);
-  const progressRef = useRef(null);
-
-  const resetProgress = useCallback(() => {
-    setProgress(0);
-    const start = Date.now();
-    progressRef.current = setInterval(() => {
-      const elapsed = Date.now() - start;
-      const percentage = Math.min((elapsed / autoPlayInterval) * 100, 100);
-      setProgress(percentage);
-      if (percentage >= 100) {
-        clearInterval(progressRef.current);
-      }
-    }, 50);
-  }, [autoPlayInterval]);
-
-  const goToSlide = useCallback(
-    (index) => {
-      if (index === currentSlide || index < 0 || index >= slides.length) return;
-
-      clearInterval(intervalRef.current);
-      clearInterval(progressRef.current);
-
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentSlide(index);
-        setIsTransitioning(false);
-        resetProgress();
-      }, 300);
-    },
-    [currentSlide, slides.length, resetProgress]
-  );
-
-  const nextSlide = useCallback(() => {
-    goToSlide((currentSlide + 1) % slides.length);
-  }, [currentSlide, slides.length, goToSlide]);
-
-  const prevSlide = useCallback(() => {
-    goToSlide((currentSlide - 1 + slides.length) % slides.length);
-  }, [currentSlide, slides.length, goToSlide]);
-
-  const pauseAutoPlay = useCallback(() => setIsPaused(true), []);
-  const resumeAutoPlay = useCallback(() => setIsPaused(false), []);
+/* === Typewriter Component === */
+const TypewriterText = ({ text, delay = 50, className = "", onComplete }) => {
+  const [displayText, setDisplayText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (isPaused) {
-      clearInterval(intervalRef.current);
-      clearInterval(progressRef.current);
-      return;
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText(prev => prev + text[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, delay);
+
+      return () => clearTimeout(timeout);
+    } else if (onComplete) {
+      // Call onComplete when typing is finished
+      onComplete();
     }
+  }, [currentIndex, text, delay, onComplete]);
 
-    resetProgress();
-    intervalRef.current = setInterval(() => {
-      nextSlide();
-    }, autoPlayInterval);
+  useEffect(() => {
+    setDisplayText("");
+    setCurrentIndex(0);
+  }, [text]);
 
-    return () => {
-      clearInterval(intervalRef.current);
-      clearInterval(progressRef.current);
-    };
-  }, [currentSlide, isPaused, autoPlayInterval, nextSlide, resetProgress]);
-
-  return {
-    currentSlide,
-    isTransitioning,
-    progress,
-    isPaused,
-    goToSlide,
-    nextSlide,
-    prevSlide,
-    pauseAutoPlay,
-    resumeAutoPlay,
-  };
+  return (
+    <span className={className}>
+      {displayText}
+      <span className="animate-pulse">|</span>
+    </span>
+  );
 };
 
-// Slide data with enhanced metadata
+/* === Slide Data === */
 const SLIDE_DATA = [
   {
     id: 1,
-    title: "Fire Protection Services",
-    subtitle:
-      "Comprehensive fire safety solutions for your business. From detection systems to suppression equipment, we protect what matters most.",
-    image: "/images/safety1.png",
-    badge: "FIRE PROTECTION",
-    cta: "Get Free Consultation",
-    ctaLink: "/contact",
-    secondaryCta: "View Services",
-    secondaryCtaLink: "/services",
-    gradient: "from-red-600/20 via-red-800/30 to-red-900/50",
-    accentColor: "red",
-    features: [
-      "Detection Systems",
-      "Suppression Equipment",
-      "Safety Compliance",
-    ],
+    badge: "Fire Suppression",
+    title: "Dependable fire suppression systems",
+    subtitle: "Discover dependable, automatic fire suppression systems and solutions for server rooms and data centres.",
+    image: "/images/hero/Extinguishers.png",
+    cta: "Discover Systems",
+    ctaLink: "/services",
+    accentColor: "#10B981", // Green
+    features: ["24/7 Emergency Response", "Certified Safety Systems", "National Compliance"]
   },
   {
     id: 2,
-    title: "Industrial Maintenance",
-    subtitle:
-      "Professional maintenance services to keep your industrial equipment running efficiently and safely. Preventive and corrective maintenance solutions.",
-    image: "/images/background2.jpg",
-    badge: "INDUSTRIAL MAINTENANCE",
-    cta: "Schedule Maintenance",
-    ctaLink: "/contact",
-    secondaryCta: "Learn More",
-    secondaryCtaLink: "/services",
-    gradient: "from-blue-600/20 via-blue-800/30 to-blue-900/50",
-    accentColor: "blue",
-    features: [
-      "Preventive Maintenance",
-      "Corrective Repairs",
-      "Equipment Optimization",
-    ],
+    badge: "Fire Detection",
+    title: "Advanced fire detection technology",
+    subtitle: "State-of-the-art fire detection systems with early warning capabilities for maximum safety and protection.",
+    image: "/images/hero/Detectors-1.png",
+    cta: "Learn More",
+    ctaLink: "/services",
+    accentColor: "#EF4444", // Red
+    features: ["Early Warning Systems", "Smart Detection", "24/7 Monitoring"]
   },
+  {
+    id: 3,
+    badge: "Industrial Maintenance",
+    title: "Professional industrial maintenance",
+    subtitle: "Expert maintenance services for industrial equipment and mobile mining machinery with AFEX - ICAT specialization.",
+    image: "/images/hero/Servicing.png",
+    cta: "Get Quote",
+    ctaLink: "/contact",
+    accentColor: "#F59E0B", // Yellow
+    features: ["Preventive Maintenance", "Equipment Optimization", "Safety Compliance"]
+  },
+  {
+    id: 4,
+    badge: "Mining Equipment",
+    title: "AFEX - ICAT mobile equipment",
+    subtitle: "Specialized maintenance and safety systems for mobile mining equipment and industrial machinery.",
+    image: "/images/hero/mining.png",
+    cta: "Explore Solutions",
+    ctaLink: "/services",
+    accentColor: "#3B82F6", // Blue
+    features: ["Mobile Equipment", "Mining Safety", "24/7 Support"]
+  }
 ];
 
-// Enhanced button component with proper accessibility
-const NavigationButton = ({ onClick, direction, className = "", ...props }) => (
-  <button
+/* === Navigation Arrows === */
+const NavigationButton = ({ direction, onClick, disabled = false, isMobile = false }) => (
+  <motion.button
     onClick={onClick}
-    className={`flex items-center justify-center rounded-full bg-black/20 backdrop-blur-md hover:bg-black/40 transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/50 ${className}`}
-    aria-label={`Go to ${direction} slide`}
-    {...props}
+    disabled={disabled}
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className={`${
+      isMobile 
+        ? 'p-4 bg-white/95 backdrop-blur-sm rounded-full shadow-xl hover:bg-white transition-all duration-300' 
+        : 'p-3 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg hover:bg-white transition-colors'
+    } ${
+      disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+    }`}
+    aria-label={`${direction} slide`}
   >
-    <svg
-      className="w-5 h-5 text-white"
-      fill="currentColor"
-      viewBox="0 0 16 16"
-      aria-hidden="true"
-    >
-      <path
-        fillRule="evenodd"
-        d={
-          direction === "previous"
-            ? "M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-            : "M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-        }
+    {direction === "prev" ? (
+      <FaArrowLeft className={`${isMobile ? 'w-5 h-5' : 'w-4 h-4'} text-gray-800`} />
+    ) : (
+      <FaArrowRight className={`${isMobile ? 'w-5 h-5' : 'w-4 h-4'} text-gray-800`} />
+    )}
+  </motion.button>
+);
+
+/* === Progress Dots === */
+const ProgressIndicator = ({ slides, currentSlide, onSlideClick }) => (
+  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+    {slides.map((_, idx) => (
+      <motion.button
+        key={idx}
+        onClick={() => onSlideClick(idx)}
+        whileHover={{ scale: 1.2 }}
+        whileTap={{ scale: 0.9 }}
+        className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-colors ${
+          idx === currentSlide ? 'bg-white shadow-lg' : 'bg-white/40'
+        }`}
+        aria-label={`Go to slide ${idx + 1}`}
       />
-    </svg>
-  </button>
-);
-
-// Progress indicator component
-const ProgressIndicator = ({
-  slides,
-  currentSlide,
-  progress,
-  onSlideClick,
-}) => (
-  <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3 z-20">
-    {slides.map((_, index) => (
-      <button
-        key={index}
-        onClick={() => onSlideClick(index)}
-        className="group relative w-12 h-1 sm:w-16 sm:h-1.5 bg-white/30 rounded-full overflow-hidden transition-all duration-300 hover:bg-white/50"
-        aria-label={`Go to slide ${index + 1}`}
-      >
-        {index === currentSlide && (
-          <div
-            className="absolute top-0 left-0 h-full bg-white rounded-full transition-all duration-100 ease-linear"
-            style={{ width: `${progress}%` }}
-          />
-        )}
-        <div className="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-300" />
-      </button>
     ))}
   </div>
 );
 
-// Feature list component with enhanced animations
-const FeatureList = ({ features, accentColor }) => (
-  <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8">
-    {features.map((feature, index) => (
-      <span
-        key={index}
-        className={`inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 transition-all duration-500 hover:bg-white/20 hover:scale-105 transform`}
-        style={{
-          animationDelay: `${index * 100}ms`,
-          animation: "fadeInUp 0.6s ease-out forwards",
-        }}
-      >
-        <div
-          className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-${accentColor}-400 mr-2 animate-pulse`}
-        />
-        {feature}
-      </span>
-    ))}
+/* === Feature Cards === */
+const FeatureCards = () => (
+  <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm hidden lg:block">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-lg"
+        >
+          <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
+            <FaShieldAlt className="w-6 h-6 text-red-600" />
+          </div>
+          <div>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">Passion for fire safety</h3>
+            <p className="text-gray-600 text-sm">Dedicated to protecting lives and property with certified fire safety solutions.</p>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-lg"
+        >
+          <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+            <FaGift className="w-6 h-6 text-blue-600" />
+          </div>
+          <div>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">Reliable Fire Protection</h3>
+            <p className="text-gray-600 text-sm">Comprehensive fire protection systems designed for maximum reliability and safety.</p>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-lg"
+        >
+          <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+            <FaCog className="w-6 h-6 text-green-600" />
+          </div>
+          <div>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">Engineering the quality</h3>
+            <p className="text-gray-600 text-sm">Expert engineering and maintenance services for industrial equipment and systems.</p>
+          </div>
+        </motion.div>
+      </div>
+    </div>
   </div>
 );
 
+/* === Main Hero Component === */
 const Hero = () => {
-  const {
-    currentSlide,
-    isTransitioning,
-    progress,
-    isPaused,
-    goToSlide,
-    nextSlide,
-    prevSlide,
-    pauseAutoPlay,
-    resumeAutoPlay,
-  } = useSlideManager(SLIDE_DATA, 6000);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+  const intervalRef = useRef(null);
+  const typingCompleteRef = useRef(null);
 
-  const currentSlideData = useMemo(
-    () => SLIDE_DATA[currentSlide],
-    [currentSlide]
-  );
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % SLIDE_DATA.length);
+    setIsTypingComplete(false);
+  };
 
-  // Enhanced keyboard navigation
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + SLIDE_DATA.length) % SLIDE_DATA.length);
+    setIsTypingComplete(false);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+    setIsTypingComplete(false);
+  };
+
+  const handleTypingComplete = () => {
+    setIsTypingComplete(true);
+    // Wait 3 seconds after typing is complete, then move to next slide
+    typingCompleteRef.current = setTimeout(() => {
+      if (isAutoPlaying) {
+        nextSlide();
+      }
+    }, 3000);
+  };
+
+  // Clear timeout when component unmounts or slide changes
   useEffect(() => {
-    const handleKeyPress = (e) => {
-      switch (e.key) {
-        case "ArrowLeft":
-          e.preventDefault();
-          prevSlide();
-          break;
-        case "ArrowRight":
-          e.preventDefault();
-          nextSlide();
-          break;
-        case " ":
-          e.preventDefault();
-          isPaused ? resumeAutoPlay() : pauseAutoPlay();
-          break;
+    return () => {
+      if (typingCompleteRef.current) {
+        clearTimeout(typingCompleteRef.current);
       }
     };
+  }, []);
 
-    window.addEventListener("keydown", handleKeyPress);
-    return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [prevSlide, nextSlide, isPaused, pauseAutoPlay, resumeAutoPlay]);
+  // Pause auto-play on hover
+  const handleMouseEnter = () => setIsAutoPlaying(false);
+  const handleMouseLeave = () => setIsAutoPlaying(true);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeys = (e) => {
+      if (e.key === "ArrowLeft") prevSlide();
+      if (e.key === "ArrowRight") nextSlide();
+    };
+    window.addEventListener("keydown", handleKeys);
+    return () => window.removeEventListener("keydown", handleKeys);
+  }, []);
+
+  const currentSlideData = SLIDE_DATA[currentSlide];
 
   return (
     <section
-      className="relative w-full h-screen min-h-[600px] max-h-[100vh] overflow-hidden"
-      onMouseEnter={pauseAutoPlay}
-      onMouseLeave={resumeAutoPlay}
-      role="banner"
-      aria-label="Hero section"
+      className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      {/* Enhanced CSS with better performance and animations */}
-      <style jsx>{`
-        .slide-gradient {
-          background: radial-gradient(
-            circle at 20% 30%,
-            transparent 0%,
-            rgba(0, 0, 0, 0.4) 50%,
-            rgba(0, 0, 0, 0.8) 100%
-          );
-        }
-        .text-shadow {
-          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-        }
-        .slide-transition {
-          transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .content-transition {
-          transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .progress-bar {
-          transition: width 0.1s linear;
-        }
-        .glass-effect {
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-        }
-        .hover-lift {
-          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .hover-lift:hover {
-          transform: translateY(-2px);
-        }
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .gradient-text {
-          background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        .glow-effect {
-          box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-        }
-        .text-area-glow {
-          background: radial-gradient(
-            ellipse at center bottom,
-            rgba(255, 255, 255, 0.1) 0%,
-            transparent 70%
-          );
-        }
-        .overlay-pattern {
-          background-image: radial-gradient(
-              circle at 25% 25%,
-              rgba(255, 255, 255, 0.1) 0%,
-              transparent 50%
-            ),
-            radial-gradient(
-              circle at 75% 75%,
-              rgba(255, 255, 255, 0.05) 0%,
-              transparent 50%
-            );
-        }
-      `}</style>
-
-      {/* Background Slides with enhanced performance */}
-      <div className="absolute inset-0">
-        {SLIDE_DATA.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={`absolute inset-0 slide-transition ${
-              index === currentSlide && !isTransitioning
-                ? "opacity-100"
-                : "opacity-0"
-            }`}
-            aria-hidden={index !== currentSlide}
-          >
-            <div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={{
-                backgroundImage: `url(${slide.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            >
-              {/* Creative overlay system */}
-              <div className="absolute inset-0 bg-black/20" />
-
-              {/* Geometric overlay pattern */}
-              <div className="absolute inset-0 opacity-20">
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage: `
-                      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 1px, transparent 1px),
-                      radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 1px, transparent 1px),
-                      radial-gradient(circle at 40% 60%, rgba(255,255,255,0.08) 1px, transparent 1px)
-                    `,
-                    backgroundSize: "60px 60px, 80px 80px, 100px 100px",
-                    backgroundPosition: "0 0, 40px 40px, 20px 20px",
-                  }}
-                />
-              </div>
-
-              {/* Gradient overlay for text area - ultra smooth */}
-              <div className="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-
-              {/* Side accent overlay - reduced */}
-              <div className="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-black/10 to-transparent" />
-
-              {/* Text area highlight - ultra smooth */}
-              <div className="absolute bottom-0 left-0 w-4/5 h-1/2 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-            </div>
-          </div>
-        ))}
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-100/50 to-blue-200/30"></div>
       </div>
 
-      {/* Enhanced Content with better typography and spacing */}
-      <div className="relative z-10 container mx-auto h-full flex flex-col justify-end sm:justify-end justify-center pb-8 sm:pb-12 md:pb-16 lg:pb-20 px-4 sm:px-6 lg:px-8">
-        <div
-          className={`max-w-4xl content-transition text-area-glow ${
-            isTransitioning
-              ? "opacity-0 translate-y-6"
-              : "opacity-100 translate-y-0"
-          }`}
-        >
-          {/* Mobile-optimized content spacing */}
-          <div className="sm:hidden mb-4">
-            <div className="h-8"></div>
-          </div>
-          {/* Badge with enhanced styling */}
-          <div className="inline-flex items-center px-4 py-2 sm:px-4 sm:py-2 text-sm sm:text-sm font-semibold text-white glass-effect rounded-full mb-4 sm:mb-6 border border-white/20 shadow-lg">
-            <div
-              className={`w-2 h-2 sm:w-2 sm:h-2 rounded-full bg-${currentSlideData.accentColor}-400 mr-2 animate-pulse`}
-            />
-            {currentSlideData.badge}
-          </div>
-
-          {/* Enhanced typography hierarchy with gradient effects */}
-          <h1 className="text-5xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 text-shadow leading-tight">
-            {currentSlideData.title.split(" ").map((word, index) => (
-              <span
-                key={index}
-                className={`block transition-all duration-500 ${
-                  index === 1
-                    ? `text-${currentSlideData.accentColor}-300 glow-effect`
-                    : ""
-                }`}
-                style={{
-                  animationDelay: `${index * 150}ms`,
-                  animation: "fadeInUp 0.8s ease-out forwards",
-                }}
-              >
-                {word}
-              </span>
-            ))}
-          </h1>
-
-          {/* Feature list for better content structure - hidden on mobile */}
-          <div className="hidden sm:block">
-            <FeatureList
-              features={currentSlideData.features}
-              accentColor={currentSlideData.accentColor}
-            />
-          </div>
-
-          {/* Enhanced subtitle */}
-          <p className="text-xl sm:text-lg md:text-xl text-white mb-6 sm:mb-8 max-w-2xl text-shadow leading-relaxed font-light">
-            {currentSlideData.subtitle}
-          </p>
-
-          {/* Enhanced CTA buttons with better UX and micro-interactions */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start sm:items-center">
-            {/* Primary CTA - visible on all devices */}
-            <Link
-              to={currentSlideData.ctaLink}
-              className="group py-4 px-8 sm:py-4 sm:px-8 inline-flex items-center gap-x-2 sm:gap-x-3 text-base sm:text-base font-semibold rounded-xl bg-white text-gray-900 hover:bg-gray-50 transition-all duration-300 hover-lift shadow-xl relative overflow-hidden w-full sm:w-auto justify-center"
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto h-full flex items-center px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center w-full">
+          {/* Left Content */}
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 50 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="space-y-4 sm:space-y-6 lg:space-y-8 order-2 lg:order-1"
+          >
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+              className="inline-flex items-center px-4 sm:px-5 py-2 sm:py-3 bg-white/90 backdrop-blur-sm rounded-full border-2 border-gray-200 shadow-lg"
             >
-              <span className="relative z-10">{currentSlideData.cta}</span>
-              <svg
-                className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1 relative z-10"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-            </Link>
-
-            {/* Secondary CTA - hidden on mobile for cleaner UX */}
-            <Link
-              to={currentSlideData.secondaryCtaLink}
-              className="hidden sm:inline-flex group py-3 px-6 sm:py-4 sm:px-8 items-center gap-x-2 sm:gap-x-3 text-sm sm:text-base font-semibold rounded-xl glass-effect border-2 border-white/30 text-white hover:bg-white/10 transition-all duration-300 hover-lift relative overflow-hidden w-full sm:w-auto justify-center"
-            >
-              <span className="relative z-10">
-                {currentSlideData.secondaryCta}
+              <div 
+                className="w-3 h-3 sm:w-4 sm:h-4 rounded-full mr-3 sm:mr-4"
+                style={{ backgroundColor: currentSlideData.accentColor }}
+              />
+              <span className="text-sm sm:text-base font-bold text-gray-800 tracking-wide">
+                {currentSlideData.badge}
               </span>
-              <svg
-                className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1 relative z-10"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            </motion.div>
+
+            {/* Title */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, type: "spring", stiffness: 100 }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black sm:font-bold lg:font-bold text-gray-900 leading-tight tracking-tight"
+            >
+              <TypewriterText 
+                text={currentSlideData.title} 
+                delay={80}
+                className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent"
+                onComplete={handleTypingComplete}
+              />
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, type: "spring", stiffness: 100 }}
+              className="text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl text-gray-700 sm:text-gray-600 max-w-lg sm:max-w-xl lg:max-w-2xl leading-relaxed font-medium sm:font-normal"
+            >
+              {currentSlideData.subtitle}
+            </motion.p>
+
+            {/* CTA Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+            >
+              <Link
+                to={currentSlideData.ctaLink}
+                className="inline-flex items-center px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 bg-gradient-to-r from-gray-800 to-gray-900 text-white font-bold rounded-xl hover:from-gray-900 hover:to-black transition-all duration-300 shadow-xl text-base sm:text-lg lg:text-xl transform hover:scale-105"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-            </Link>
-          </div>
+                <FaCog className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-3 sm:mr-4" />
+                {currentSlideData.cta}
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Image */}
+          <motion.div
+            key={`image-${currentSlide}`}
+            initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
+            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+            exit={{ opacity: 0, scale: 0.8, rotateY: 15 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative flex justify-center items-center order-1 lg:order-2"
+          >
+            <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[400px] lg:max-w-[450px] xl:max-w-[500px] 2xl:max-w-[550px]">
+              <motion.img
+                src={currentSlideData.image}
+                alt={currentSlideData.title}
+                className="w-full h-auto object-contain drop-shadow-2xl"
+                whileHover={{ scale: 1.05, rotateY: 5 }}
+                transition={{ duration: 0.3 }}
+              />
+              
+              {/* Enhanced Glow effect */}
+              <div 
+                className="absolute inset-0 rounded-full blur-3xl opacity-30"
+                style={{ backgroundColor: currentSlideData.accentColor }}
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
 
-      {/* Enhanced Progress Indicators */}
+      {/* Navigation Arrows - Desktop (side positioning) */}
+      <div className="absolute inset-y-0 left-2 sm:left-4 lg:left-8 flex items-center z-20 hidden lg:flex">
+        <NavigationButton direction="prev" onClick={prevSlide} />
+      </div>
+      <div className="absolute inset-y-0 right-2 sm:right-4 lg:right-8 flex items-center z-20 hidden lg:flex">
+        <NavigationButton direction="next" onClick={nextSlide} />
+      </div>
+
+      {/* Navigation Arrows - Mobile (bottom positioning) */}
+      <div className="absolute bottom-20 left-4 flex items-center z-20 lg:hidden">
+        <NavigationButton direction="prev" onClick={prevSlide} isMobile={true} />
+      </div>
+      <div className="absolute bottom-20 right-4 flex items-center z-20 lg:hidden">
+        <NavigationButton direction="next" onClick={nextSlide} isMobile={true} />
+      </div>
+
+      {/* Progress Indicator */}
       <ProgressIndicator
         slides={SLIDE_DATA}
         currentSlide={currentSlide}
-        progress={progress}
         onSlideClick={goToSlide}
       />
 
-      {/* Enhanced Navigation Arrows */}
-      <div className="absolute inset-y-0 w-full flex items-center justify-between px-2 sm:px-4 md:px-6 z-10">
-        <NavigationButton
-          onClick={prevSlide}
-          direction="previous"
-          className="transform -translate-x-1 sm:-translate-x-2 w-10 h-10 sm:w-12 sm:h-12"
-        />
-        <NavigationButton
-          onClick={nextSlide}
-          direction="next"
-          className="transform translate-x-1 sm:translate-x-2 w-10 h-10 sm:w-12 sm:h-12"
-        />
-      </div>
-
-      {/* Enhanced Decorative Elements */}
-      <div className="absolute top-1/4 right-10 w-64 h-64 rounded-full bg-blue-500/5 blur-3xl animate-pulse overlay-pattern" />
-      <div className="absolute bottom-1/3 left-8 w-40 h-40 rounded-full bg-red-500/5 blur-3xl animate-pulse overlay-pattern" />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-purple-500/3 blur-3xl animate-pulse overlay-pattern" />
-
-      {/* Additional overlay elements for depth */}
-      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/20 to-transparent" />
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/40 to-transparent" />
-
-      {/* Accessibility indicator for auto-play status */}
-      <div className="sr-only" aria-live="polite" aria-atomic="true">
-        {isPaused ? "Auto-play paused" : "Auto-play active"}
-      </div>
+      {/* Feature Cards - Only visible on large screens */}
+      <FeatureCards />
     </section>
   );
 };
