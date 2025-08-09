@@ -88,6 +88,33 @@ const Home = () => {
     },
   ];
 
+  const certificates = [
+    {
+      name: "NFPA",
+      image: "/images/compliance/nfpa.png"
+    },
+    {
+      name: "ISO",
+      image: "/images/compliance/iso.png"
+    },
+    {
+      name: "OSHA",
+      image: "/images/compliance/osha.webp"
+    },
+    {
+      name: "FM",
+      image: "/images/compliance/fm.png"
+    },
+    {
+      name: "FPAA",
+      image: "/images/compliance/fpaaustralia.png"
+    },
+    {
+      name: "Certified",
+      image: "/images/compliance/certified.webp"
+    }
+  ];
+
   return (
     <>
       <Helmet>
@@ -348,186 +375,136 @@ const Home = () => {
         </section>
 
         {/* Why Us Section */}
-        <section className="py-24 bg-gradient-to-b from-[#f8f8f8] to-white">
-          <div className="container mx-auto px-4 max-w-7xl">
-            <div className="text-center mb-20">
-              <div className="inline-flex items-center justify-center mb-5">
-                <span className="h-0.5 w-12 bg-primary mr-3"></span>
-                <span className="text-sm font-semibold tracking-wider text-primary uppercase">
-                  Our Competitive Edge
-                </span>
-                <span className="h-0.5 w-12 bg-primary ml-3"></span>
-              </div>
+<section className="relative py-24 bg-gradient-to-b from-[#f8f8f8] via-white to-white overflow-hidden">
+  {/* Decorative background shape */}
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute -top-20 -right-32 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl"></div>
+    <div className="absolute bottom-0 -left-32 w-[300px] h-[300px] bg-[#ff3131]/5 rounded-full blur-2xl"></div>
+  </div>
 
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Why <span className="text-primary">SafetyExpertise</span> Excels
-              </h2>
+  <div className="container relative z-10 mx-auto px-4 max-w-7xl">
+    {/* Section Header */}
+    <div className="text-center mb-20">
+      <div className="flex items-center justify-center gap-3 mb-6">
+        <span className="block h-0.5 w-12 bg-primary"></span>
+        <span className="text-sm font-semibold tracking-wider text-primary uppercase">
+          Our Competitive Edge
+        </span>
+        <span className="block h-0.5 w-12 bg-primary"></span>
+      </div>
 
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Industry-leading expertise combined with cutting-edge technology
-                for uncompromised fire safety solutions.
-              </p>
-            </div>
+      <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
+        Why <span className="text-primary">SafetyExpertise</span> Excels
+      </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {whyUsFeatures.map((feature, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl p-7 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 group relative overflow-hidden"
-                >
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-[#18558c] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        Industry-leading expertise combined with innovative technology for uncompromised safety, efficiency, and long-term asset protection.
+      </p>
+    </div>
 
-                  <div className="w-14 h-14 rounded-lg bg-primary/5 flex items-center justify-center mb-6">
-                    <feature.icon className="w-6 h-6 text-primary" />
-                  </div>
+    {/* Feature Cards */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {whyUsFeatures.map((feature, index) => (
+        <div
+          key={index}
+          className="relative group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden"
+        >
+          {/* Gradient top border on hover */}
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-[#18558c] opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    {feature.title}
-                  </h3>
+          {/* Icon container */}
+          <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+            <feature.icon className="w-7 h-7 text-primary" />
+          </div>
 
-                  <p className="text-gray-600 leading-relaxed mb-5">
-                    {feature.description}
-                  </p>
+          <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+          <p className="text-gray-600 leading-relaxed mb-5">{feature.description}</p>
 
-                  <div className="mt-auto">
-                    <div className="inline-flex items-center text-primary font-medium text-sm">
-                      <span>Learn more</span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 ml-2"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Certificates Auto-Scroll Section */}
-            <motion.div 
-              className="mt-20"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+          <button className="inline-flex items-center text-primary font-medium text-sm group-hover:translate-x-1 transition-transform">
+            Learn more
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 ml-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
             >
-              <div className="text-center mb-12">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  Industry Certifications & Compliance
-                </h3>
-                <p className="text-gray-600 max-w-2xl mx-auto">
-                  We maintain the highest standards with internationally recognized certifications and compliance.
-                </p>
-              </div>
+              <path
+                fillRule="evenodd"
+                d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+        </div>
+      ))}
+    </div>
 
-              {/* Auto-scrolling certificates container */}
-              <div className="relative overflow-hidden">
-                {/* Gradient overlays for smooth edges */}
-                <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10"></div>
-                <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10"></div>
+    {/* Certificates Section */}
+    <motion.div
+      className="mt-24"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay: 0.4 }}
+    >
+      <div className="text-center mb-12">
+        <h3 className="text-2xl font-bold text-gray-900 mb-3">Certifications & Compliance</h3>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          Internationally recognized standards and certifications ensuring top-tier safety and operational excellence.
+        </p>
+      </div>
 
-                {/* Scrolling certificates */}
-                <motion.div 
-                  className="flex space-x-12 items-center"
-                  animate={{ x: [0, -1000] }}
-                  transition={{ 
-                    duration: 30, 
-                    repeat: Infinity, 
-                    ease: "linear" 
-                  }}
-                >
-                  {/* First set of certificates */}
-                  {[
-                    { name: "NFPA", image: "/images/compliance/nfpa.png" },
-                    { name: "ISO", image: "/images/compliance/iso.png" },
-                    { name: "OSHA", image: "/images/compliance/osha.webp" },
-                    { name: "FM Global", image: "/images/compliance/fm.png" },
-                    { name: "ActiVfire", image: "/images/compliance/activfire.png" },
-                    { name: "FPA Australia", image: "/images/compliance/fpaaustralia.png" },
-                    { name: "Certified", image: "/images/compliance/certified.webp" },
-                  ].map((cert, index) => (
-                    <motion.div
-                      key={`first-${index}`}
-                      className="flex-shrink-0 group"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 w-48 h-32 flex items-center justify-center">
-                        <img
-                          src={cert.image}
-                          alt={`${cert.name} Certification`}
-                          className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                        />
-                      </div>
-                    </motion.div>
-                  ))}
+      {/* Auto-scrolling certificates */}
+      <div className="relative overflow-hidden">
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
 
-                  {/* Duplicate set for seamless loop */}
-                  {[
-                    { name: "NFPA", image: "/images/compliance/nfpa.png" },
-                    { name: "ISO", image: "/images/compliance/iso.png" },
-                    { name: "OSHA", image: "/images/compliance/osha.webp" },
-                    { name: "FM Global", image: "/images/compliance/fm.png" },
-                    { name: "ActiVfire", image: "/images/compliance/activfire.png" },
-                    { name: "FPA Australia", image: "/images/compliance/fpaaustralia.png" },
-                    { name: "Certified", image: "/images/compliance/certified.webp" },
-                  ].map((cert, index) => (
-                    <motion.div
-                      key={`second-${index}`}
-                      className="flex-shrink-0 group"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 w-48 h-32 flex items-center justify-center">
-                        <img
-                          src={cert.image}
-                          alt={`${cert.name} Certification`}
-                          className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                        />
-                      </div>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </div>
-
-              {/* Pause on hover functionality */}
-              <div className="text-center mt-8">
-                <p className="text-sm text-gray-500">
-                  Hover over certificates to pause and view details
-                </p>
+        <motion.div
+          className="flex space-x-12 items-center"
+          animate={{ x: [0, -1000] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        >
+          {certificates.concat(certificates).map((cert, index) => (
+            <motion.div
+              key={index}
+              className="flex-shrink-0 group"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg border border-gray-100 w-48 h-32 flex items-center justify-center transition-all duration-300">
+                <img
+                  src={cert.image}
+                  alt={`${cert.name} Certification`}
+                  className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                />
               </div>
             </motion.div>
+          ))}
+        </motion.div>
+      </div>
 
-            {/* CTA Section */}
-            <div className="mt-20 text-center">
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-white bg-primary hover:bg-[#134271] transition-colors shadow-md hover:shadow-lg"
-              >
-                Get Your Safety Assessment
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 ml-3"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </section>
+      <p className="text-center mt-6 text-sm text-gray-500">Hover over a logo to pause scrolling</p>
+    </motion.div>
+
+    {/* CTA */}
+    <div className="mt-20 text-center">
+      <a
+        href="/contact"
+        className="inline-flex items-center px-8 py-4 rounded-lg text-white bg-primary hover:bg-[#134271] transition-colors shadow-lg hover:shadow-xl font-medium"
+      >
+        Get Your Safety Assessment
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-3" viewBox="0 0 20 20" fill="currentColor">
+          <path
+            fillRule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
 
         {/* Values Section */}
         <section className="py-24 bg-white relative overflow-hidden">

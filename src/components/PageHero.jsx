@@ -5,7 +5,7 @@ const PageHero = ({
   subtitle, 
   badge, 
   features = [], 
-  backgroundImage = "/images/16.png",
+  backgroundImage = "/images/bg-2.png",
   showBackgroundImage = true 
 }) => {
   return (
