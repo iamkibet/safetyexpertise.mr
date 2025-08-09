@@ -210,9 +210,12 @@ const Navbar = () => {
         </button>
 
         {/* CTA */}
-        <button className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg font-semibold transition-transform duration-200 hover:scale-105 shadow-md">
+        <Link 
+          to="/contact"
+          className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg font-semibold transition-transform duration-200 hover:scale-105 shadow-md"
+        >
           Ask for Free
-        </button>
+        </Link>
 
         {/* Mobile Menu */}
         <button
