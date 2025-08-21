@@ -158,11 +158,11 @@ const AboutSection = () => {
               />
 
               {/* Enhanced Company Info Overlay */}
-              <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm rounded-lg p-5 shadow-lg border border-gray-100 max-w-[70%]">
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto bg-white/95 backdrop-blur-sm rounded-lg p-3 sm:p-4 lg:p-5 shadow-lg border border-gray-100 max-w-full sm:max-w-[70%] lg:max-w-[60%]">
                 <div className="text-center">
-                  <h3 className="text-red-600 font-bold text-xl tracking-wide mb-1">SAFETY EXPERTISE</h3>
-                  <div className="h-1 w-12 bg-red-500 mx-auto mb-2"></div>
-                  <p className="text-gray-800 text-base font-semibold mb-1">PROFESSIONAL SERVICES</p>
+                  <h3 className="text-red-600 font-bold text-lg sm:text-xl tracking-wide mb-1">SAFETY EXPERTISE</h3>
+                  <div className="h-1 w-8 sm:w-12 bg-red-500 mx-auto mb-2"></div>
+                  <p className="text-gray-800 text-sm sm:text-base font-semibold mb-1">PROFESSIONAL SERVICES</p>
                   <p className="text-gray-600 text-xs uppercase tracking-wider">TRUSTED PARTNER</p>
                 </div>
               </div>

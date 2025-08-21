@@ -709,11 +709,11 @@ const Home = () => {
           </div>
         </section>
         {/* Services Section */}
-        <section id="services" className="py-24 bg-white relative overflow-hidden">
-          <div className="max-w-7xl mx-auto">
+        <section id="services" className="py-8 sm:py-12  bg-white relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row">
               {/* Left Panel - Dark Background with Title */}
-              <div className="lg:w-1/3 relative overflow-hidden">
+              <div className="lg:w-1/3 relative overflow-hidden min-h-[300px] sm:min-h-[400px] lg:min-h-auto">
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -731,20 +731,20 @@ const Home = () => {
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10 p-12 lg:p-16 flex flex-col justify-center h-full">
+                <div className="relative z-10 p-6 sm:p-8 lg:p-12 xl:p-16 flex flex-col justify-center h-full">
                   <motion.div
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                   >
-                    <span className="text-red-500 text-sm font-semibold tracking-wider uppercase mb-6 block">
+                    <span className="text-red-500 text-xs sm:text-sm font-semibold tracking-wider uppercase mb-4 sm:mb-6 block">
                       Our Services
                     </span>
-                    <h2 className="text-4xl lg:text-5xl font-bold text-white uppercase leading-tight mb-6">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white uppercase leading-tight mb-4 sm:mb-6">
                       Grouped & Streamlined Solutions
                     </h2>
-                    <p className="text-gray-300 text-lg leading-relaxed max-w-xs">
+                    <p className="text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xs">
                       Comprehensive safety and maintenance services tailored to your industrial needs
                     </p>
                   </motion.div>
@@ -752,19 +752,13 @@ const Home = () => {
               </div>
 
               {/* Right Panel - White Background with Services */}
-              <div className="lg:w-2/3 bg-white ">
+              <div className="lg:w-2/3 bg-white">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  
-
-
-
-                  
-
                   {/* Services Slider */}
                   <div className="relative overflow-hidden">
                     <motion.div
@@ -774,65 +768,65 @@ const Home = () => {
                       {services.map((service, index) => (
                         <div
                           key={service.slug}
-                          className="w-full flex-shrink-0 px-4"
+                          className="w-full flex-shrink-0 px-2 sm:px-4"
                           style={{ width: '100%' }}
                         >
-                          <div className="bg-gradient-to-br from-white via-gray-50 to-white  border-b border-gray-100 p-10 max-w-3xl mx-auto relative overflow-hidden">
+                          <div className="bg-gradient-to-br from-white via-gray-50 to-white border-b border-gray-100 p-4 sm:p-6 lg:p-8 xl:p-10 max-w-3xl mx-auto relative overflow-hidden">
                             {/* Decorative Background Elements */}
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-2xl"></div>
-                            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-red-500/5 to-transparent rounded-full blur-xl"></div>
+                            <div className="absolute top-0 right-0 w-16 h-16 sm:w-24 h-24 lg:w-32 h-32 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-xl lg:blur-2xl"></div>
+                            <div className="absolute bottom-0 left-0 w-12 h-12 sm:w-16 h-16 lg:w-24 h-24 bg-gradient-to-tr from-red-500/5 to-transparent rounded-full blur-lg lg:blur-xl"></div>
                             
                             {/* Service Number Badge */}
-                            <div className="absolute top-6 right-6">
-                              <div className="w-12 h-12 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center shadow-lg">
-                                <span className="text-white font-bold text-lg">{index + 1}</span>
+                            <div className="absolute top-3 right-3 sm:top-4 right-4 lg:top-6 right-6">
+                              <div className="w-8 h-8 sm:w-10 h-10 lg:w-12 h-12 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                                <span className="text-white font-bold text-sm sm:text-base lg:text-lg">{index + 1}</span>
                               </div>
                             </div>
 
                             {/* Service Content */}
                             <div className="text-center relative z-10">
                               {/* Animated Underline */}
-                              <div className="flex justify-center mb-6">
+                              <div className="flex justify-center mb-4 sm:mb-6">
                                 <motion.div
                                   className="h-1 bg-gradient-to-r from-primary via-red-500 to-primary rounded-full"
                                   initial={{ width: 0 }}
-                                  whileInView={{ width: "100px" }}
+                                  whileInView={{ width: "60px", sm: "80px", lg: "100px" }}
                                   viewport={{ once: true }}
                                   transition={{ duration: 0.8, delay: 0.2 }}
                                 />
                               </div>
 
-                              <h3 className="text-3xl font-bold text-gray-900 mb-6 leading-tight">
+                              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
                                 {service.title}
                               </h3>
                               
-                              <p className="text-gray-600 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+                              <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto">
                                 {service.description}
                               </p>
 
                               {/* Enhanced Features List */}
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-2xl mx-auto">
                                 {service.descriptionPoints.map((feature, featureIndex) => (
                                   <motion.div
                                     key={featureIndex}
-                                    className="flex items-center space-x-3 p-3 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-100 hover:border-primary/30 transition-all duration-300 hover:shadow-md"
+                                    className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-100 hover:border-primary/30 transition-all duration-300 hover:shadow-md"
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.5, delay: featureIndex * 0.1 }}
                                     whileHover={{ scale: 1.02, y: -2 }}
                                   >
-                                    <div className="w-8 h-8 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
-                                      <FaCheckCircle className="w-4 h-4 text-white" />
+                                    <div className="w-6 h-6 sm:w-7 h-7 lg:w-8 h-8 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                      <FaCheckCircle className="w-3 h-3 sm:w-3.5 h-3.5 lg:w-4 h-4 text-white" />
                                     </div>
-                                    <span className="text-base text-gray-700 font-medium">{feature}</span>
+                                    <span className="text-xs sm:text-sm lg:text-base text-gray-700 font-medium">{feature}</span>
                                   </motion.div>
                                 ))}
                               </div>
 
                               {/* Service Category Badge */}
-                              <div className="mt-8">
-                                <span className="inline-block px-4 py-2 bg-gradient-to-r from-primary/10 to-blue-500/10 text-primary font-semibold rounded-full border border-primary/20">
+                              <div className="mt-6 sm:mt-8">
+                                <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-primary/10 to-blue-500/10 text-primary font-semibold rounded-full border border-primary/20 text-xs sm:text-sm">
                                   {(() => {
                                     switch (service.slug) {
                                       case "mobile-equipment-maintenance":
@@ -857,27 +851,26 @@ const Home = () => {
                       ))}
                     </motion.div>
                   </div>
+                  
                   {/* Navigation Arrows */}
-                  <div className="flex justify-end my-8 space-x-3">
+                  <div className="flex justify-center sm:justify-end my-6 sm:my-8 space-x-3">
                     <button
                       onClick={() => handlePrevSlide()}
-                      className="w-12 h-12 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors duration-300"
+                      className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors duration-300"
                     >
-                      <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                       </svg>
                     </button>
                     <button
                       onClick={() => handleNextSlide()}
-                      className="w-12 h-12 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors duration-300"
+                      className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors duration-300"
                     >
-                      <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </button>
                   </div>
-
-
                 </motion.div>
               </div>
             </div>
@@ -885,7 +878,7 @@ const Home = () => {
         </section>
 
         {/* Compliance Section */}
-        <section id="compliance" className="py-24 bg-white relative overflow-hidden">
+        <section id="compliance" className="py-5 bg-white relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               className="text-center mb-20"
@@ -902,7 +895,7 @@ const Home = () => {
                 <span className="h-0.5 w-12 bg-primary ml-3"></span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 ">
                 Meeting the Highest <span className="text-primary">Safety Standards</span>
               </h2>
 
@@ -1279,7 +1272,7 @@ const Home = () => {
         </section>
 
         {/* Quality Assurance Process */}
-        <section className="py-32 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
+        <section className="py-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
           {/* Background Elements */}
           <div className="absolute inset-0">
             <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
