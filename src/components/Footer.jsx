@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import {
   FaFacebook,
   FaTwitter,
@@ -14,25 +13,29 @@ import { contactInfo } from "../data";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const footerLinks = {
     services: [
-      { name: "Fixed Installation", href: "/services/fixed-installation" },
-      {
-        name: "Industrial Maintenance",
-        href: "/services/industrial-maintenance",
-      },
-      { name: "Other Services", href: "/services/other-services" },
+      { name: "Fire Protection", section: "services" },
+      { name: "Industrial Maintenance", section: "services" },
+      { name: "Safety Systems", section: "services" },
     ],
     company: [
-      { name: "About Us", href: "/about" },
-      { name: "Our Team", href: "/about#team" },
-      { name: "Projects", href: "/projects" },
-      { name: "Compliance", href: "/compliance" },
+      { name: "About Us", section: "home" },
+      { name: "Our Services", section: "services" },
+      { name: "Projects", section: "projects" },
+      { name: "Compliance", section: "compliance" },
     ],
     support: [
-      { name: "Contact Us", href: "/contact" },
-      { name: "Get Quote", href: "/contact" },
-      { name: "Support", href: "/contact" },
+      { name: "Contact Us", section: "contact" },
+      { name: "Get Quote", section: "contact" },
+      { name: "Support", section: "contact" },
     ],
   };
 
@@ -83,12 +86,12 @@ const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200"
+                  <button
+                    onClick={() => scrollToSection(link.section)}
+                    className="text-gray-300 hover:text-white transition-colors duration-200 text-left"
                   >
                     {link.name}
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -100,12 +103,12 @@ const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200"
+                  <button
+                    onClick={() => scrollToSection(link.section)}
+                    className="text-gray-300 hover:text-white transition-colors duration-200 text-left"
                   >
                     {link.name}
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -117,12 +120,12 @@ const Footer = () => {
             <ul className="space-y-2 mb-6">
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200"
+                  <button
+                    onClick={() => scrollToSection(link.section)}
+                    className="text-gray-300 hover:text-white transition-colors duration-200 text-left"
                   >
                     {link.name}
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -153,18 +156,16 @@ const Footer = () => {
               </p>
             </div>
             <div className="flex space-x-6 text-sm">
-              <Link
-                to="/privacy"
+              <button
                 className="text-gray-400 hover:text-white transition-colors duration-200"
               >
                 Privacy Policy
-              </Link>
-              <Link
-                to="/terms"
+              </button>
+              <button
                 className="text-gray-400 hover:text-white transition-colors duration-200"
               >
                 Terms of Service
-              </Link>
+              </button>
             </div>
           </div>
         </div>

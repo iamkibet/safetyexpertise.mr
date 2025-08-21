@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import { FaPhone, FaArrowRight } from "react-icons/fa";
 
 const CTA = ({
-  title = "Please get in touch with our team of fire experts",
-  subtitle = "We're just one click away to help make your fire safety incredible. Click the link below to share more details about your project. We'd love to talk.",
-  primaryButton = { text: "Free Expert Advice", href: "/contact" },
-  secondaryLink = { text: "About Us", href: "/about" },
+  title = "Ready to enhance your safety?",
+  subtitle = "Contact us today for a comprehensive safety assessment.",
+  primaryButton = { text: "Request a Quote", href: "/contact" },
+  secondaryLink = { text: "Learn More About Us", href: "/about" },
   imageUrl = "/images/cta.png",
   className = "",
 }) => {
@@ -42,9 +42,25 @@ const CTA = ({
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <span className="text-sm font-semibold text-primary uppercase tracking-wider">
-                Get Expert Advice
-              </span>
+              <div className="inline-flex items-center justify-center mb-5">
+                <motion.span 
+                  className="h-0.5 w-12 bg-primary mr-3"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                ></motion.span>
+                <span className="text-sm font-semibold tracking-wider text-primary uppercase">
+                  Get Expert Advice
+                </span>
+                <motion.span 
+                  className="h-0.5 w-12 bg-primary ml-3"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                ></motion.span>
+              </div>
             </motion.div>
 
             {/* Main Heading */}
@@ -76,13 +92,18 @@ const CTA = ({
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <a
-                href={primaryButton.href}
+              <button
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
                 className="inline-flex items-center bg-accent text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-red-700 hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 <FaPhone className="w-5 h-5 mr-3" />
                 {primaryButton.text}
-              </a>
+              </button>
             </motion.div>
 
             {/* Secondary Link */}
@@ -95,12 +116,17 @@ const CTA = ({
             >
               <p className="text-gray-600">
                 You can also learn more about us from our{" "}
-                <a 
-                  href={secondaryLink.href}
+                <button 
+                  onClick={() => {
+                    const aboutSection = document.getElementById('home');
+                    if (aboutSection) {
+                      aboutSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
                   className="text-primary hover:text-accent font-medium transition-colors duration-300"
                 >
                   {secondaryLink.text}
-                </a>{" "}
+                </button>{" "}
                 Page
               </p>
             </motion.div>

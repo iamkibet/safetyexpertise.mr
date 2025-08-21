@@ -40,6 +40,33 @@
   .hover\:bg-primary-dark:hover {
     @apply bg-blue-700;
   }
+
+  /* Enhanced Navbar Styles */
+  .navbar-glass {
+    @apply bg-white/90 backdrop-blur-md border-b border-white/20;
+  }
+
+  .navbar-glass-scrolled {
+    @apply bg-white/95 backdrop-blur-lg shadow-xl border-b border-gray-100/50;
+  }
+
+  /* Enhanced Button Styles */
+  .btn-hero-primary {
+    @apply bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold rounded-xl transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:scale-105;
+  }
+
+  .btn-hero-secondary {
+    @apply bg-white/20 backdrop-blur-md hover:bg-white/30 text-white font-semibold rounded-xl transition-all duration-300 border border-white/30 hover:scale-105;
+  }
+
+  /* Enhanced Card Styles */
+  .card-glass {
+    @apply bg-white/95 backdrop-blur-md border border-white/30 shadow-xl hover:shadow-2xl transition-all duration-300;
+  }
+
+  .card-glass-hover {
+    @apply hover:scale-105 hover:bg-white;
+  }
 }
 
 @layer utilities {
@@ -76,5 +103,92 @@
 
   .shadow-glow-yellow {
     box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+  }
+
+  /* Enhanced Shadows */
+  .shadow-3xl {
+    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .shadow-4xl {
+    box-shadow: 0 50px 80px -20px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Enhanced Gradients */
+  .bg-gradient-radial {
+    background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
+  }
+
+  .bg-gradient-conic {
+    background: conic-gradient(from 0deg at 50% 50%, var(--tw-gradient-stops));
+  }
+
+  /* Enhanced Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  /* Enhanced Text Effects */
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-xl {
+    text-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Enhanced Backdrop Filters */
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+  }
+
+  .backdrop-blur-lg {
+    backdrop-filter: blur(16px);
+  }
+
+  .backdrop-blur-xl {
+    backdrop-filter: blur(24px);
+  }
+
+  .backdrop-blur-2xl {
+    backdrop-filter: blur(40px);
+  }
+
+  .backdrop-blur-3xl {
+    backdrop-filter: blur(64px);
   }
 }
