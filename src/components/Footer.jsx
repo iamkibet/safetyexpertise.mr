@@ -61,9 +61,7 @@ const Footer = () => {
                 />
               </div>
             </div>
-            <p className="text-gray-300 mb-4 leading-relaxed">
-              {contactInfo.tagline}
-            </p>
+           
             <div className="space-y-2 text-sm text-gray-300">
               <div className="flex items-center space-x-2">
                 <FaMapMarkerAlt className="text-primary" />

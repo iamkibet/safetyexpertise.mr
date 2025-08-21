@@ -71,13 +71,13 @@ const TrustBanner = () => {
             >
               {/* Outer Ring with Animation */}
               <div className="absolute inset-0">
-                <div className="w-48 h-48 border-4 border-red-500/30 rounded-full animate-ping-slow opacity-20"></div>
+                <div className="w-48 h-48 border-4 border-red-500/30 rounded-full  opacity-20"></div>
               </div>
               
               {/* Main Circle */}
-              <div className="relative w-44 h-44 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex flex-col items-center justify-center text-white shadow-2xl shadow-red-900/50 border-2 border-red-400/20">
+              <div className="relative w-44 h-44 bg-gradient-to-br from-primary to-primary/80 rounded-full flex flex-col items-center justify-center text-white shadow-2xl shadow-red-900/50 border-2 border-red-400/20">
                 {/* Pulsing Dot */}
-                <div className="absolute -top-1.5 w-5 h-5 bg-red-500 rounded-full animate-pulse shadow-lg shadow-red-500"></div>
+                <div className="absolute -top-1.5 w-5 h-5 bg-red-500 rounded-full  shadow-lg shadow-red-500"></div>
                 
                 {/* Main Number */}
                 <div className="text-4xl font-black leading-none mb-1 tracking-tighter">24/7</div>
