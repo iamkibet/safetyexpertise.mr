@@ -22,20 +22,20 @@ const Footer = () => {
 
   const footerLinks = {
     services: [
-      { name: "Fire Protection", section: "services" },
-      { name: "Industrial Maintenance", section: "services" },
-      { name: "Safety Systems", section: "services" },
+      { name: "Mobile Equipment Maintenance", section: "services" },
+      { name: "Maintenance Engineering", section: "services" },
+      { name: "Manpower Expertise", section: "services" },
+      { name: "Industrial Procurement", section: "services" },
+      { name: "Transport & Mobility", section: "services" },
     ],
     company: [
-      { name: "About Us", section: "home" },
+      { name: "Home", section: "home" },
+      { name: "About Us", section: "about" },
       { name: "Our Services", section: "services" },
-      { name: "Projects", section: "projects" },
-      { name: "Compliance", section: "compliance" },
+      { name: "Why Us", section: "why-us" },
     ],
     support: [
-      { name: "Contact Us", section: "contact" },
       { name: "Get Quote", section: "contact" },
-      { name: "Support", section: "contact" },
     ],
   };
 
@@ -69,11 +69,21 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <FaPhone className="text-primary" />
-                <span>{contactInfo.phone}</span>
+                <button 
+                  onClick={() => window.open(`tel:${contactInfo.phone}`, '_self')}
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  {contactInfo.phone}
+                </button>
               </div>
               <div className="flex items-center space-x-2">
                 <FaEnvelope className="text-primary" />
-                <span>{contactInfo.email}</span>
+                <button 
+                  onClick={() => window.open(`mailto:${contactInfo.email}`, '_self')}
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  {contactInfo.email}
+                </button>
               </div>
             </div>
           </div>
@@ -149,21 +159,8 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-gray-400">
               <p>&copy; {currentYear} Safety Expertise. All rights reserved.</p>
-              <p className="mt-1">
-                {contactInfo.rc} | {contactInfo.nif}
-              </p>
             </div>
             <div className="flex space-x-6 text-sm">
-              <button
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                Privacy Policy
-              </button>
-              <button
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                Terms of Service
-              </button>
             </div>
           </div>
         </div>
