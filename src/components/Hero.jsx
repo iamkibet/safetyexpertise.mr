@@ -8,19 +8,19 @@ const HERO_SLIDES = [
     id: 1,
     title: "Mobile Equipment Maintenance",
     subtitle: "& Fire Suppression Systems",
-    image: "/images/hero/1.png"
+    image: "/images/afex/6.jpg"
   },
   {
     id: 2,
     title: "Maintenance Engineering",
     subtitle: "Services",
-    image: "/images/hero/2.png"
+    image: "/images/hero/3.png"
   },
   {
     id: 3,
     title: "Manpower Expertise",
     subtitle: "Professional Services",
-    image: "/images/hero/3.png"
+    image: "/images/hero/11.png"
   },
   {
     id: 4,
@@ -32,7 +32,7 @@ const HERO_SLIDES = [
     id: 5,
     title: "Comprehensive Transport",
     subtitle: "& Mobility Services",
-    image: "/images/hero/6.jpeg"
+    image: "/images/hero/8.jpg"
   }
 ];
 
