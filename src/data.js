@@ -246,7 +246,7 @@ export const clientLogos = [
 
 export const contactInfo = {
   address: "ILOT K EXT S4, Tevragh Zeine Noaukchott, Mauritania",
-  phone: "+222-3694-9611",
+  phone: "+222 36 94 9611",
   email: "operations@safetyexpertise.mr",
   rc: "118933/3564",
   nif: "01298520",

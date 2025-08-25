@@ -16,7 +16,7 @@ const AboutSection = () => {
       id: 2,
       icon: <FaGlobe className="w-8 h-8" />,
       number: "02",
-      title: "AFEX CERTIFIED",
+      title: "CERTIFIED",
       description: "Official AFEX representative in Mauritania"
     },
     {
@@ -68,7 +68,7 @@ const AboutSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                Why Choose <span className="text-primary">Safety Expertise</span>?
+                Who are <span className="text-primary">We</span>?
               </motion.h2>
 
 
@@ -78,7 +78,7 @@ const AboutSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
           {/* Content Section - First on Mobile, Second on Desktop */}
-          <div className="relative order-2 lg:order-1">
+          <div className="relative order-1 lg:order-1">
             {/* Enhanced Background Pattern */}
             <div className="absolute -inset-4 bg-gradient-to-br from-gray-50 to-white rounded-xl opacity-80 shadow-sm"></div>
 
@@ -95,47 +95,47 @@ const AboutSection = () => {
                 viewport={{ once: true }}
               >
                 <p className="text-gray-700 text-lg leading-relaxed font-light">
-                  Your trusted fire safety partner in Mauritania, we deliver robust industrial fire suppression solutions tailored to mining operations.
+                  Your trusted partner for industrial engineering and maintenance solutions in Mauritania, we deliver robust, reliable, and tailored support to meet the demanding needs of mining and heavy industry.
                 </p>
                 <p className="text-gray-700 text-lg leading-relaxed font-light">
-                  As the official AFEX representative, our experienced expat and local teams provide installation, commissioning, maintenance, inspections, and emergency support. With rapid response capabilities and deep expertise, we ensure continuous protection, compliance with global standards, and peace of mind for heavy‑duty equipment worldwide.
+
+                  Backed by global expertise and local insight, our teams provide end-to-end services including installation, commissioning, preventive and corrective maintenance, inspections, and emergency support. With rapid response capabilities, a proven track record, and strict adherence to international standards, we ensure operational continuity, compliance, and peace of mind—empowering your equipment and facilities to perform at their best.
+
                 </p>
               </motion.div>
 
+              
+
               {/* Features Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                 {features.map((feature, index) => (
                   <motion.div
                     key={feature.id}
-                    className="flex flex-col items-center text-center relative group"
+                    className="flex flex-row sm:flex-col items-center sm:text-center relative group mb-4 sm:mb-0"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.3 + (index * 0.1), ease: "easeOut" }}
                     viewport={{ once: true }}
                   >
                     {/* Icon Container */}
-                    <div className="flex-shrink-0 mb-6 p-3 bg-primary rounded-full group-hover:bg-primary/50 transition-colors duration-300">
-                      <div className="text-white text-2xl">
+                    <div className="flex-shrink-0 mb-0 sm:mb-6 mr-3 sm:mr-0 p-2 sm:p-3 bg-primary rounded-full group-hover:bg-primary/50 transition-colors duration-300">
+                      <div className="text-white text-xl sm:text-2xl">
                         {feature.icon}
                       </div>
                     </div>
 
-                    {/* Content */}
-                    <div className="flex-1">
-                      {/* Number Box */}
-                      <div className="flex justify-center mb-4">
-                        <div className="bg-white border border-gray-200 rounded-md px-3 py-1 shadow-sm group-hover:border-red-300 transition-colors duration-300">
-                          <span className="text-gray-700 font-bold text-sm">{feature.number}</span>
-                        </div>
+                    {/* Number Box */}
+                    <div className="flex-shrink-0 mb-0 sm:mb-4 mr-3 sm:mr-0">
+                      <div className="bg-white border border-gray-200 rounded-md px-2 sm:px-3 py-1 shadow-sm group-hover:border-red-300 transition-colors duration-300">
+                        <span className="text-gray-700 font-bold text-xs sm:text-sm">{feature.number}</span>
                       </div>
+                    </div>
 
-                      {/* Title and Description */}
-                      <h3 className="text-gray-800 font-bold text-lg uppercase tracking-wide mb-3 group-hover:text-red-700 transition-colors duration-300">
+                    {/* Title */}
+                    <div className="flex-1">
+                      <h3 className="text-gray-800 font-bold text-base sm:text-lg uppercase tracking-wide mb-0 sm:mb-3 group-hover:text-red-700 transition-colors duration-300">
                         {feature.title}
                       </h3>
-                      <p className="text-gray-600 leading-relaxed text-sm">
-                        {feature.description}
-                      </p>
                     </div>
                   </motion.div>
                 ))}
@@ -143,50 +143,88 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Image Section - Second on Mobile, First on Desktop */}
-          <div className="relative order-1 lg:order-2">
-            {/* Main Van Image Container */}
-            <div className="relative overflow-hidden rounded-xl shadow-2xl">
-              <motion.img
-                src="/images/hero/afex.png"
-                alt="Safety Expertise Service Vehicle"
-                className="w-full h-auto transform hover:scale-105 transition-transform duration-700"
-                initial={{ opacity: 0, x: 50 }}
+          {/* Image Section - First on Mobile, Second on Desktop */}
+          <div className="relative order-2 lg:order-2">
+            {/* Section Title */}
+            <motion.div
+              className="text-center mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+                Official Distributor of:
+              </h3>
+              <div className="h-1 w-16 bg-primary mx-auto"></div>
+            </motion.div>
+
+            {/* Dual Logo Images Container */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+              {/* AFEX Logo */}
+              <motion.div
+                className="relative group"
+                initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 viewport={{ once: true }}
-              />
-
-              {/* Enhanced Company Info Overlay */}
-              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-auto bg-white/95 backdrop-blur-sm rounded-lg p-3 sm:p-4 lg:p-5 shadow-lg border border-gray-100 max-w-full sm:max-w-[70%] lg:max-w-[60%]">
-                <div className="text-center">
-                  <h3 className="text-red-600 font-bold text-lg sm:text-xl tracking-wide mb-1">SAFETY EXPERTISE</h3>
-                  <div className="h-1 w-8 sm:w-12 bg-red-500 mx-auto mb-2"></div>
-                  <p className="text-gray-800 text-sm sm:text-base font-semibold mb-1">PROFESSIONAL SERVICES</p>
-                  <p className="text-gray-600 text-xs uppercase tracking-wider">TRUSTED PARTNER</p>
+              >
+                <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 sm:p-8 hover:shadow-xl transition-all duration-300">
+                  <div className="text-center mb-4">
+                    <h3 className="text-red-600 font-bold text-lg sm:text-xl tracking-wide mb-2">AFEX</h3>
+                    <div className="h-1 w-12 bg-red-500 mx-auto mb-3"></div>
+                  </div>
+                  <div className="relative overflow-hidden rounded-lg">
+                    <motion.img
+                      src="/images/afex.png"
+                      alt="AFEX Logo"
+                      className="w-full h-auto max-h-48 object-contain mx-auto transform hover:scale-105 transition-transform duration-500"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.6, delay: 0.2 }}
+                      viewport={{ once: true }}
+                    />
+                  </div>
+                  <div className="text-center mt-4">
+                    <p className="text-gray-700 text-sm font-medium">Fire Suppression</p>
+                    <p className="text-gray-500 text-xs">For Heavy Duty Equipment</p>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
+
+              {/* ICAT Logo */}
+              <motion.div
+                className="relative group"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true }}
+              >
+                <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 sm:p-8 hover:shadow-xl transition-all duration-300">
+                  <div className="text-center mb-4">
+                    <h3 className="text-red-600 font-bold text-lg sm:text-xl tracking-wide mb-2">ICAT</h3>
+                    <div className="h-1 w-12 bg-red-500 mx-auto mb-3"></div>
+                  </div>
+                  <div className="relative overflow-hidden rounded-lg">
+                    <motion.img
+                      src="/images/icat.png"
+                      alt="ICAT Logo"
+                      className="w-full h-auto max-h-48 object-contain mx-auto transform hover:scale-105 transition-transform duration-500"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.6, delay: 0.4 }}
+                      viewport={{ once: true }}
+                    />
+                  </div>
+                  <div className="text-center mt-4">
+                    <p className="text-gray-700 text-sm font-medium">Fire Suppression</p>
+                    <p className="text-gray-500 text-xs">Technologies</p>
+                  </div>
+                </div>
+              </motion.div>
             </div>
 
-            {/* Enhanced Bottom Banner */}
-            <motion.div
-              className="mt-8 bg-primary p-5 rounded-xl shadow-lg border border-red-500"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center">
-                <div className="bg-red-500 p-2 rounded-full mr-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <p className="text-white text-base font-medium">
-                  24/7 Emergency Response – Always available when it matters most.
-                </p>
-              </div>
-            </motion.div>
+           
           </div>
         </div>
       </div>

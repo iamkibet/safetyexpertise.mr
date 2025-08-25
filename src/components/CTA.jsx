@@ -1,19 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { 
-  FaPhone, 
-  FaArrowRight, 
-  FaUser, 
-  FaEnvelope, 
-  FaCog, 
-  FaChevronDown, 
-  FaComment, 
-  FaShieldAlt, 
-  FaClock 
+import {
+  FaPhone,
+  FaArrowRight,
+  FaUser,
+  FaEnvelope,
+  FaCog,
+  FaChevronDown,
+  FaComment,
+  FaShieldAlt,
+  FaClock
 } from "react-icons/fa";
 
 const CTA = ({
-  title = "Ready to enhance your safety?",
+  title = "Ready to Elevate Safety and Performance?",
   subtitle = "Contact us today for a comprehensive safety assessment.",
   primaryButton = { text: "Request a Quote", href: "/contact" },
   secondaryLink = { text: "Learn More About Us", href: "/about" },
@@ -24,7 +24,7 @@ const CTA = ({
     <section className={`py-24 relative overflow-hidden ${className}`}>
       {/* Background with transparent image overlay */}
       <div className="absolute inset-0 bg-white">
-        <div 
+        <div
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `url('/images/background1.png')`,
@@ -38,7 +38,7 @@ const CTA = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
-          <motion.div 
+          <motion.div
             className="space-y-8"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -53,7 +53,7 @@ const CTA = ({
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <div className="inline-flex items-center justify-center mb-5">
-                <motion.span 
+                <motion.span
                   className="h-0.5 w-12 bg-primary mr-3"
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
@@ -63,7 +63,7 @@ const CTA = ({
                 <span className="text-sm font-semibold tracking-wider text-primary uppercase">
                   Get Expert Advice
                 </span>
-                <motion.span 
+                <motion.span
                   className="h-0.5 w-12 bg-primary ml-3"
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
@@ -74,7 +74,7 @@ const CTA = ({
             </motion.div>
 
             {/* Main Heading */}
-            <motion.h2 
+            <motion.h2
               className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -85,35 +85,29 @@ const CTA = ({
             </motion.h2>
 
             {/* Body Text */}
-            <motion.p 
+            <motion.p
               className="text-lg text-gray-700 leading-relaxed max-w-lg"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Contact us today for a comprehensive safety assessment of your facility. You can also learn more about us from our{" "}
-              <button 
-                onClick={() => {
-                  const aboutSection = document.getElementById('about');
-                  if (aboutSection) {
-                    aboutSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="text-primary hover:text-accent font-medium transition-colors duration-300"
+              Contact us today for a comprehensive assessment of your facility. Our experts will help you strengthen protection, optimize efficiency, and ensure reliable operations. To discover more about our capabilities and track record,{' '}
+              <a 
+                href="#about" 
+                className="text-primary hover:text-primary/80 underline underline-offset-2 transition-colors duration-200 font-medium"
               >
-                Learn More About Us
-              </button>{" "}
-              page.
+                visit our About section above
+              </a>.
             </motion.p>
 
-          
 
-            
+
+
           </motion.div>
 
           {/* Right Column - Contact Form */}
-          <motion.div 
+          <motion.div
             className="relative flex justify-center lg:justify-end"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -126,7 +120,7 @@ const CTA = ({
                 {/* Decorative Background Elements */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-2xl"></div>
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-red-500/5 to-transparent rounded-full blur-xl"></div>
-                
+
                 {/* Form Header */}
                 <div className="text-center mb-6 relative z-10">
                   <div className="w-14 h-14 bg-gradient-to-br from-primary to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-3">

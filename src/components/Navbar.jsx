@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes, FaPhone, FaChevronDown, FaMapMarkerAlt, FaEnvelope } from "react-icons/fa";
 import { contactInfo } from "../data";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,18 +68,28 @@ const Navbar = () => {
 
             {/* Right - Phone Number */}
             <div className="hidden lg:flex items-center space-x-3">
-              <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center">
-                <FaPhone className="w-4 h-4 text-white" />
-              </div>
-              <div className="text-left">
-                <div className="text-xs text-gray-500 uppercase tracking-wide font-medium">Call Us</div>
-                <div className="text-sm font-bold text-gray-900">{contactInfo.phone}</div>
-              </div>
+              <button 
+                onClick={() => window.open(`tel:${contactInfo.phone}`, '_self')}
+                className="flex items-center space-x-3 hover:scale-105 transition-transform duration-200"
+              >
+                <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center">
+                  <FaPhone className="w-4 h-4 text-white" />
+                </div>
+                <div className="text-left">
+                  <div className="text-xs text-gray-500 uppercase tracking-wide font-medium">Call Us</div>
+                  <div className="text-sm font-bold text-gray-900 hover:text-red-600 transition-colors duration-200">{contactInfo.phone}</div>
+                </div>
+              </button>
             </div>
 
             {/* Mobile Contact */}
             <div className="lg:hidden">
-              <FaPhone className="w-6 h-6 text-red-600" />
+              <button 
+                onClick={() => window.open(`tel:${contactInfo.phone}`, '_self')}
+                className="hover:scale-105 transition-transform duration-200"
+              >
+                <FaPhone className="w-6 h-6 text-red-600" />
+              </button>
             </div>
           </div>
         </div>
@@ -118,17 +129,24 @@ const Navbar = () => {
                 </button>
               </div>
 
-              {/* Mobile Menu Button */}
-              <button
-                className="lg:hidden p-2 text-white"
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                {isOpen ? (
-                  <FaTimes className="w-6 h-6" />
-                ) : (
-                  <FaBars className="w-6 h-6" />
-                )}
-              </button>
+              {/* Mobile Navigation */}
+              <div className="lg:hidden flex items-center justify-between w-full">
+                {/* Mobile Menu Button - Left */}
+                <button
+                  className="w-12 h-12 bg-black/20 flex items-center justify-center hover:bg-black/30 transition-all duration-200 hover:scale-105"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  <FaBars className="w-6 h-6 text-white" />
+                </button>
+                
+                {/* Contact Us Button - Right */}
+                <button 
+                  onClick={() => scrollToSection('contact')}
+                  className="text-white font-semibold text-sm uppercase tracking-wide hover:text-gray-200 transition-all duration-200"
+                >
+                  CONTACT US
+                </button>
+              </div>
 
               {/* GET A FREE QUOTE - Side Tab */}
               <div className="fixed right-0 top-1/2 transform -translate-y-1/2 z-40 hidden xl:block">
@@ -147,37 +165,110 @@ const Navbar = () => {
 
       {/* Mobile Navigation Menu */}
       {isOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
-          <div className="absolute inset-0 bg-black/50" onClick={closeMenu}></div>
+        <div className="fixed inset-0 z-50 lg:hidden">
+          {/* Simple Dark Overlay */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={closeMenu}></div>
           
-          <div className="relative bg-white w-80 h-full shadow-xl">
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-8">
-                <img src="/images/logo.png" alt="Logo" className="h-8" />
-                <button onClick={closeMenu} className="p-2 text-gray-500">
-                  <FaTimes className="w-5 h-5" />
-                </button>
-              </div>
-              
-              <nav className="space-y-4">
-                {navItems.map((item) => (
-                  <button
+          {/* Clean Mobile Menu Container */}
+          <div className="absolute top-0 left-0 right-0 bg-white w-full h-full shadow-2xl">
+            {/* Close Button - Top Right */}
+            <div className="absolute top-6 right-6 z-20">
+              <button 
+                onClick={closeMenu} 
+                className="w-12 h-12 bg-primary rounded-full flex items-center justify-center hover:bg-primary/90 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+              >
+                <FaTimes className="w-6 h-6 text-white" />
+              </button>
+            </div>
+            
+            {/* Navigation Items */}
+            <div className="pt-20 px-6">
+              <nav className="space-y-3">
+                {navItems.map((item, index) => (
+                  <motion.button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="block w-full text-left py-3 text-gray-900 font-medium border-b border-gray-100 last:border-0"
+                    className="group w-full text-left p-4 rounded-xl bg-gray-50 hover:bg-primary/5 border border-gray-100 hover:border-primary/30 transition-all duration-200 hover:shadow-md relative overflow-hidden"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2, delay: index * 0.05 }}
                   >
-                    {item.label}
-                  </button>
+                    <div className="flex items-center space-x-4">
+                      {/* Simple Icon */}
+                      <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+                        {(() => {
+                          switch (item.id) {
+                            case "home":
+                              return <span className="text-white text-lg">🏠</span>;
+                            case "about":
+                              return <span className="text-white text-lg">ℹ️</span>;
+                            case "services":
+                              return <span className="text-white text-lg">🔧</span>;
+                            case "why-us":
+                              return <span className="text-white text-lg">⭐</span>;
+                            default:
+                              return <span className="text-white text-lg">📋</span>;
+                          }
+                        })()}
+                      </div>
+                      
+                      {/* Text Content */}
+                      <div className="flex-1">
+                        <div className="text-gray-900 font-semibold text-lg group-hover:text-primary transition-colors duration-200">
+                          {item.label}
+                        </div>
+                        <div className="text-gray-500 text-sm">
+                          {(() => {
+                            switch (item.id) {
+                              case "home":
+                                return "Back to top";
+                              case "about":
+                                return "Learn about us";
+                              case "services":
+                                return "Explore our services";
+                              case "why-us":
+                                return "Why choose us";
+                              default:
+                                return "Navigate to section";
+                            }
+                          })()}
+                        </div>
+                      </div>
+                      
+                      {/* Simple Arrow */}
+                      <div className="w-6 h-6 text-gray-400 group-hover:text-primary transition-colors duration-200">
+                        <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </motion.button>
                 ))}
               </nav>
               
-              <div className="mt-8 pt-6 border-t border-gray-200">
+              {/* Simple Contact Section */}
+              <div className="mt-8 p-6 bg-primary rounded-xl text-white">
+                <div className="text-center mb-4">
+                  <div className="text-lg font-semibold mb-2">Ready to get started?</div>
+                  <div className="text-primary/80 text-sm">Let's discuss your safety needs</div>
+                </div>
+                
                 <button 
                   onClick={() => scrollToSection('contact')}
-                  className="w-full bg-red-600 hover:bg-red-700 text-white py-3 px-4 font-semibold transition-colors"
+                  className="w-full bg-white text-primary py-3 px-6 rounded-lg font-semibold hover:bg-gray-50 transition-all duration-200 flex items-center justify-center space-x-2"
                 >
-                  CONTACT US
+                  <span>CONTACT US</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </button>
+              </div>
+              
+              {/* Simple Footer */}
+              <div className="mt-6 text-center">
+                <div className="text-gray-400 text-xs">
+                  Safety First, Always
+                </div>
               </div>
             </div>
           </div>
