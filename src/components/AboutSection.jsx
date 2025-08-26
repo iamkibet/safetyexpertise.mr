@@ -104,7 +104,7 @@ const AboutSection = () => {
                 </p>
               </motion.div>
 
-              
+
 
               {/* Features Grid */}
               <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
@@ -143,7 +143,7 @@ const AboutSection = () => {
             </div>
           </div>
 
-          
+
           <div className="relative order-2 lg:order-2">
 
 
@@ -163,11 +163,11 @@ const AboutSection = () => {
                     alt="Industrial Safety Excellence"
                     className="absolute inset-0 w-full h-full object-cover opacity-70"
                   />
-                  
+
                   {/* Enhanced Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/10 to-red-500/30"></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                  
+
                   {/* Content Overlay - Bottom Positioned */}
                   <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
                     <div className="text-center text-white relative z-10">
@@ -184,13 +184,13 @@ const AboutSection = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Enhanced Decorative Elements */}
                   <div className="absolute top-6 right-6 w-20 h-20 bg-primary/30 rounded-full blur-2xl animate-pulse"></div>
                   <div className="absolute bottom-6 left-6 w-16 h-16 bg-red-500/30 rounded-full blur-xl animate-pulse"></div>
                   <div className="absolute top-1/2 right-8 w-3 h-3 bg-white/60 rounded-full"></div>
                   <div className="absolute bottom-1/3 left-12 w-2 h-2 bg-primary/80 rounded-full"></div>
-                  
+
                   {/* Corner Accents */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/20 to-transparent rounded-bl-3xl"></div>
                   <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-red-500/20 to-transparent rounded-tr-3xl"></div>
@@ -198,7 +198,7 @@ const AboutSection = () => {
               </div>
             </motion.div>
 
-           
+
           </div>
         </div>
       </div>
