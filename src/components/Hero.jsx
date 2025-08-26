@@ -170,12 +170,15 @@ const Hero = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
-                  className="w-3/4 md:w-1/2 xl:w-5/6 text-5xl sm:text-8xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 leading-tight tracking-tight"
+                  className="w-3/4 md:w-1/2 xl:w-5/6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 tracking-tight"
                   style={{
-                    textShadow: '2px 2px 4px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.05)'
+                    textShadow: '2px 2px 6px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.15)'
                   }}
                 >
-                  {currentSlideData.title} <span className="text-primary" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.1)' }}>{currentSlideData.subtitle}</span>
+                  <span className="block mb-3   font-black">{currentSlideData.title}</span>
+                  <span className="block text-primary text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight tracking-tight" style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.15), 0 3px 8px rgba(0,0,0,0.1)' }}>
+                    {currentSlideData.subtitle}
+                  </span>
                 </motion.h1>
               </div>
 
