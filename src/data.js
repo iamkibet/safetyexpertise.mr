@@ -48,7 +48,7 @@ export const services = [
     slug: "industrial-procurement",
     title: "Industrial Procurement & Supply Services",
     description:
-      "Comprehensive procurement and supply chain solutions for industrial fire safety equipment and mobile machinery parts.",
+        "Comprehensive Procurement & Supply Chain Solutions for the Industrial Sector",
     descriptionPoints: [
       "Fire suppression system components",
       "Mobile equipment spare parts",

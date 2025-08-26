@@ -143,86 +143,60 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Image Section - First on Mobile, Second on Desktop */}
+          
           <div className="relative order-2 lg:order-2">
-            {/* Section Title */}
+
+
+            {/* Featured Image Section */}
             <motion.div
-              className="text-center mb-8"
-              initial={{ opacity: 0, y: 20 }}
+              className="relative"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
-                Official Distributor of:
-              </h3>
-              <div className="h-1 w-16 bg-primary mx-auto"></div>
+              <div className="relative overflow-hidden rounded-3xl shadow-2xl border border-gray-100">
+                {/* Background Image */}
+                <div className="relative h-96 sm:h-[500px] lg:h-[600px] bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+                  <img
+                    src="/images/afex/3.jpg"
+                    alt="Industrial Safety Excellence"
+                    className="absolute inset-0 w-full h-full object-cover opacity-70"
+                  />
+                  
+                  {/* Enhanced Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/10 to-red-500/30"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  
+                  {/* Content Overlay - Bottom Positioned */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
+                    <div className="text-center text-white relative z-10">
+                      <div className="mb-4">
+                        <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-white/40 shadow-2xl">
+                          <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                          </svg>
+                        </div>
+                        <h4 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 text-white drop-shadow-2xl" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.8), 0 4px 12px rgba(0,0,0,0.6)' }}>Trusted Safety Partner</h4>
+                        <p className="text-lg sm:text-xl lg:text-2xl text-white max-w-2xl mx-auto leading-relaxed font-semibold" style={{ textShadow: '1px 1px 6px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.7)' }}>
+                          Delivering world-class safety solutions with 15+ years of industrial expertise
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Enhanced Decorative Elements */}
+                  <div className="absolute top-6 right-6 w-20 h-20 bg-primary/30 rounded-full blur-2xl animate-pulse"></div>
+                  <div className="absolute bottom-6 left-6 w-16 h-16 bg-red-500/30 rounded-full blur-xl animate-pulse"></div>
+                  <div className="absolute top-1/2 right-8 w-3 h-3 bg-white/60 rounded-full"></div>
+                  <div className="absolute bottom-1/3 left-12 w-2 h-2 bg-primary/80 rounded-full"></div>
+                  
+                  {/* Corner Accents */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/20 to-transparent rounded-bl-3xl"></div>
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-red-500/20 to-transparent rounded-tr-3xl"></div>
+                </div>
+              </div>
             </motion.div>
-
-            {/* Dual Logo Images Container */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-              {/* AFEX Logo */}
-              <motion.div
-                className="relative group"
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                viewport={{ once: true }}
-              >
-                <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 sm:p-8 hover:shadow-xl transition-all duration-300">
-                  <div className="text-center mb-4">
-                    <h3 className="text-red-600 font-bold text-lg sm:text-xl tracking-wide mb-2">AFEX</h3>
-                    <div className="h-1 w-12 bg-red-500 mx-auto mb-3"></div>
-                  </div>
-                  <div className="relative overflow-hidden rounded-lg">
-                    <motion.img
-                      src="/images/afex.png"
-                      alt="AFEX Logo"
-                      className="w-full h-auto max-h-48 object-contain mx-auto transform hover:scale-105 transition-transform duration-500"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.6, delay: 0.2 }}
-                      viewport={{ once: true }}
-                    />
-                  </div>
-                  <div className="text-center mt-4">
-                    <p className="text-gray-700 text-sm font-medium">Fire Suppression</p>
-                    <p className="text-gray-500 text-xs">For Heavy Duty Equipment</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* ICAT Logo */}
-              <motion.div
-                className="relative group"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                viewport={{ once: true }}
-              >
-                <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 sm:p-8 hover:shadow-xl transition-all duration-300">
-                  <div className="text-center mb-4">
-                    <h3 className="text-red-600 font-bold text-lg sm:text-xl tracking-wide mb-2">ICAT</h3>
-                    <div className="h-1 w-12 bg-red-500 mx-auto mb-3"></div>
-                  </div>
-                  <div className="relative overflow-hidden rounded-lg">
-                    <motion.img
-                      src="/images/icat.png"
-                      alt="ICAT Logo"
-                      className="w-full h-auto max-h-48 object-contain mx-auto transform hover:scale-105 transition-transform duration-500"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.6, delay: 0.4 }}
-                      viewport={{ once: true }}
-                    />
-                  </div>
-                  <div className="text-center mt-4">
-                    <p className="text-gray-700 text-sm font-medium">Fire Suppression</p>
-                    <p className="text-gray-500 text-xs">Technologies</p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
 
            
           </div>

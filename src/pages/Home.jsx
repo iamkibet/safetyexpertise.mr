@@ -279,37 +279,117 @@ const Home = () => {
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.8, delay: 0.6 }}
                 >
-                  <div className="bg-gradient-to-r from-gray-50 to-white rounded-3xl p-8 lg:p-12 border border-gray-100 shadow-lg">
-                    <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-6 lg:mb-8">
-                      Comprehensive Safety Solutions for Modern Industry
-                    </h3>
-
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 text-left">
-                      <div>
-                        <h4 className="text-lg lg:text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                          <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
-                          Industry Expertise
-                        </h4>
-                        <p className="text-gray-600 leading-relaxed mb-4">
-                          With over 15 years of experience in industrial safety, we've developed deep expertise across multiple sectors including mining, manufacturing, and energy. Our team of certified professionals brings international standards to every project, ensuring compliance with NFPA, OSHA, and ISO requirements.
-                        </p>
-                        <p className="text-gray-600 leading-relaxed">
-                          We understand the unique challenges of industrial environments and provide tailored solutions that not only meet regulatory requirements but also enhance operational efficiency and protect your most valuable assets.
-                        </p>
+                  <div className="bg-gradient-to-br from-white via-gray-50 to-blue-50/30 rounded-3xl p-8 lg:p-12 border border-gray-100 shadow-xl relative overflow-hidden">
+                    {/* Background Decorative Elements */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-2xl"></div>
+                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-red-500/5 to-transparent rounded-full blur-xl"></div>
+                    
+                    {/* Top Right Corner Decoration */}
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-3xl"></div>
+                    <div className="absolute top-4 right-4 w-3 h-3 bg-primary rounded-full"></div>
+                    <div className="absolute top-8 right-8 w-2 h-2 bg-red-500 rounded-full"></div>
+                    
+                    {/* Bottom Left Corner Decoration */}
+                    <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-red-500/20 to-transparent rounded-tr-3xl"></div>
+                    <div className="absolute bottom-4 left-4 w-3 h-3 bg-red-500 rounded-full"></div>
+                    <div className="absolute bottom-8 left-8 w-2 h-2 bg-primary rounded-full"></div>
+                    
+                    {/* Enhanced Header */}
+                    <div className="text-center mb-10 relative z-10">
+                      <div className="inline-flex items-center justify-center mb-4">
+                        <span className="h-0.5 w-12 bg-gradient-to-r from-transparent to-primary mr-3"></span>
+                        <span className="text-sm font-semibold tracking-wider text-primary uppercase px-3 py-1 bg-primary/10 rounded-full">
+                          Industry Leadership
+                        </span>
+                        <span className="h-0.5 w-12 bg-gradient-to-l from-transparent to-primary ml-3"></span>
                       </div>
+                      <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                        Comprehensive Safety Solutions for <span className="text-primary">Modern Industry</span>
+                      </h3>
+                      <div className="h-1 w-20 bg-gradient-to-r from-primary to-red-500 mx-auto rounded-full"></div>
+                    </div>
 
-                      <div>
-                        <h4 className="text-lg lg:text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                          <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
-                          Innovation & Technology
-                        </h4>
-                        <p className="text-gray-600 leading-relaxed mb-4">
-                          Our commitment to innovation drives us to continuously integrate cutting-edge safety technologies and methodologies. From advanced fire detection systems to predictive maintenance solutions, we leverage the latest developments to provide superior protection.
-                        </p>
-                        <p className="text-gray-600 leading-relaxed">
-                          We invest in ongoing research and development, ensuring our clients benefit from the most effective and efficient safety solutions available in the market today.
-                        </p>
-                      </div>
+                    {/* Enhanced Content Grid */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 text-left relative z-10">
+                      {/* Industry Expertise Card */}
+                      <motion.div
+                        className="group"
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        viewport={{ once: true }}
+                      >
+                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                          {/* Card Header */}
+                          <div className="flex items-center mb-6">
+                            <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mr-4">
+                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                              </svg>
+                            </div>
+                            <div>
+                              <h4 className="text-xl font-bold text-gray-900">
+                                Industry Expertise
+                              </h4>
+                              <div className="h-1 w-12 bg-red-500 rounded-full mt-2"></div>
+                            </div>
+                          </div>
+                          
+                          {/* Content */}
+                          <div className="space-y-4">
+                            <p className="text-gray-600 leading-relaxed">
+                              With over <span className="font-semibold text-red-600">15 years of experience</span> in industrial safety, we've developed deep expertise across multiple sectors including <span className="font-medium text-gray-800">mining, manufacturing, and energy</span>.
+                            </p>
+                            <p className="text-gray-600 leading-relaxed">
+                              Our team of certified professionals brings <span className="font-semibold text-primary">international standards</span> to every project, ensuring compliance with <span className="font-medium text-gray-800">NFPA, OSHA, and ISO</span> requirements.
+                            </p>
+                            <p className="text-gray-600 leading-relaxed">
+                              We understand the unique challenges of industrial environments and provide <span className="font-semibold text-primary">tailored solutions</span> that not only meet regulatory requirements but also enhance operational efficiency and protect your most valuable assets.
+                            </p>
+                          </div>
+                          
+                          
+                        </div>
+                      </motion.div>
+
+                      {/* Innovation & Technology Card */}
+                      <motion.div
+                        className="group"
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        viewport={{ once: true }}
+                      >
+                        <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                          {/* Card Header */}
+                          <div className="flex items-center mb-6">
+                            <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center mr-4">
+                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <h4 className="text-xl font-bold text-gray-900">
+                                Innovation & Technology
+                              </h4>
+                              <div className="h-1 w-12 bg-primary rounded-full mt-2"></div>
+                            </div>
+                          </div>
+                          
+                          {/* Content */}
+                          <div className="space-y-4">
+                            <p className="text-gray-600 leading-relaxed">
+                              Our commitment to <span className="font-semibold text-blue-600">innovation</span> drives us to continuously integrate cutting-edge safety technologies and methodologies.
+                            </p>
+                            <p className="text-gray-600 leading-relaxed">
+                              From <span className="font-medium text-gray-800">advanced fire detection systems</span> to <span className="font-medium text-gray-800">predictive maintenance solutions</span>, we leverage the latest developments to provide superior protection.
+                            </p>
+                            <p className="text-gray-600 leading-relaxed">
+                              We invest in ongoing <span className="font-semibold text-primary">research and development</span>, ensuring our clients benefit from the most effective and efficient safety solutions available in the market today.
+                            </p>
+                          </div>
+                        </div>
+                      </motion.div>
                     </div>
 
                     <div className="mt-6 lg:mt-8 pt-8 lg:pt-12 border-t border-gray-200">
@@ -322,19 +402,76 @@ const Home = () => {
                         viewport={{ once: true }}
                       >
 
-                        <p className="text-gray-700 text-lg leading-relaxed font-light text-center mb-6">
-                          Safety Expertise stands as your trusted partner in creating safer, more compliant, and more efficient industrial environments. Our comprehensive approach combines technical excellence with practical understanding, delivering solutions that work seamlessly within your operations while providing the highest level of protection for your people, assets, and reputation. We are proud to be the{" "}
-                          <span className="inline-flex items-center bg-red-50 border border-red-200 rounded-full px-3 py-1 mx-1">
-                            <span className="text-red-600 font-semibold text-sm">Official Distributor of</span>
-                            <span className="text-red-500 font-bold text-base ml-1">AFEX</span>
-                          </span>
-                          {" "}and{" "}
-                          <span className="inline-flex items-center bg-green-50 border border-green-200 rounded-full px-3 py-1 mx-1">
-                            <span className="text-green-600 font-semibold text-sm">Official Distributor of</span>
-                            <span className="text-green-500 font-bold text-base ml-1">ICAT</span>
-                          </span>
-                          {" "}in Mauritania, bringing you world-class fire suppression technologies and heavy-duty equipment solutions.
-                        </p>
+                        <div className="text-center mb-8">
+                          <p className="text-gray-700 text-lg leading-relaxed font-light mb-8">
+                            Safety Expertise stands as your trusted partner in creating safer, more compliant, and more efficient industrial environments. Our comprehensive approach combines technical excellence with practical understanding, delivering solutions that work seamlessly within your operations while providing the highest level of protection for your people, assets, and reputation.
+                          </p>
+                          
+                          <div className="mb-6">
+                            <h4 className="text-lg font-semibold text-gray-800 mb-4">We are proud to be the Official Distributor of:</h4>
+                          </div>
+                          
+                          {/* Logo Showcase */}
+                          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-6">
+                            {/* AFEX Logo */}
+                            <motion.div
+                              className="group"
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6, delay: 0.2 }}
+                              viewport={{ once: true }}
+                            >
+                              <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                                <div className="text-center mb-3">
+                                  <h5 className="text-red-600 font-bold text-sm tracking-wide mb-2">OFFICIAL DISTRIBUTOR</h5>
+                                  <div className="h-0.5 w-8 bg-red-500 mx-auto mb-3"></div>
+                                </div>
+                                <div className="relative overflow-hidden rounded-lg">
+                                  <img
+                                    src="/images/afex.png"
+                                    alt="AFEX Logo"
+                                    className="w-32 h-20 object-contain mx-auto transform group-hover:scale-105 transition-transform duration-300"
+                                  />
+                                </div>
+                                <div className="text-center mt-3">
+                                  <p className="text-gray-700 text-xs font-medium">Fire Suppression Systems</p>
+                                  <p className="text-gray-500 text-xs">For Heavy Duty Equipment</p>
+                                </div>
+                              </div>
+                            </motion.div>
+
+                            {/* ICAT Logo */}
+                            <motion.div
+                              className="group"
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6, delay: 0.4 }}
+                              viewport={{ once: true }}
+                            >
+                              <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                                <div className="text-center mb-3">
+                                  <h5 className="text-primary font-bold text-sm tracking-wide mb-2">OFFICIAL DISTRIBUTOR</h5>
+                                  <div className="h-0.5 w-8 bg-primary mx-auto mb-3"></div>
+                                </div>
+                                <div className="relative overflow-hidden rounded-lg">
+                                  <img
+                                    src="/images/icat.png"
+                                    alt="ICAT Logo"
+                                    className="w-32 h-20 object-contain mx-auto transform group-hover:scale-105 transition-transform duration-300"
+                                  />
+                                </div>
+                                <div className="text-center mt-3">
+                                  <p className="text-gray-700 text-xs font-medium">Fire Suppression Technologies</p>
+                                  <p className="text-gray-500 text-xs">Advanced Safety Solutions</p>
+                                </div>
+                              </div>
+                            </motion.div>
+                          </div>
+                          
+                          <p className="text-gray-700 text-base leading-relaxed font-light">
+                            in Mauritania, bringing you world-class fire suppression technologies and heavy-duty equipment solutions.
+                          </p>
+                        </div>
 
                       </motion.div>
                     </div>
@@ -424,7 +561,7 @@ const Home = () => {
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
                       {/* Service Header with Background */}
-                      <div 
+                      <div
                         className="relative h-[230px] bg-cover bg-center bg-no-repeat"
                         style={{
                           backgroundImage: `url('${(() => {
@@ -445,40 +582,20 @@ const Home = () => {
                           })()}')`
                         }}
                       >
-                                                {/* Gradient Overlay */}
+                        {/* Gradient Overlay */}
                         <div className={`absolute inset-0 ${service.slug === "mobile-equipment-maintenance" ? "bg-gradient-to-r from-red-600/50 to-red-500/30" :
                           service.slug === "maintenance-engineering" ? "bg-gradient-to-r from-blue-600/50 to-blue-500/30" :
                             service.slug === "manpower-expertise" ? "bg-gradient-to-r from-green-600/50 to-green-500/30" :
                               service.slug === "industrial-procurement" ? "bg-gradient-to-r from-purple-600/50 to-purple-500/30" :
                                 "bg-gradient-to-r from-gray-600/50 to-gray-500/30"
                           }`}></div>
-                        
+
                         {/* Service Number Badge */}
                         <div className="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white">
                           <span className="text-primary font-bold text-lg">{index + 1}</span>
                         </div>
 
-                        {/* Service Icon */}
-                        <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white">
-                          <span className="text-2xl">
-                            {(() => {
-                              switch (service.slug) {
-                                case "mobile-equipment-maintenance":
-                                  return "🔥";
-                                case "maintenance-engineering":
-                                  return "⚙️";
-                                case "manpower-expertise":
-                                  return "👨‍🔧";
-                                case "industrial-procurement":
-                                  return "📦";
-                                case "transport-mobility":
-                                  return "🚛";
-                                default:
-                                  return "🔧";
-                              }
-                            })()}
-                          </span>
-                        </div>
+                      
 
                         {/* Service Title */}
                         <div className="absolute bottom-4 left-4 right-4">
@@ -495,64 +612,7 @@ const Home = () => {
                           {service.description}
                         </p>
 
-                        {/* Key Features - Horizontal Scroll on Mobile */}
-                        <div className="flex space-x-3 overflow-x-auto pb-2 -mx-6 px-6">
-                          {(() => {
-                            const keyFeatures = (() => {
-                              switch (service.slug) {
-                                case "mobile-equipment-maintenance":
-                                  return [
-                                    { icon: "🔥", title: "AFEX Systems", desc: "Official representative" },
-                                    { icon: "⚡", title: "24/7 Support", desc: "Emergency response" },
-                                    { icon: "🛡️", title: "Safety Compliance", desc: "Full certification" }
-                                  ];
-                                case "maintenance-engineering":
-                                  return [
-                                    { icon: "⚙️", title: "Performance", desc: "Equipment optimization" },
-                                    { icon: "📋", title: "Planning", desc: "Maintenance scheduling" },
-                                    { icon: "🔧", title: "Expert Repairs", desc: "Preventive maintenance" }
-                                  ];
-                                case "manpower-expertise":
-                                  return [
-                                    { icon: "👨‍🔧", title: "Certified Teams", desc: "Technical specialists" },
-                                    { icon: "🎓", title: "Training", desc: "Certification programs" },
-                                    { icon: "🚨", title: "Emergency Response", desc: "24/7 support" }
-                                  ];
-                                case "industrial-procurement":
-                                  return [
-                                    { icon: "📦", title: "Global Supply", desc: "Worldwide network" },
-                                    { icon: "✅", title: "Quality Assured", desc: "Testing & verification" },
-                                    { icon: "📊", title: "Inventory Management", desc: "Supply chain solutions" }
-                                  ];
-                                case "transport-mobility":
-                                  return [
-                                    { icon: "🚛", title: "Heavy Transport", desc: "Safe transportation" },
-                                    { icon: "🗺️", title: "Route Planning", desc: "Logistics optimization" },
-                                    { icon: "⏰", title: "24/7 Availability", desc: "Round-the-clock service" }
-                                  ];
-                                default:
-                                  return [
-                                    { icon: "🔧", title: "Professional", desc: "Expert delivery" },
-                                    { icon: "⚡", title: "Efficient", desc: "Fast solutions" },
-                                    { icon: "🛡️", title: "Safe", desc: "Safety-focused" }
-                                  ];
-                              }
-                            })();
-
-                            return keyFeatures.map((feature, idx) => (
-                              <div
-                                key={idx}
-                                className="flex-shrink-0 w-32 p-3 rounded-xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 text-center"
-                              >
-                                <div className="w-8 h-8 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center mx-auto mb-2">
-                                  <span className="text-sm">{feature.icon}</span>
-                                </div>
-                                <h4 className="font-semibold text-gray-800 mb-1 text-xs">{feature.title}</h4>
-                                <p className="text-xs text-gray-600 leading-tight">{feature.desc}</p>
-                              </div>
-                            ));
-                          })()}
-                        </div>
+                        
 
 
                       </div>
@@ -606,7 +666,7 @@ const Home = () => {
                                   service.slug === "manpower-expertise" ? "bg-gradient-to-br from-green-600/40 via-green-500/30 to-teal-500/20" :
                                     service.slug === "industrial-procurement" ? "bg-gradient-to-br from-purple-600/40 via-purple-500/30 to-pink-500/20" :
                                       "bg-gradient-to-br from-gray-600/40 via-gray-500/30 to-slate-500/20"
-                                  }`}></div>
+                                }`}></div>
 
                               {/* Floating Elements */}
                               <div className="absolute top-8 left-8">
@@ -621,33 +681,7 @@ const Home = () => {
                                 </motion.div>
                               </div>
 
-                              {/* Service Icon */}
-                              <div className="absolute bottom-8 right-8">
-                                <motion.div
-                                  className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full border border-white/30 flex items-center justify-center"
-                                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                                  viewport={{ once: true }}
-                                  transition={{ duration: 0.8, delay: 0.5 }}
-                                >
-                                  {(() => {
-                                    switch (service.slug) {
-                                      case "mobile-equipment-maintenance":
-                                        return "🔥";
-                                      case "maintenance-engineering":
-                                        return "⚙️";
-                                      case "manpower-expertise":
-                                        return "👨‍🔧";
-                                      case "industrial-procurement":
-                                        return "📦";
-                                      case "transport-mobility":
-                                        return "🚛";
-                                      default:
-                                        return "🔧";
-                                    }
-                                  })()}
-                                </motion.div>
-                              </div>
+                             
                             </div>
 
                             {/* Service Title Overlay */}
@@ -700,7 +734,7 @@ const Home = () => {
                                     case "manpower-expertise":
                                       return "Experienced expat and local teams deliver specialized technical expertise in fire safety and mobile equipment maintenance. We provide certified technicians, safety compliance experts, training programs, and emergency response teams.";
                                     case "industrial-procurement":
-                                      return "Complete procurement solutions for fire suppression components, mobile equipment parts, safety equipment, and PPE. Our services include quality assurance, testing, inventory management, and access to a global supplier network.";
+                                      return "We deliver end-to-end procurement services covering industrial equipment, machinery parts, safety systems, and PPE. From sourcing and quality assurance to testing, inventory management, and logistics, our solutions connect you to a trusted global supplier network. With a focus on reliability, performance, and cost efficiency, we ensure your operations have the right materials at the right time—supporting every aspect of your industrial procurement needs.";
                                     case "transport-mobility":
                                       return "Comprehensive transport and mobility solutions for heavy-duty equipment with safety-compliant transport, emergency services, route planning, and 24/7 availability. We ensure safe and efficient movement of machinery.";
                                     default:
@@ -723,39 +757,39 @@ const Home = () => {
                                   switch (service.slug) {
                                     case "mobile-equipment-maintenance":
                                       return [
-                                        { icon: "🔥", title: "AFEX Systems", desc: "Official representative for fire suppression installation" },
-                                        { icon: "⚡", title: "24/7 Support", desc: "Emergency response and rapid repair services" },
-                                        { icon: "🛡️", title: "Safety Compliance", desc: "Full certification and compliance services" }
+                                        { icon: "shield-check", title: "AFEX Systems", desc: "Official representative for fire suppression installation" },
+                                        { icon: "clock", title: "24/7 Support", desc: "Emergency response and rapid repair services" },
+                                        { icon: "certificate", title: "Safety Compliance", desc: "Full certification and compliance services" }
                                       ];
                                     case "maintenance-engineering":
                                       return [
-                                        { icon: "⚙️", title: "Performance", desc: "Equipment optimization and reliability analysis" },
-                                        { icon: "📋", title: "Planning", desc: "Maintenance scheduling and documentation" },
-                                        { icon: "🔧", title: "Expert Repairs", desc: "Preventive and corrective maintenance" }
+                                        { icon: "cog", title: "Performance", desc: "Equipment optimization and reliability analysis" },
+                                        { icon: "clipboard-list", title: "Planning", desc: "Maintenance scheduling and documentation" },
+                                        { icon: "wrench", title: "Expert Repairs", desc: "Preventive and corrective maintenance" }
                                       ];
                                     case "manpower-expertise":
                                       return [
-                                        { icon: "👨‍🔧", title: "Certified Teams", desc: "Expat and local technical specialists" },
-                                        { icon: "🎓", title: "Training", desc: "Certification and training programs" },
-                                        { icon: "🚨", title: "Emergency Response", desc: "24/7 emergency response teams" }
+                                        { icon: "users", title: "Certified Teams", desc: "Expat and local technical specialists" },
+                                        { icon: "graduation-cap", title: "Training", desc: "Certification and training programs" },
+                                        { icon: "exclamation-triangle", title: "Emergency Response", desc: "24/7 emergency response teams" }
                                       ];
                                     case "industrial-procurement":
                                       return [
-                                        { icon: "📦", title: "Global Supply", desc: "Worldwide supplier network access" },
-                                        { icon: "✅", title: "Quality Assured", desc: "Testing and quality verification" },
-                                        { icon: "📊", title: "Inventory Management", desc: "Efficient supply chain solutions" }
+                                        { icon: "globe", title: "Global Supply", desc: "Worldwide supplier network access" },
+                                        { icon: "check-circle", title: "Quality Assured", desc: "Testing and quality verification" },
+                                        { icon: "chart-bar", title: "Inventory Management", desc: "Efficient supply chain solutions" }
                                       ];
                                     case "transport-mobility":
                                       return [
-                                        { icon: "🚛", title: "Heavy Transport", desc: "Safe heavy equipment transportation" },
-                                        { icon: "🗺️", title: "Route Planning", desc: "Efficient logistics and route optimization" },
-                                        { icon: "⏰", title: "24/7 Availability", desc: "Round-the-clock transport services" }
+                                        { icon: "truck", title: "Heavy Transport", desc: "Safe heavy equipment transportation" },
+                                        { icon: "map", title: "Route Planning", desc: "Efficient logistics and route optimization" },
+                                        { icon: "clock", title: "24/7 Availability", desc: "Round-the-clock transport services" }
                                       ];
                                     default:
                                       return [
-                                        { icon: "🔧", title: "Professional", desc: "Expert service delivery" },
-                                        { icon: "⚡", title: "Efficient", desc: "Fast and reliable solutions" },
-                                        { icon: "🛡️", title: "Safe", desc: "Safety-focused approach" }
+                                        { icon: "star", title: "Professional", desc: "Expert service delivery" },
+                                        { icon: "bolt", title: "Efficient", desc: "Fast and reliable solutions" },
+                                        { icon: "shield-alt", title: "Safe", desc: "Safety-focused approach" }
                                       ];
                                   }
                                 })();
@@ -766,7 +800,123 @@ const Home = () => {
                                     className="group p-4 rounded-xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:border-primary/30 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center"
                                   >
                                     <div className="w-12 h-12 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
-                                      <span className="text-xl">{feature.icon}</span>
+                                      {(() => {
+                                        switch (feature.icon) {
+                                          case "shield-check":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                              </svg>
+                                            );
+                                          case "clock":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                              </svg>
+                                            );
+                                          case "certificate":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                              </svg>
+                                            );
+                                          case "cog":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065c.426-1.756 2.924-1.756 3.35 0z" />
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                              </svg>
+                                            );
+                                          case "clipboard-list":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                                              </svg>
+                                            );
+                                          case "wrench":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065c.426-1.756 2.924-1.756 3.35 0z" />
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                              </svg>
+                                            );
+                                          case "users":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                                              </svg>
+                                            );
+                                          case "graduation-cap":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                                              </svg>
+                                            );
+                                          case "exclamation-triangle":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                                              </svg>
+                                            );
+                                          case "globe":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                              </svg>
+                                            );
+                                          case "check-circle":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                              </svg>
+                                            );
+                                          case "chart-bar":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                              </svg>
+                                            );
+                                          case "truck":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM21 17a2 2 0 11-4 0 2 2 0 014 0zM21 13V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6m16 0v4a2 2 0 01-2 2H7a2 2 0 01-2-2v-4m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 00-.293.707V17" />
+                                              </svg>
+                                            );
+                                          case "map":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 4m0 13V4m0 0L9 7" />
+                                              </svg>
+                                            );
+                                          case "star":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                              </svg>
+                                            );
+                                          case "bolt":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                              </svg>
+                                            );
+                                          case "shield-alt":
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                              </svg>
+                                            );
+                                          default:
+                                            return (
+                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                              </svg>
+                                            );
+                                        }
+                                      })()}
                                     </div>
                                     <h4 className="font-semibold text-gray-800 mb-2 text-sm">{feature.title}</h4>
                                     <p className="text-xs text-gray-600 leading-relaxed">{feature.desc}</p>
@@ -884,7 +1034,9 @@ const Home = () => {
 
                 <div className="relative z-10 text-center">
                   <div className="w-12 h-12 bg-gradient-to-br from-primary to-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <span className="text-xl">🚀</span>
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
                   </div>
 
                   <h3 className="text-lg font-bold text-white mb-3">Innovation Hub</h3>
@@ -906,7 +1058,9 @@ const Home = () => {
 
                 <div className="relative z-10 text-center">
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <span className="text-xl">⭐</span>
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                    </svg>
                   </div>
 
                   <h3 className="text-lg font-bold text-white mb-3">Excellence Center</h3>
@@ -928,7 +1082,9 @@ const Home = () => {
 
                 <div className="relative z-10 text-center">
                   <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <span className="text-xl">🤝</span>
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
                   </div>
 
                   <h3 className="text-lg font-bold text-white mb-3">Partnership Network</h3>
