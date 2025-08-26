@@ -8,7 +8,7 @@ const HERO_SLIDES = [
     id: 1,
     title: "Mobile Equipment Maintenance",
     subtitle: "& Fire Suppression Systems",
-    image: "/images/afex/6.jpg"
+    image: "/images/17.png"
   },
   {
     id: 2,
@@ -102,8 +102,8 @@ const Hero = () => {
   const currentSlideData = HERO_SLIDES[currentSlide];
 
   return (
-    <section 
-      className="relative overflow-hidden min-h-[70vh]"
+    <section
+      className="relative overflow-hidden h-[70vh]"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -128,215 +128,109 @@ const Hero = () => {
       {/* Diagonal Design Overlay with Smooth Blending */}
       <div className="absolute inset-0">
         {/* Base gradient background */}
-       
-        
+
+
         {/* Diagonal Shape 1 - Light with smooth blend */}
-        <div 
+        <div
           className="absolute inset-0 bg-gradient-to-br from-white to-white"
           style={{
             clipPath: 'polygon(0 0, 60% 0, 40% 100%, 0 100%)'
           }}
         ></div>
-        
+
         {/* Diagonal Shape 2 - Medium with smooth blend */}
-        <div 
+        <div
           className="absolute inset-0 bg-gradient-to-br from-gray-300/25 to-gray-400/25"
           style={{
             clipPath: 'polygon(40% 0, 80% 0, 60% 100%, 20% 100%)'
           }}
         ></div>
-        
+
         {/* Diagonal Shape 3 - Dark with smooth blend */}
-        <div 
+        <div
           className="absolute inset-0 bg-gradient-to-br from-red-700/10 to-gray-900/10"
           style={{
             clipPath: 'polygon(70% 0, 100% 0, 100% 100%, 50% 100%)'
           }}
         ></div>
 
-    
+
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 w-full h-full flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 sm:pt-30 lg:pt-38">
-        <div className="w-full max-w-6xl mx-auto">
-          
-          {/* Content */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`content-${currentSlide}`}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 50 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="space-y-6 sm:space-y-8 lg:space-y-10"
-            >
+      <div className="relative z-10 w-full flex items-center py-12 md:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 w-full">
+          <div className="max-w-2xl">
+
+            {/* Content */}
+            <div className="space-y-6 md:space-y-8 lg:space-y-10">
               {/* Main Heading */}
-              <div className="space-y-4 sm:space-y-6 lg:space-y-8">
+              <div className="space-y-4">
                 <motion.h1
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
-                  className="max-w-4xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-800 leading-tight tracking-tight"
+                  className="w-3/4 md:w-1/2 xl:w-5/6 text-5xl sm:text-8xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 leading-tight tracking-tight"
+                  style={{
+                    textShadow: '2px 2px 4px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.05)'
+                  }}
                 >
-                  {currentSlideData.title}
+                  {currentSlideData.title} <span className="text-primary" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.1)' }}>{currentSlideData.subtitle}</span>
                 </motion.h1>
-                
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                  className="max-w-3xl text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-primary leading-relaxed"
-                >
-                  {currentSlideData.subtitle}
-                </motion.h2>
               </div>
 
-              {/* CTA Button with Integrated Slide Indicators */}
+              {/* CTA Button */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.8 }}
-                className="pt-6 sm:pt-8 lg:pt-10"
+                className="pt-6 md:pt-8 lg:pt-10"
               >
                 {/* Main CTA Button */}
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="relative inline-block bg-primary hover:bg-primary/80 text-white font-bold py-4 sm:py-5 px-8 sm:px-10 text-lg sm:text-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl rounded-lg overflow-hidden group"
+                  className="relative inline-flex items-center justify-center bg-primary hover:bg-primary-dark text-white font-bold py-3 px-7 text-base transition-all duration-300 hover:scale-105 rounded-2xl overflow-hidden group shadow-lg hover:shadow-xl"
+                  style={{
+                    boxShadow: '0 10px 25px -5px rgba(59, 130, 246, 0.5), 0 5px 10px -5px rgba(59, 130, 246, 0.25)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.boxShadow = '0 15px 30px -5px rgba(59, 130, 246, 0.6), 0 5px 15px -5px rgba(59, 130, 246, 0.4)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.boxShadow = '0 10px 25px -5px rgba(59, 130, 246, 0.5), 0 5px 10px -5px rgba(59, 130, 246, 0.25)';
+                  }}
                 >
-                  <span className="relative z-10">Get In Touch</span>
-                  
-                  {/* Filling Progress Bar */}
-                  <div className="absolute bottom-0 left-0 h-1 bg-red-400 transition-all duration-500 ease-out"
-                       style={{ 
-                         width: `${((currentSlide + 1) / HERO_SLIDES.length) * 100}%` 
-                       }}>
-                  </div>
+                  <span className="relative z-10 tracking-wide">GET IN TOUCH</span>
+                  <svg className="w-5 h-5 ml-3 relative z-10 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+
+                  {/* Button Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400/30 via-transparent to-blue-400/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
                 </button>
               </motion.div>
-            </motion.div>
-          </AnimatePresence>
+
+
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Slide Indicators at Bottom Middle */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="flex items-center space-x-6">
-          {/* Show only 3 indicators at a time - always the next 3 from current */}
-          {Array.from({ length: Math.min(3, HERO_SLIDES.length) }, (_, index) => {
-            // Calculate which slides to show - always the next 3 from current
-            let slideIndex;
-            if (currentSlide + 2 < HERO_SLIDES.length) {
-              // If we have enough slides ahead, show current + next 2
-              slideIndex = currentSlide + index;
-            } else {
-              // If we're near the end, show the last 3 slides
-              slideIndex = Math.max(0, HERO_SLIDES.length - 3 + index);
-            }
-            
-            const isActive = slideIndex === currentSlide;
-            const isVisible = slideIndex < HERO_SLIDES.length;
-            
-            return (
-              <button
-                key={`indicator-${slideIndex}-${currentSlide}`}
-                onClick={() => goToSlide(slideIndex)}
-                className="group relative"
-                aria-label={`Go to slide ${slideIndex + 1}`}
-              >
-                {/* Main Indicator - Pill Shape */}
-                <div className="relative">
-                  {/* Background Pill */}
-                  <div className="w-16 h-2 sm:w-20 sm:h-2.5 bg-gray-200 rounded-full overflow-hidden">
-                    {/* Filling Animation */}
-                    <motion.div 
-                      className="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full"
-                      initial={{ width: 0 }}
-                      animate={{ 
-                        width: isActive ? "100%" : "0%",
-                        opacity: isActive ? 1 : 0.3
-                      }}
-                      transition={{ 
-                        duration: 0.8, 
-                        ease: "easeInOut",
-                        delay: index * 0.1 
-                      }}
-                    />
-                  </div>
-                  
-                  {/* Active State Glow Effect */}
-                  {isActive && (
-                    <motion.div
-                      className="absolute inset-0 rounded-full shadow-lg"
-                      animate={{
-                        boxShadow: [
-                          "0 0 0 0 rgba(239, 68, 68, 0.4)",
-                          "0 0 0 4px rgba(239, 68, 68, 0.2)",
-                          "0 0 0 0 rgba(239, 68, 68, 0.4)"
-                        ]
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    />
-                  )}
-                </div>
-                
-                {/* Enhanced Tooltip */}
-                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 px-3 py-2 bg-gray-800 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap shadow-lg">
-                  <div className="text-center">
-                    <div className="font-semibold">{HERO_SLIDES[slideIndex]?.title || 'More Slides'}</div>
-                    <div className="text-gray-300 text-xs mt-1">{HERO_SLIDES[slideIndex]?.subtitle || 'Keep exploring'}</div>
-                  </div>
-                  {/* Tooltip Arrow */}
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
-                </div>
-              </button>
-            );
-          })}
-          
-          {/* Creative Indicator for Additional Slides */}
-          {HERO_SLIDES.length > 3 && (
-            <div className="flex items-center space-x-3">
-              {/* Animated dots indicating more slides */}
-              <div className="flex space-x-1.5">
-                {Array.from({ length: Math.min(3, HERO_SLIDES.length - 3) }, (_, index) => (
-                  <motion.div
-                    key={index}
-                    className="w-2 h-2 rounded-full bg-gray-400"
-                    animate={{
-                      opacity: [0.3, 1, 0.3],
-                      scale: [0.7, 1.2, 0.7]
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      delay: index * 0.2,
-                      ease: "easeInOut"
-                    }}
-                  />
-                ))}
-              </div>
-              
-              {/* Animated arrow indicating more */}
-              <motion.div
-                className="text-gray-500 text-xl font-bold"
-                animate={{
-                  x: [0, 3, 0],
-                  opacity: [0.6, 1, 0.6]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                →
-              </motion.div>
-            </div>
-          )}
+      {/* Slide Indicators */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20">
+        <div className="flex items-center gap-3 pt-8">
+          {HERO_SLIDES.map((_, index) => (
+            <motion.button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`slide-indicator transition-all duration-300 rounded-full ${index === currentSlide
+                  ? 'w-12 h-3 bg-red-500'
+                  : 'w-3 h-3 bg-gray-400 hover:bg-red-400'
+                }`}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            />
+          ))}
         </div>
       </div>
 
