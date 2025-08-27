@@ -510,7 +510,7 @@ const Home = () => {
 
 
         {/* Services Section */}
-        <section id="services" className="py- sm:py-10 lg:py-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden min-h-screen">
+        <section id="services" className=" sm:py-10 lg:py-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden min-h-screen">
           {/* Background Decorative Elements */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-primary/5 to-blue-500/5 rounded-full blur-3xl"></div>
@@ -518,10 +518,10 @@ const Home = () => {
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-500/3 to-primary/3 rounded-full blur-3xl"></div>
           </div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full">
             {/* Section Header */}
             <motion.div
-              className="text-center mb-4 lg:mb-20"
+              className="text-center mb-4 sm:mb-6 lg:mb-8 xl:mb-10"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -545,7 +545,7 @@ const Home = () => {
             </motion.div>
 
             {/* Services Showcase */}
-            <div className="relative">
+            <div className="relative flex-1">
               {/* Mobile Services Layout */}
               <div className="block md:hidden">
                 <div className="space-y-6">
@@ -620,22 +620,22 @@ const Home = () => {
               </div>
 
               {/* Desktop Services Slider - Hidden on Mobile */}
-              <div className="hidden md:block relative">
+              <div className="hidden md:block relative h-full flex flex-col">
                 {/* Services Slider */}
-                <div className="relative overflow-hidden rounded-2xl bg-white/80 backdrop-blur-sm border border-white/20 shadow-2xl">
-                  <motion.div
-                    className="flex transition-transform duration-700 ease-in-out"
-                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                  >
-                    {services.map((service, index) => (
-                      <div
-                        key={service.slug}
-                        className="w-full flex-shrink-0"
-                        style={{ width: '100%' }}
-                      >
-                        <div className="grid lg:grid-cols-2 gap-0 min-h-[500px] sm:min-h-[600px]">
+                <div className="relative overflow-hidden rounded-2xl bg-white/80 backdrop-blur-sm border border-white/20 shadow-2xl flex-1 ">
+                                      <motion.div
+                      className="flex transition-transform duration-700 ease-in-out h-full"
+                      style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                    >
+                      {services.map((service, index) => (
+                        <div
+                          key={service.slug}
+                          className="w-full flex-shrink-0 h-full"
+                          style={{ width: '100%' }}
+                        >
+                          <div className="grid lg:grid-cols-2 gap-0 h-full">
                           {/* Left Side - Service Image & Visual */}
-                          <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+                          <div className="relative overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-black h-[500px]">
                             {/* Service-specific Background Image */}
                             <div
                               className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
@@ -697,231 +697,237 @@ const Home = () => {
                           </div>
 
                           {/* Right Side - Service Details */}
-                          <div className="p-8 sm:p-10 lg:p-12 bg-white relative">
+                          <div className="p-4 sm:p-5 lg:p-6 xl:p-8 2xl:p-10 bg-white relative flex flex-col min-h-[500px]">
                             {/* Decorative Corner Element */}
                             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-2xl"></div>
 
-                            {/* Service Description */}
-                            <motion.div
-                              className="mb-8"
-                              initial={{ opacity: 0, x: 30 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              viewport={{ once: true }}
-                              transition={{ duration: 0.8, delay: 0.3 }}
-                            >
-                              <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
-                                {service.description}
-                              </p>
-                            </motion.div>
+                            {/* Content Container */}
+                            <div className="flex-1 flex flex-col ">
+                              {/* Service Description */}
+                              <motion.div
+                                className="mb-4 lg:mb-6"
+                                initial={{ opacity: 0, x: 30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8, delay: 0.3 }}
+                              >
+                                <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
+                                  {service.description}
+                                </p>
+                              </motion.div>
 
-                            {/* Service Description Paragraph */}
-                            <motion.div
-                              className="mb-6"
-                              initial={{ opacity: 0, y: 20 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              viewport={{ once: true }}
-                              transition={{ duration: 0.8, delay: 0.4 }}
-                            >
-                              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                              {/* Service Description Paragraph */}
+                              <motion.div
+                                className="mb-4 lg:mb-6"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8, delay: 0.4 }}
+                              >
+                                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                                  {(() => {
+                                    switch (service.slug) {
+                                      case "mobile-equipment-maintenance":
+                                        return "Our comprehensive mobile equipment maintenance includes AFEX fire suppression system installation, preventive maintenance programs, emergency response services, and 24/7 support. We ensure safety compliance and rapid repair services for all your heavy-duty mobile machinery needs.";
+                                      case "maintenance-engineering":
+                                        return "Professional engineering services cover equipment performance optimization, preventive and corrective maintenance, reliability analysis, and technical documentation. Our expert team provides maintenance planning, scheduling, and engineering solutions for industrial equipment.";
+                                      case "manpower-expertise":
+                                        return "Experienced expat and local teams deliver specialized technical expertise in fire safety and mobile equipment maintenance. We provide certified technicians, safety compliance experts, training programs, and emergency response teams.";
+                                      case "industrial-procurement":
+                                        return "We deliver end-to-end procurement services covering industrial equipment, machinery parts, safety systems, and PPE. From sourcing and quality assurance to testing, inventory management, and logistics, our solutions connect you to a trusted global supplier network. With a focus on reliability, performance, and cost efficiency, we ensure your operations have the right materials at the right time—supporting every aspect of your industrial procurement needs.";
+                                      case "transport-mobility":
+                                        return "Comprehensive transport and mobility solutions for heavy-duty equipment with safety-compliant transport, emergency services, route planning, and 24/7 availability. We ensure safe and efficient movement of machinery.";
+                                      default:
+                                        return "Professional services delivered with precision and reliability.";
+                                    }
+                                  })()}
+                                </p>
+                              </motion.div>
+
+                              {/* Key Features - 3 Well-Designed Points */}
+                              <motion.div
+                                className="grid grid-cols-1 sm:grid-cols-3 gap-3 lg:gap-4 mb-4"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8, delay: 0.5 }}
+                              >
                                 {(() => {
-                                  switch (service.slug) {
-                                    case "mobile-equipment-maintenance":
-                                      return "Our comprehensive mobile equipment maintenance includes AFEX fire suppression system installation, preventive maintenance programs, emergency response services, and 24/7 support. We ensure safety compliance and rapid repair services for all your heavy-duty mobile machinery needs.";
-                                    case "maintenance-engineering":
-                                      return "Professional engineering services cover equipment performance optimization, preventive and corrective maintenance, reliability analysis, and technical documentation. Our expert team provides maintenance planning, scheduling, and engineering solutions for industrial equipment.";
-                                    case "manpower-expertise":
-                                      return "Experienced expat and local teams deliver specialized technical expertise in fire safety and mobile equipment maintenance. We provide certified technicians, safety compliance experts, training programs, and emergency response teams.";
-                                    case "industrial-procurement":
-                                      return "We deliver end-to-end procurement services covering industrial equipment, machinery parts, safety systems, and PPE. From sourcing and quality assurance to testing, inventory management, and logistics, our solutions connect you to a trusted global supplier network. With a focus on reliability, performance, and cost efficiency, we ensure your operations have the right materials at the right time—supporting every aspect of your industrial procurement needs.";
-                                    case "transport-mobility":
-                                      return "Comprehensive transport and mobility solutions for heavy-duty equipment with safety-compliant transport, emergency services, route planning, and 24/7 availability. We ensure safe and efficient movement of machinery.";
-                                    default:
-                                      return "Professional services delivered with precision and reliability.";
-                                  }
-                                })()}
-                              </p>
-                            </motion.div>
+                                  const keyFeatures = (() => {
+                                    switch (service.slug) {
+                                      case "mobile-equipment-maintenance":
+                                        return [
+                                          { icon: "shield-check", title: "AFEX Systems", desc: "Official representative for fire suppression installation" },
+                                          { icon: "clock", title: "24/7 Support", desc: "Emergency response and rapid repair services" },
+                                          { icon: "certificate", title: "Safety Compliance", desc: "Full certification and compliance services" }
+                                        ];
+                                      case "maintenance-engineering":
+                                        return [
+                                          { icon: "cog", title: "Performance", desc: "Equipment optimization and reliability analysis" },
+                                          { icon: "clipboard-list", title: "Planning", desc: "Maintenance scheduling and documentation" },
+                                          { icon: "wrench", title: "Expert Repairs", desc: "Preventive and corrective maintenance" }
+                                        ];
+                                      case "manpower-expertise":
+                                        return [
+                                          { icon: "users", title: "Certified Teams", desc: "Expat and local technical specialists" },
+                                          { icon: "graduation-cap", title: "Training", desc: "Certification and training programs" },
+                                          { icon: "exclamation-triangle", title: "Emergency Response", desc: "24/7 emergency response teams" }
+                                        ];
+                                      case "industrial-procurement":
+                                        return [
+                                          { icon: "globe", title: "Global Supply", desc: "Worldwide supplier network access" },
+                                          { icon: "check-circle", title: "Quality Assured", desc: "Testing and quality verification" },
+                                          { icon: "chart-bar", title: "Inventory Management", desc: "Efficient supply chain solutions" }
+                                        ];
+                                      case "transport-mobility":
+                                        return [
+                                          { icon: "truck", title: "Heavy Transport", desc: "Safe heavy equipment transportation" },
+                                          { icon: "map", title: "Route Planning", desc: "Efficient logistics and route optimization" },
+                                          { icon: "clock", title: "24/7 Availability", desc: "Round-the-clock transport services" }
+                                        ];
+                                      default:
+                                        return [
+                                          { icon: "star", title: "Professional", desc: "Expert service delivery" },
+                                          { icon: "bolt", title: "Efficient", desc: "Fast and reliable solutions" },
+                                          { icon: "shield-alt", title: "Safe", desc: "Safety-focused approach" }
+                                        ];
+                                    }
+                                  })();
 
-                            {/* Key Features - 3 Well-Designed Points */}
-                            <motion.div
-                              className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6"
-                              initial={{ opacity: 0, y: 20 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              viewport={{ once: true }}
-                              transition={{ duration: 0.8, delay: 0.5 }}
-                            >
-                              {(() => {
-                                const keyFeatures = (() => {
-                                  switch (service.slug) {
-                                    case "mobile-equipment-maintenance":
-                                      return [
-                                        { icon: "shield-check", title: "AFEX Systems", desc: "Official representative for fire suppression installation" },
-                                        { icon: "clock", title: "24/7 Support", desc: "Emergency response and rapid repair services" },
-                                        { icon: "certificate", title: "Safety Compliance", desc: "Full certification and compliance services" }
-                                      ];
-                                    case "maintenance-engineering":
-                                      return [
-                                        { icon: "cog", title: "Performance", desc: "Equipment optimization and reliability analysis" },
-                                        { icon: "clipboard-list", title: "Planning", desc: "Maintenance scheduling and documentation" },
-                                        { icon: "wrench", title: "Expert Repairs", desc: "Preventive and corrective maintenance" }
-                                      ];
-                                    case "manpower-expertise":
-                                      return [
-                                        { icon: "users", title: "Certified Teams", desc: "Expat and local technical specialists" },
-                                        { icon: "graduation-cap", title: "Training", desc: "Certification and training programs" },
-                                        { icon: "exclamation-triangle", title: "Emergency Response", desc: "24/7 emergency response teams" }
-                                      ];
-                                    case "industrial-procurement":
-                                      return [
-                                        { icon: "globe", title: "Global Supply", desc: "Worldwide supplier network access" },
-                                        { icon: "check-circle", title: "Quality Assured", desc: "Testing and quality verification" },
-                                        { icon: "chart-bar", title: "Inventory Management", desc: "Efficient supply chain solutions" }
-                                      ];
-                                    case "transport-mobility":
-                                      return [
-                                        { icon: "truck", title: "Heavy Transport", desc: "Safe heavy equipment transportation" },
-                                        { icon: "map", title: "Route Planning", desc: "Efficient logistics and route optimization" },
-                                        { icon: "clock", title: "24/7 Availability", desc: "Round-the-clock transport services" }
-                                      ];
-                                    default:
-                                      return [
-                                        { icon: "star", title: "Professional", desc: "Expert service delivery" },
-                                        { icon: "bolt", title: "Efficient", desc: "Fast and reliable solutions" },
-                                        { icon: "shield-alt", title: "Safe", desc: "Safety-focused approach" }
-                                      ];
-                                  }
-                                })();
-
-                                return keyFeatures.map((feature, index) => (
-                                  <div
-                                    key={index}
-                                    className="group p-4 rounded-xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:border-primary/30 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center"
-                                  >
-                                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
-                                      {(() => {
-                                        switch (feature.icon) {
-                                          case "shield-check":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                                              </svg>
-                                            );
-                                          case "clock":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                              </svg>
-                                            );
-                                          case "certificate":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                              </svg>
-                                            );
-                                          case "cog":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065c.426-1.756 2.924-1.756 3.35 0z" />
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                              </svg>
-                                            );
-                                          case "clipboard-list":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                                              </svg>
-                                            );
-                                          case "wrench":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065c.426-1.756 2.924-1.756 3.35 0z" />
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                              </svg>
-                                            );
-                                          case "users":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-                                              </svg>
-                                            );
-                                          case "graduation-cap":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                                              </svg>
-                                            );
-                                          case "exclamation-triangle":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                                              </svg>
-                                            );
-                                          case "globe":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                              </svg>
-                                            );
-                                          case "check-circle":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                              </svg>
-                                            );
-                                          case "chart-bar":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                              </svg>
-                                            );
-                                          case "truck":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM21 17a2 2 0 11-4 0 2 2 0 014 0zM21 13V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6m16 0v4a2 2 0 01-2 2H7a2 2 0 01-2-2v-4m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 00-.293.707V17" />
-                                              </svg>
-                                            );
-                                          case "map":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 4m0 13V4m0 0L9 7" />
-                                              </svg>
-                                            );
-                                          case "star":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                                              </svg>
-                                            );
-                                          case "bolt":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                              </svg>
-                                            );
-                                          case "shield-alt":
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                                              </svg>
-                                            );
-                                          default:
-                                            return (
-                                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                              </svg>
-                                            );
-                                        }
-                                      })()}
+                                  return keyFeatures.map((feature, index) => (
+                                    <div
+                                      key={index}
+                                      className="group p-3 lg:p-4 rounded-xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:border-primary/30 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-center"
+                                    >
+                                      <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                                        {(() => {
+                                          switch (feature.icon) {
+                                            case "shield-check":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                                </svg>
+                                              );
+                                            case "clock":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                              );
+                                            case "certificate":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                </svg>
+                                              );
+                                            case "cog":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065c.426-1.756 2.924-1.756 3.35 0z" />
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                </svg>
+                                              );
+                                            case "clipboard-list":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                                                </svg>
+                                              );
+                                            case "wrench":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065c.426-1.756 2.924-1.756 3.35 0z" />
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                </svg>
+                                              );
+                                            case "users":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                                                </svg>
+                                              );
+                                            case "graduation-cap":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                                                </svg>
+                                              );
+                                            case "exclamation-triangle":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                                                </svg>
+                                              );
+                                            case "globe":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                              );
+                                            case "check-circle":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                              );
+                                            case "chart-bar":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                                </svg>
+                                              );
+                                            case "truck":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM21 17a2 2 0 11-4 0 2 2 0 014 0zM21 13V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6m16 0v4a2 2 0 01-2 2H7a2 2 0 01-2-2v-4m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 00-.293.707V17" />
+                                                </svg>
+                                              );
+                                            case "map":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 4m0 13V4m0 0L9 7" />
+                                                </svg>
+                                              );
+                                            case "star":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                                </svg>
+                                              );
+                                            case "bolt":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                                </svg>
+                                              );
+                                            case "shield-alt":
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                                </svg>
+                                              );
+                                            default:
+                                              return (
+                                                <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                                </svg>
+                                              );
+                                          }
+                                        })()}
+                                      </div>
+                                      <h4 className="font-semibold text-gray-800 mb-2 text-xs lg:text-sm">{feature.title}</h4>
+                                      <p className="text-xs text-gray-600 leading-relaxed">{feature.desc}</p>
                                     </div>
-                                    <h4 className="font-semibold text-gray-800 mb-2 text-sm">{feature.title}</h4>
-                                    <p className="text-xs text-gray-600 leading-relaxed">{feature.desc}</p>
-                                  </div>
-                                ));
-                              })()}
-                            </motion.div>
+                                  ));
+                                })()}
+                              </motion.div>
+                              
+                              {/* Spacer to push navigation to bottom */}
+                              <div className="flex-1"></div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -930,7 +936,7 @@ const Home = () => {
                 </div>
 
                 {/* Enhanced Navigation */}
-                <div className="flex items-center justify-between mt-8 sm:mt-12">
+                <div className="flex items-center justify-between mt-3 sm:mt-4 lg:mt-5 xl:mt-6">
                   {/* Slide Indicators */}
                   <div className="flex space-x-2">
                     {services.map((_, index) => (
@@ -949,17 +955,17 @@ const Home = () => {
                   <div className="flex space-x-3">
                     <button
                       onClick={() => handlePrevSlide()}
-                      className="w-12 h-12 bg-white hover:bg-gray-50 rounded-xl border border-gray-200 hover:border-primary/30 flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                      className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white hover:bg-gray-50 rounded-xl border border-gray-200 hover:border-primary/30 flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                     >
-                      <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                       </svg>
                     </button>
                     <button
                       onClick={() => handleNextSlide()}
-                      className="w-12 h-12 bg-white hover:bg-gray-50 rounded-xl border border-gray-200 hover:border-primary/30 flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                      className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white hover:bg-gray-50 rounded-xl border border-gray-200 hover:border-primary/30 flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                     >
-                      <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </button>
@@ -1570,7 +1576,7 @@ const Home = () => {
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:64px_64px]"></div>
           </div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full">
             {/* Enhanced Header */}
             <div className="text-center mb-20">
               <div className="inline-flex items-center justify-center mb-6">

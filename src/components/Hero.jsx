@@ -103,7 +103,7 @@ const Hero = () => {
 
   return (
     <section
-      className="relative overflow-hidden h-[70vh] min-h-[500px] max-h-[800px] sm:min-h-[600px] lg:min-h-[700px]"
+      className="relative overflow-hidden h-[70vh]"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -170,7 +170,7 @@ const Hero = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
-                  className="hero-title text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black leading-tight tracking-tight"
+                  className="hero-title text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tight max-w-3xl"
                   style={{
                     textShadow: '2px 2px 8px rgba(0,0,0,0.15), 0 4px 16px rgba(0,0,0,0.1)'
                   }}
