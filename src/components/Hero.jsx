@@ -103,7 +103,7 @@ const Hero = () => {
 
   return (
     <section
-      className="relative overflow-hidden h-[70vh]"
+      className="relative overflow-hidden h-[70vh] min-h-[500px] max-h-[800px] sm:min-h-[600px] lg:min-h-[700px]"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -158,58 +158,67 @@ const Hero = () => {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 w-full flex items-center py-12 md:py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 w-full">
-          <div className="max-w-2xl">
+      <div className="relative z-10 w-full h-full flex items-center">
+        <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+          <div className="max-w-4xl">
 
             {/* Content */}
-            <div className="space-y-6 md:space-y-8 lg:space-y-10">
+            <div className="space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10 xl:space-y-12">
               {/* Main Heading */}
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8 hero-text-container">
                 <motion.h1
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
-                  className="w-3/4 md:w-1/2 xl:w-5/6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 tracking-tight"
+                  className="hero-title text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black leading-tight tracking-tight"
                   style={{
-                    textShadow: '2px 2px 6px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.15)'
+                    textShadow: '2px 2px 8px rgba(0,0,0,0.15), 0 4px 16px rgba(0,0,0,0.1)'
                   }}
                 >
-                  <span className="block mb-3   font-black">{currentSlideData.title}</span>
-                  <span className="block text-primary text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight tracking-tight" style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.15), 0 3px 8px rgba(0,0,0,0.1)' }}>
-                    {currentSlideData.subtitle}
+                  <span className="block break-words hyphens-auto">
+                    {currentSlideData.title}
                   </span>
                 </motion.h1>
+                
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.8 }}
+                  className="hero-subtitle text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl  font-bold leading-tight tracking-tight max-w-4xl"
+                  style={{
+                    textShadow: '1px 1px 4px rgba(0,0,0,0.1)'
+                  }}
+                >
+                  <span className="block break-words hyphens-auto">
+                    {currentSlideData.subtitle}
+                  </span>
+                </motion.h2>
               </div>
 
               {/* CTA Button */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.8 }}
-                className="pt-6 md:pt-8 lg:pt-10"
+                transition={{ delay: 0.6, duration: 0.8 }}
+                className="pt-4 sm:pt-6 md:pt-8 lg:pt-10 xl:pt-12"
               >
                 {/* Main CTA Button */}
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="relative inline-flex items-center justify-center bg-primary hover:bg-primary-dark text-white font-bold py-3 px-7 text-base transition-all duration-300 hover:scale-105 rounded-2xl overflow-hidden group shadow-lg hover:shadow-xl"
+                  className="hero-button py-3 px-6 sm:py-4 sm:px-8 md:py-5 md:px-10 lg:py-4 lg:px-8 text-base sm:text-lg md:text-xl lg:text-2xl font-bold rounded-xl sm:rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 sm:hover:scale-110 transition-all duration-300"
                   style={{
-                    boxShadow: '0 10px 25px -5px rgba(59, 130, 246, 0.5), 0 5px 10px -5px rgba(59, 130, 246, 0.25)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.boxShadow = '0 15px 30px -5px rgba(59, 130, 246, 0.6), 0 5px 15px -5px rgba(59, 130, 246, 0.4)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.boxShadow = '0 10px 25px -5px rgba(59, 130, 246, 0.5), 0 5px 10px -5px rgba(59, 130, 246, 0.25)';
+                    boxShadow: '0 6px 20px 0 rgba(24, 85, 140, 0.4), 0 3px 8px 0 rgba(24, 85, 140, 0.2)'
                   }}
                 >
-                  <span className="relative z-10 tracking-wide">GET IN TOUCH</span>
-                  <svg className="w-5 h-5 ml-3 relative z-10 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span className="tracking-wide">GET IN TOUCH</span>
+                  <svg 
+                    className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 ml-2 sm:ml-3 md:ml-4 lg:ml-5 transform group-hover:translate-x-1 sm:group-hover:translate-x-2 transition-transform duration-300" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-
-                  {/* Button Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400/30 via-transparent to-blue-400/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
                 </button>
               </motion.div>
 
@@ -220,16 +229,17 @@ const Hero = () => {
       </div>
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="flex items-center gap-3 pt-8">
+      <div className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-20">
+        <div className="flex items-center gap-2 sm:gap-3">
           {HERO_SLIDES.map((_, index) => (
             <motion.button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`slide-indicator transition-all duration-300 rounded-full ${index === currentSlide
-                  ? 'w-12 h-3 bg-red-500'
-                  : 'w-3 h-3 bg-gray-400 hover:bg-red-400'
-                }`}
+              className={`transition-all duration-300 rounded-full ${
+                index === currentSlide
+                  ? 'w-8 sm:w-12 h-2 sm:h-3 bg-primary'
+                  : 'w-2 sm:w-3 h-2 sm:h-3 bg-gray-400 hover:bg-primary/60'
+              }`}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             />
@@ -238,7 +248,7 @@ const Hero = () => {
       </div>
 
       {/* Auto-play Controls */}
-      <div className="absolute top-4 sm:top-8 right-4 sm:right-8 z-20">
+      <div className="absolute top-4 sm:top-6 right-4 sm:right-6 z-20">
         <button
           onClick={toggleAutoPlay}
           className="p-2 sm:p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white transition-all duration-300"
