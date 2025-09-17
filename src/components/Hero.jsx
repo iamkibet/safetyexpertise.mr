@@ -1,38 +1,48 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaPlay, FaPause } from "react-icons/fa";
+import { FaPlay, FaPause, FaChevronLeft, FaChevronRight, FaArrowRight, FaShieldAlt, FaCog, FaUsers, FaTruck, FaTools } from "react-icons/fa";
 
 // Hero slide data with focused services
 const HERO_SLIDES = [
   {
     id: 1,
-    title: "Mobile Equipment Maintenance",
-    subtitle: "& Fire Suppression Systems",
-    image: "/images/17.png"
+    title: "Mobile Equipment",
+    subtitle: "Fire Suppression",
+    description: "Advanced maintenance solutions with cutting-edge fire suppression technology. Ensuring your equipment operates safely, efficiently, and meets the highest industry standards.",
+    image: "/images/17.png",
+    icon: FaShieldAlt
   },
   {
     id: 2,
-    title: "Maintenance Engineering",
-    subtitle: "Services",
-    image: "/images/hero/3.png"
+    title: "Maintenance",
+    subtitle: "Engineering Excellence",
+    description: "Expert engineering services delivering predictive maintenance strategies. We minimize downtime while maximizing operational efficiency across all your industrial systems.",
+    image: "/images/hero/3.png",
+    icon: FaCog
   },
   {
     id: 3,
-    title: "Manpower Expertise",
-    subtitle: "Professional Services",
-    image: "/images/hero/11.png"
+    title: "Professional",
+    subtitle: "Manpower Solutions",
+    description: "Skilled professionals providing specialized expertise across industrial sectors. Our certified team delivers comprehensive training and maintains the highest safety protocols.",
+    image: "/images/hero/11.png",
+    icon: FaUsers
   },
   {
     id: 4,
-    title: "Industrial Procurement",
-    subtitle: "& Supply Services",
-    image: "/images/hero/7.jpg"
+    title: "Industrial",
+    subtitle: "Procurement & Supply",
+    description: "Strategic procurement solutions connecting you with premium suppliers. We ensure seamless supply chain management and cost-effective sourcing for your operations.",
+    image: "/images/hero/7.jpg",
+    icon: FaTruck
   },
   {
     id: 5,
-    title: "Comprehensive Transport",
-    subtitle: "& Mobility Services",
-    image: "/images/hero/8.jpg"
+    title: "Transport &",
+    subtitle: "Mobility Solutions",
+    description: "Reliable transportation solutions designed for modern industrial needs. Our services focus on safety, operational efficiency, and environmental responsibility.",
+    image: "/images/hero/8.jpg",
+    icon: FaTools
   }
 ];
 
@@ -40,7 +50,12 @@ const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const autoPlayRef = useRef(null);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -71,7 +86,7 @@ const Hero = () => {
     if (isAutoPlaying && !isPaused) {
       autoPlayRef.current = setInterval(() => {
         nextSlide();
-      }, 5000);
+      }, 6000);
     }
 
     return () => {
@@ -100,168 +115,222 @@ const Hero = () => {
   }, [isPaused]);
 
   const currentSlideData = HERO_SLIDES[currentSlide];
+  const IconComponent = currentSlideData.icon;
 
   return (
     <section
-      className="relative overflow-hidden h-[70vh]"
+      className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50"
+      style={{ minHeight: 'calc(100vh - 120px)' }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Background with Sliding Images - Right Half Only */}
-      <div className="absolute inset-0">
-        {/* Background Images Layer - Right Half */}
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }} />
+      </div>
+
+      {/* Background Images with Modern Overlay */}
+      <div className="absolute inset-0 bg-slate-900">
+        {/* Base dark background to prevent white flash */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700" />
+        
         <AnimatePresence mode="wait">
           <motion.div
             key={`background-${currentSlide}`}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute right-0 top-0 w-3/4 h-full bg-cover bg-center bg-no-repeat opacity-100"
-            style={{
-              backgroundImage: `url(${currentSlideData.image})`,
-            }}
-          />
+            className="absolute inset-0"
+          >
+            {/* Image with proper background */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: `url(${currentSlideData.image})`,
+                backgroundColor: '#1e293b' // slate-800 as fallback
+              }}
+            />
+            {/* Professional Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-800/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent" />
+          </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Diagonal Design Overlay with Smooth Blending */}
-      <div className="absolute inset-0">
-        {/* Base gradient background */}
+      {/* Main Content */}
+      <div className="relative z-10 flex items-center" style={{ minHeight: 'calc(100vh - 120px)' }}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* Left Content */}
+            <div className="lg:col-span-7 xl:col-span-6">
+              <div className="space-y-6 md:space-y-8">
+                {/* Icon Badge */}
+                <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 text-white/90">
+                  <IconComponent className="w-5 h-5" />
+                  <span className="text-sm font-medium">Professional Services</span>
+                </div>
 
-
-        {/* Diagonal Shape 1 - Light with smooth blend */}
-        <div
-          className="absolute inset-0 bg-gradient-to-br from-white to-white"
-          style={{
-            clipPath: 'polygon(0 0, 60% 0, 40% 100%, 0 100%)'
-          }}
-        ></div>
-
-        {/* Diagonal Shape 2 - Medium with smooth blend */}
-        <div
-          className="absolute inset-0 bg-gradient-to-br from-gray-300/25 to-gray-400/25"
-          style={{
-            clipPath: 'polygon(40% 0, 80% 0, 60% 100%, 20% 100%)'
-          }}
-        ></div>
-
-        {/* Diagonal Shape 3 - Dark with smooth blend */}
-        <div
-          className="absolute inset-0 bg-gradient-to-br from-red-700/10 to-gray-900/10"
-          style={{
-            clipPath: 'polygon(70% 0, 100% 0, 100% 100%, 50% 100%)'
-          }}
-        ></div>
-
-
-      </div>
-
-      {/* Content Container */}
-      <div className="relative z-10 w-full h-full flex items-center">
-        <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
-          <div className="max-w-4xl">
-
-            {/* Content */}
-            <div className="space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10 xl:space-y-12">
-              {/* Main Heading */}
-              <div className="space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8 hero-text-container">
-                <motion.h1
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.8 }}
-                  className="hero-title text-5xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tight max-w-3xl"
-                  style={{
-                    textShadow: '2px 2px 8px rgba(0,0,0,0.15), 0 4px 16px rgba(0,0,0,0.1)'
-                  }}
-                >
-                  <span className="block break-words hyphens-auto">
-                    {currentSlideData.title}
-                  </span>
-                </motion.h1>
-                
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                  className="hero-subtitle text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl  font-bold leading-tight tracking-tight max-w-4xl"
-                  style={{
-                    textShadow: '1px 1px 4px rgba(0,0,0,0.1)'
-                  }}
-                >
-                  <span className="block break-words hyphens-auto">
-                    {currentSlideData.subtitle}
-                  </span>
-                </motion.h2>
-              </div>
-
-              {/* CTA Button */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-                className="pt-4 sm:pt-6 md:pt-8 lg:pt-10 xl:pt-12"
-              >
-                {/* Main CTA Button */}
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="hero-button py-3 px-6 sm:py-4 sm:px-8 md:py-5 md:px-10 lg:py-4 lg:px-8 text-base sm:text-lg md:text-xl lg:text-2xl font-bold rounded-xl sm:rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 sm:hover:scale-110 transition-all duration-300"
-                  style={{
-                    boxShadow: '0 6px 20px 0 rgba(24, 85, 140, 0.4), 0 3px 8px 0 rgba(24, 85, 140, 0.2)'
-                  }}
-                >
-                  <span className="tracking-wide">GET IN TOUCH</span>
-                  <svg 
-                    className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 ml-2 sm:ml-3 md:ml-4 lg:ml-5 transform group-hover:translate-x-1 sm:group-hover:translate-x-2 transition-transform duration-300" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
+                {/* Main Title */}
+                <div className="space-y-3 sm:space-y-4">
+                  <motion.h1
+                    key={`title-${currentSlide}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+                    className="text-5xl  md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.9] tracking-tight"
+                    style={{
+                      textShadow: '0 6px 20px rgba(0,0,0,0.6), 0 3px 8px rgba(0,0,0,0.4)',
+                      letterSpacing: '-0.02em'
+                    }}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </motion.div>
+                    {currentSlideData.title}
+                  </motion.h1>
+                  
+                  <motion.h2
+                    key={`subtitle-${currentSlide}`}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                    className="text-3xl  md:text-4xl lg:text-5xl xl:text-6xl font-bold text-blue-100 leading-tight tracking-wide"
+                    style={{
+                      textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 6px rgba(0,0,0,0.3)',
+                      letterSpacing: '0.01em'
+                    }}
+                  >
+                    {currentSlideData.subtitle}
+                  </motion.h2>
+                </div>
 
+                {/* Description */}
+                <motion.p
+                  key={`desc-${currentSlide}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                  className="text-lg sm:text-xl md:text-2xl text-gray-100 leading-relaxed max-w-3xl font-normal"
+                  style={{
+                    textShadow: '0 3px 8px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.4)',
+                    lineHeight: '1.6',
+                    letterSpacing: '0.01em'
+                  }}
+                >
+                  {currentSlideData.description}
+                </motion.p>
 
+                {/* CTA Buttons with Navigation */}
+                <div className="space-y-4 pt-6">
+                  {/* Mobile: Stack vertically, Desktop: Side by side */}
+                  <div className="flex sm:flex-row items-stretch sm:items-center gap-4">
+                    {/* Primary CTA */}
+                    <button
+                      onClick={() => scrollToSection('contact')}
+                      className="inline-flex items-center justify-center gap-3 bg-primary text-white font-bold px-3 md:px-6 py-2 md:py-4 rounded-xl text-lg sm:text-lg flex-1 sm:flex-none"
+                      style={{
+                        boxShadow: '0 10px 25px -5px rgba(24, 85, 140, 0.4), 0 4px 6px -2px rgba(24, 85, 140, 0.2)',
+                        minHeight: '56px'
+                      }}
+                    >
+                      <span>Get Started</span>
+                      <FaArrowRight className="w-3 h-3 md:w-5 md:h-5" />
+                    </button>
+                    
+                    {/* Navigation Buttons Row */}
+                    <div className="flex gap-3 justify-center items-center sm:justify-start shrink-0">
+                      <button
+                        onClick={prevSlide}
+                        className="w-11 h-11 md:w-14 md:h-14 inline-flex items-center justify-center bg-white/15 backdrop-blur-md border-2 border-white/25 text-white focus:outline-none focus:ring-2 focus:ring-white/50"
+                        style={{ 
+                          borderRadius: '12px',
+                          boxShadow: '0 6px 16px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.15)'
+                        }}
+                        aria-label="Previous slide"
+                      >
+                        <FaChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
+                      </button>
+                      
+                      <button
+                        onClick={nextSlide}
+                        className="w-11 h-11 md:w-14 md:h-14 inline-flex items-center justify-center bg-white/15 backdrop-blur-md border-2 border-white/25 text-white focus:outline-none focus:ring-2 focus:ring-white/50"
+                        style={{ 
+                          borderRadius: '12px',
+                          boxShadow: '0 6px 16px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.15)'
+                        }}
+                        aria-label="Next slide"
+                      >
+                        <FaChevronRight className="w-4 h-4 md:w-5 md:h-5" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Content - Hidden on mobile, visible on lg+ */}
+            <div className="hidden lg:block lg:col-span-5 xl:col-span-6">
+              <div className="relative">
+                {/* Decorative Elements */}
+                <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-500/20 rounded-full blur-xl" />
+                <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-red-500/20 rounded-full blur-xl" />
+              </div>
             </div>
           </div>
         </div>
       </div>
 
+
       {/* Slide Indicators */}
-      <div className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="flex items-center gap-2 sm:gap-3">
+      <div className="absolute left-1/2 transform -translate-x-1/2 z-20 bottom-5 md:bottom-10" >
+        <div className="flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/30 rounded-full px-4 py-3 shadow-lg">
           {HERO_SLIDES.map((_, index) => (
-            <motion.button
+            <button
               key={index}
               onClick={() => goToSlide(index)}
               className={`transition-all duration-300 rounded-full ${
                 index === currentSlide
-                  ? 'w-8 sm:w-12 h-2 sm:h-3 bg-primary'
-                  : 'w-2 sm:w-3 h-2 sm:h-3 bg-gray-400 hover:bg-primary/60'
+                  ? 'w-8 h-2 bg-white shadow-sm'
+                  : 'w-2 h-2 bg-white/50 hover:bg-white/80'
               }`}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
       </div>
 
       {/* Auto-play Controls */}
-      <div className="absolute top-4 sm:top-6 right-4 sm:right-6 z-20">
+      <div className="absolute top-6 right-6 z-20">
         <button
           onClick={toggleAutoPlay}
-          className="p-2 sm:p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white transition-all duration-300"
+          className="p-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-white/20 transition-all duration-300"
           title={isPaused ? "Resume auto-play" : "Pause auto-play"}
+          aria-label={isPaused ? "Resume auto-play" : "Pause auto-play"}
         >
           {isPaused ? (
-            <FaPlay className="w-3 h-3 sm:w-4 sm:h-4 text-gray-800" />
+            <FaPlay className="w-4 h-4" />
           ) : (
-            <FaPause className="w-3 h-3 sm:w-4 sm:h-4 text-gray-800" />
+            <FaPause className="w-4 h-4" />
           )}
         </button>
       </div>
 
+      {/* Progress Bar - Enhanced Visibility */}
+      <div className="absolute left-0 right-0 z-30" style={{ bottom: '0px' }}>
+        <div className="h-2 bg-black/40 backdrop-blur-sm">
+          <motion.div
+            key={currentSlide}
+            className="h-full bg-gradient-to-r from-primary to-primary shadow-lg"
+            initial={{ width: "0%" }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 6, ease: "linear" }}
+            style={{
+              boxShadow: '0 0 20px rgba(24, 85, 140, 1), 0 0 40px rgba(24, 85, 140, 0.6), 0 2px 8px rgba(24, 85, 140, 0.8)'
+            }}
+          />
+        </div>
+      </div>
     </section>
   );
 };
