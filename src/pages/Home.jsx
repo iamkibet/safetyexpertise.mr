@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { motion, AnimatePresence } from "framer-motion";
 import Hero from "../components/Hero";
 import AboutSection from "../components/AboutSection";
+import WhyUs from "../components/WhyUs";
 import { compliance, services } from "../data";
 import {
   FaShieldAlt,
@@ -213,296 +214,7 @@ const Home = () => {
         </section>
 
         {/* Why Us Section */}
-        <section id="why-us" className="relative py-16 bg-gradient-to-b from-[#f8f8f8] via-white to-white overflow-hidden">
-          {/* Decorative background shape */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute -top-20 -right-32 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 -left-32 w-[300px] h-[300px] bg-[#ff3131]/5 rounded-full blur-2xl"></div>
-          </div>
-
-          <div className="container relative z-10 mx-auto px-4 max-w-7xl">
-            {/* Competitive Edge Section */}
-            <section className="py-5 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden flex justify-center">
-              {/* Background Elements */}
-              <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-red-500/5 rounded-full blur-3xl"></div>
-              <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-blue-500/5 rounded-full blur-3xl"></div>
-
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                {/* Section Header */}
-                <motion.div
-                  className="text-center "
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.8 }}
-                >
-                  <motion.div
-                    className="flex items-center justify-center gap-4 mb-6"
-                    initial={{ opacity: 0, scaleX: 0 }}
-                    whileInView={{ opacity: 1, scaleX: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                  >
-                    <span className="block h-0.5 w-12 lg:w-20 bg-red-600"></span>
-                    <span className="text-sm font-semibold tracking-wider text-red-600 uppercase px-2">
-                      Our Competitive Edge
-                    </span>
-                    <span className="block h-0.5 w-12 lg:w-20 bg-red-600"></span>
-                  </motion.div>
-
-                  <motion.h2
-                    className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                  >
-                    Why <span className="text-primary">SafetyExpertise</span> Excels
-                  </motion.h2>
-
-                  <motion.p
-                    className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                  >
-                    Industry-leading expertise combined with innovative technology for uncompromised safety, efficiency, and long-term asset protection.
-                  </motion.p>
-                </motion.div>
-
-                {/* Enhanced Description */}
-                <motion.div
-                  className="mt-10 lg:mt-16 text-center max-w-5xl mx-auto"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
-                >
-                  <div className="bg-gradient-to-br from-white via-gray-50 to-blue-50/30 rounded-3xl p-8 lg:p-12 border border-gray-100 shadow-xl relative overflow-hidden">
-                    {/* Background Decorative Elements */}
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-2xl"></div>
-                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-red-500/5 to-transparent rounded-full blur-xl"></div>
-                    
-                    {/* Top Right Corner Decoration */}
-                   
-                    <div className="absolute top-4 right-4 w-3 h-3 bg-primary rounded-full"></div>
-                    <div className="absolute top-8 right-8 w-2 h-2 bg-red-500 rounded-full"></div>
-                    
-                    {/* Bottom Left Corner Decoration */}
-                    
-                    <div className="absolute bottom-4 left-4 w-3 h-3 bg-red-500 rounded-full"></div>
-                    <div className="absolute bottom-8 left-8 w-2 h-2 bg-primary rounded-full"></div>
-                    
-                    {/* Enhanced Header */}
-                    <div className="text-center mb-10 relative z-10">
-                      <div className="inline-flex items-center justify-center mb-4">
-                        <span className="h-0.5 w-12 bg-gradient-to-r from-transparent to-primary mr-3"></span>
-                        <span className="text-sm font-semibold tracking-wider text-primary uppercase px-3 py-1 bg-primary/10 rounded-full">
-                          Industry Leadership
-                        </span>
-                        <span className="h-0.5 w-12 bg-gradient-to-l from-transparent to-primary ml-3"></span>
-                      </div>
-                      
-                      <div className="h-1 w-20 bg-gradient-to-r from-primary to-red-500 mx-auto rounded-full"></div>
-                    </div>
-
-                    {/* Enhanced Content Grid */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 text-left relative z-10">
-                      {/* Industry Expertise Card */}
-                      <motion.div
-                        className="group"
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        viewport={{ once: true }}
-                      >
-                        <div className="bg-white rounded-2xl p-6 shadow-sm border-b border-gray-100">
-                          {/* Card Header */}
-                          <div className="flex items-center mb-6">
-                            <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mr-4">
-                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                              </svg>
-                            </div>
-                            <div>
-                              <h4 className="text-xl font-bold text-gray-900">
-                                Industry Expertise
-                              </h4>
-                              <div className="h-1 w-12 bg-red-500 rounded-full mt-2"></div>
-                            </div>
-                          </div>
-                          
-                          {/* Content */}
-                          <div className="space-y-4">
-                            <p className="text-gray-600 leading-relaxed">
-                              With over <span className="font-semibold text-red-600">15 years of experience</span> in industrial safety, we've developed deep expertise across multiple sectors including <span className="font-medium text-gray-800">mining, manufacturing, and energy</span>.
-                            </p>
-                            <p className="text-gray-600 leading-relaxed">
-                              Our team of certified professionals brings <span className="font-semibold text-primary">international standards</span> to every project, ensuring compliance with <span className="font-medium text-gray-800">NFPA, OSHA, and ISO</span> requirements.
-                            </p>
-                            <p className="text-gray-600 leading-relaxed">
-                              We understand the unique challenges of industrial environments and provide <span className="font-semibold text-primary">tailored solutions</span> that not only meet regulatory requirements but also enhance operational efficiency and protect your most valuable assets.
-                            </p>
-                          </div>
-                          
-                          
-                        </div>
-                      </motion.div>
-
-                      {/* Innovation & Technology Card */}
-                      <motion.div
-                        className="group"
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        viewport={{ once: true }}
-                      >
-                        <div className="bg-white rounded-2xl p-6 shadow-sm border-b border-gray-100">
-                          {/* Card Header */}
-                          <div className="flex items-center mb-6">
-                            <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center mr-4">
-                              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                              </svg>
-                            </div>
-                            <div>
-                              <h4 className="text-xl font-bold text-gray-900">
-                                Innovation & Technology
-                              </h4>
-                              <div className="h-1 w-12 bg-primary rounded-full mt-2"></div>
-                            </div>
-                          </div>
-                          
-                          {/* Content */}
-                          <div className="space-y-4">
-                            <p className="text-gray-600 leading-relaxed">
-                              Our commitment to <span className="font-semibold text-blue-600">innovation</span> drives us to continuously integrate cutting-edge safety technologies and methodologies.
-                            </p>
-                            <p className="text-gray-600 leading-relaxed">
-                              From <span className="font-medium text-gray-800">advanced fire detection systems</span> to <span className="font-medium text-gray-800">predictive maintenance solutions</span>, we leverage the latest developments to provide superior protection.
-                            </p>
-                            <p className="text-gray-600 leading-relaxed">
-                              We invest in ongoing <span className="font-semibold text-primary">research and development</span>, ensuring our clients benefit from the most effective and efficient safety solutions available in the market today.
-                            </p>
-                          </div>
-                        </div>
-                      </motion.div>
-                    </div>
-
-                    <div className="mt-6 lg:mt-8 pt-8 lg:pt-12 border-t border-gray-200">
-
-                      <motion.div
-                        className=" p-6 bg-gradient-to-r from-gray-50 to-white rounded-lg border-b border-gray-100"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                        viewport={{ once: true }}
-                      >
-
-                        <div className="text-center mb-8">
-                          <p className="text-gray-700 text-lg leading-relaxed font-light mb-8">
-                            Safety Expertise stands as your trusted partner in creating safer, more compliant, and more efficient industrial environments. Our comprehensive approach combines technical excellence with practical understanding, delivering solutions that work seamlessly within your operations while providing the highest level of protection for your people, assets, and reputation.
-                          </p>
-                          
-                          <div className="mb-6">
-                            <h4 className="text-lg font-semibold text-gray-800 mb-4">We are proud to be the Official Distributor of:</h4>
-                          </div>
-                          
-                          {/* Logo Showcase */}
-                          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-6">
-                            {/* AFEX Logo */}
-                            <motion.div
-                              className="group"
-                              initial={{ opacity: 0, y: 20 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.6, delay: 0.2 }}
-                              viewport={{ once: true }}
-                            >
-                              <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                                <div className="text-center mb-3">
-                                  <h5 className="text-red-600 font-bold text-sm tracking-wide mb-2">OFFICIAL DISTRIBUTOR</h5>
-                                  <div className="h-0.5 w-8 bg-red-500 mx-auto mb-3"></div>
-                                </div>
-                                <div className="relative overflow-hidden rounded-lg">
-                                  <img
-                                    src="/images/afex.png"
-                                    alt="AFEX Logo"
-                                    className="w-32 h-20 object-contain mx-auto transform group-hover:scale-105 transition-transform duration-300"
-                                  />
-                                </div>
-                                <div className="text-center mt-3">
-                                  <p className="text-gray-700 text-xs font-medium">Fire Suppression Systems</p>
-                                  <p className="text-gray-500 text-xs">For Heavy Duty Equipment</p>
-                                </div>
-                              </div>
-                            </motion.div>
-
-                            {/* ICAT Logo */}
-                            <motion.div
-                              className="group"
-                              initial={{ opacity: 0, y: 20 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.6, delay: 0.4 }}
-                              viewport={{ once: true }}
-                            >
-                              <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                                <div className="text-center mb-3">
-                                  <h5 className="text-primary font-bold text-sm tracking-wide mb-2">OFFICIAL DISTRIBUTOR</h5>
-                                  <div className="h-0.5 w-8 bg-primary mx-auto mb-3"></div>
-                                </div>
-                                <div className="relative overflow-hidden rounded-lg">
-                                  <img
-                                    src="/images/icat.png"
-                                    alt="ICAT Logo"
-                                    className="w-32 h-20 object-contain mx-auto transform group-hover:scale-105 transition-transform duration-300"
-                                  />
-                                </div>
-                                <div className="text-center mt-3">
-                                  <p className="text-gray-700 text-xs font-medium">Fire Suppression Technologies</p>
-                                  <p className="text-gray-500 text-xs">Advanced Safety Solutions</p>
-                                </div>
-                              </div>
-                            </motion.div>
-                          </div>
-                          
-                          <p className="text-gray-700 text-base leading-relaxed font-light">
-                            in Mauritania, bringing you world-class fire suppression technologies and heavy-duty equipment solutions.
-                          </p>
-                        </div>
-
-                      </motion.div>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </section>
-
-
-
-            {/* CTA */}
-            <div className="mt-5 text-center">
-              <button
-                onClick={() => {
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="inline-flex items-center px-8 py-4 rounded-lg text-white bg-primary hover:bg-[#134271] transition-colors shadow-lg hover:shadow-xl font-medium"
-              >
-                Get Your Safety Assessment
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-3" viewBox="0 0 20 20" fill="currentColor">
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </section>
+        <WhyUs />
 
 
 
@@ -535,12 +247,12 @@ const Home = () => {
                 <span className="h-0.5 w-12 bg-primary ml-3"></span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 pb-2 leading-tight sm:leading-tight">
                 Comprehensive <span className="text-primary">Safety Solutions</span>
               </h2>
 
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Professional fire safety, maintenance engineering, and industrial expertise delivered with precision and reliability
+              <p className="text-base sm:text-lg text-gray-600 max-w-md sm:max-w-2xl mx-auto leading-relaxed mt-2 sm:mt-3 px-2">
+                Professional fire safety, maintenance engineering, and industrial expertise<br className="hidden sm:block" /> delivered with precision and reliability.
               </p>
             </motion.div>
 
@@ -593,7 +305,7 @@ const Home = () => {
                           <span className="text-primary font-bold text-lg">{index + 1}</span>
                         </div>
 
-                      
+
 
                         {/* Service Title */}
                         <div className="absolute bottom-4 left-4 right-4">
@@ -610,7 +322,7 @@ const Home = () => {
                           {service.description}
                         </p>
 
-                        
+
 
 
                       </div>
@@ -623,17 +335,17 @@ const Home = () => {
               <div className="hidden md:block relative h-full flex flex-col">
                 {/* Services Slider */}
                 <div className="relative overflow-hidden rounded-2xl bg-white/80 backdrop-blur-sm border border-white/20 shadow-2xl flex-1 ">
-                                      <motion.div
-                      className="flex transition-transform duration-700 ease-in-out h-full"
-                      style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                    >
-                      {services.map((service, index) => (
-                        <div
-                          key={service.slug}
-                          className="w-full flex-shrink-0 h-full"
-                          style={{ width: '100%' }}
-                        >
-                          <div className="grid lg:grid-cols-2 gap-0 h-full">
+                  <motion.div
+                    className="flex transition-transform duration-700 ease-in-out h-full"
+                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                  >
+                    {services.map((service, index) => (
+                      <div
+                        key={service.slug}
+                        className="w-full flex-shrink-0 h-full"
+                        style={{ width: '100%' }}
+                      >
+                        <div className="grid lg:grid-cols-2 gap-0 h-full">
                           {/* Left Side - Service Image & Visual */}
                           <div className="relative overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-black h-[500px]">
                             {/* Service-specific Background Image */}
@@ -679,7 +391,7 @@ const Home = () => {
                                 </motion.div>
                               </div>
 
-                             
+
                             </div>
 
                             {/* Service Title Overlay */}
@@ -924,7 +636,7 @@ const Home = () => {
                                   ));
                                 })()}
                               </motion.div>
-                              
+
                               {/* Spacer to push navigation to bottom */}
                               <div className="flex-1"></div>
                             </div>
@@ -1140,11 +852,11 @@ const Home = () => {
                 <span className="h-0.5 w-12 bg-primary ml-3"></span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 ">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
                 Meeting the Highest <span className="text-primary">Safety Standards</span>
               </h2>
 
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 max-w-md sm:max-w-3xl mx-auto leading-relaxed mt-2 sm:mt-3 px-2">
                 Our comprehensive certifications and compliance with international standards ensure your operations meet the highest safety requirements.
               </p>
             </motion.div>
