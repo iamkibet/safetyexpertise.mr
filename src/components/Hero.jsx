@@ -8,7 +8,7 @@ const HERO_SLIDES = [
     id: 1,
     title: "Mobile Equipment",
     subtitle: "Fire Suppression",
-    description: "Advanced maintenance solutions with cutting-edge fire suppression technology. Ensuring your equipment operates safely, efficiently, and meets the highest industry standards.",
+    description: "Advanced fire suppression technology ensuring safe, efficient equipment operation meeting industry standards.",
     image: "/images/17.png",
     icon: FaShieldAlt
   },
@@ -16,7 +16,7 @@ const HERO_SLIDES = [
     id: 2,
     title: "Maintenance",
     subtitle: "Engineering Excellence",
-    description: "Expert engineering services delivering predictive maintenance strategies. We minimize downtime while maximizing operational efficiency across all your industrial systems.",
+    description: "Expert predictive maintenance strategies minimizing downtime and maximizing operational efficiency.",
     image: "/images/hero/3.png",
     icon: FaCog
   },
@@ -24,7 +24,7 @@ const HERO_SLIDES = [
     id: 3,
     title: "Professional",
     subtitle: "Manpower Solutions",
-    description: "Skilled professionals providing specialized expertise across industrial sectors. Our certified team delivers comprehensive training and maintains the highest safety protocols.",
+    description: "Skilled professionals delivering specialized expertise, comprehensive training, and highest safety protocols.",
     image: "/images/hero/11.png",
     icon: FaUsers
   },
@@ -32,7 +32,7 @@ const HERO_SLIDES = [
     id: 4,
     title: "Industrial",
     subtitle: "Procurement & Supply",
-    description: "Strategic procurement solutions connecting you with premium suppliers. We ensure seamless supply chain management and cost-effective sourcing for your operations.",
+    description: "Strategic procurement connecting premium suppliers with seamless supply chain management and cost-effective sourcing.",
     image: "/images/hero/7.jpg",
     icon: FaTruck
   },
@@ -40,7 +40,7 @@ const HERO_SLIDES = [
     id: 5,
     title: "Transport &",
     subtitle: "Mobility Solutions",
-    description: "Reliable transportation solutions designed for modern industrial needs. Our services focus on safety, operational efficiency, and environmental responsibility.",
+    description: "Reliable transportation solutions focusing on safety, operational efficiency, and environmental responsibility.",
     image: "/images/hero/8.jpg",
     icon: FaTools
   }
@@ -181,7 +181,7 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-                    className="text-5xl  md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.9] tracking-tight"
+                    className="text-5xl   lg:text-6xl xl:text-7xl font-black text-white leading-[0.9] tracking-tight"
                     style={{
                       textShadow: '0 6px 20px rgba(0,0,0,0.6), 0 3px 8px rgba(0,0,0,0.4)',
                       letterSpacing: '-0.02em'
@@ -195,7 +195,7 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                    className="text-3xl  md:text-4xl lg:text-5xl xl:text-6xl font-bold text-blue-100 leading-tight tracking-wide"
+                    className="text-3xl   lg:text-4xl xl:text-5xl font-bold text-blue-100 leading-tight tracking-wide"
                     style={{
                       textShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 6px rgba(0,0,0,0.3)',
                       letterSpacing: '0.01em'
@@ -211,7 +211,7 @@ const Hero = () => {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                  className="text-lg sm:text-xl md:text-2xl text-gray-100 leading-relaxed max-w-3xl font-normal"
+                  className="text-md  md:text-lg lg:text-xl text-gray-100 leading-relaxed max-w-3xl font-normal"
                   style={{
                     textShadow: '0 3px 8px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.4)',
                     lineHeight: '1.6',
@@ -228,11 +228,8 @@ const Hero = () => {
                     {/* Primary CTA */}
                     <button
                       onClick={() => scrollToSection('contact')}
-                      className="inline-flex items-center justify-center gap-3 bg-primary text-white font-bold px-3 md:px-6 py-2 md:py-4 rounded-xl text-lg sm:text-lg flex-1 sm:flex-none"
-                      style={{
-                        boxShadow: '0 10px 25px -5px rgba(24, 85, 140, 0.4), 0 4px 6px -2px rgba(24, 85, 140, 0.2)',
-                        minHeight: '56px'
-                      }}
+                      className="inline-flex items-center justify-center gap-3 bg-primary text-white font-bold px-2  md:px-6 py-2 md:py-4 rounded-xl text-lg sm:text-lg flex-1 sm:flex-none"
+                      
                     >
                       <span>Get Started</span>
                       <FaArrowRight className="w-3 h-3 md:w-5 md:h-5" />
